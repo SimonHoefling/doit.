@@ -1,13 +1,15 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
+  skip_before_action :authenticate_user!, only: [:index]
 
-  # GET /categories or /categories.json
+  # GET /categories
   def index
     @categories = Category.all
   end
 
-  # GET /categories/1 or /categories/1.json
+  # GET /categories/1
   def show
+    @tasks = @category.tasks
   end
 
   # GET /categories/new
@@ -19,7 +21,7 @@ class CategoriesController < ApplicationController
   def edit
   end
 
-  # POST /categories or /categories.json
+  # POST /categories
   def create
     @category = Category.new(category_params)
 
@@ -34,7 +36,7 @@ class CategoriesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /categories/1 or /categories/1.json
+  # PATCH/PUT /categories/1
   def update
     respond_to do |format|
       if @category.update(category_params)
@@ -47,7 +49,7 @@ class CategoriesController < ApplicationController
     end
   end
 
-  # DELETE /categories/1 or /categories/1.json
+  # DELETE /categories/1
   def destroy
     @category.destroy
 
