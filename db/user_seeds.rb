@@ -2,7 +2,7 @@
 
 puts "Creating users..."
 
-users = User.create([
+User.create([
   {
     first_name: 'Simon',
     last_name: 'Hoefling',
