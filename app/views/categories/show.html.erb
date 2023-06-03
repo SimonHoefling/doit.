@@ -2,11 +2,13 @@
 
 <%= render @category %>
 
-<h2>Tasks</h2>
+<h2>This are the tasks for the category education</h2>
 <ul>
   <% @tasks.each do |task| %>
     <li><%= task.name %></li>
-    <p><%= task.description %></p>
+    <li><%= task.description %></li>
+    <li>Posted by: <%= task.user.first_name %> <%= task.user.last_name %></li>
+    <hr>
   <% end %>
 </ul>
 
