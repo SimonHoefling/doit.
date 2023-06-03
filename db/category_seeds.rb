@@ -49,4 +49,5 @@ Category.create([
                   }
                 ])
 
-puts "#{Category.count} categories got created!"
+category_count = Category.count
+puts "#{category_count} #{category_count == 1 ? 'category' : 'categories'} got created!"
