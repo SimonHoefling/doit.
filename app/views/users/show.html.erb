@@ -2,5 +2,12 @@
 
 <h1>This is the profile page</h1>
 
-<%= @user.first_name %>
-<%= @user.last_name %>
+<h3><%= @user.first_name %></h3>
+<h3><%= @user.last_name %></h3>
+<hr>
+<%= link_to "Edit Profile", edit_user_registration_path %>
+<h3>Task that i have posted</h3>
+<% @tasks.each do |task| %>
+  <h4><%= task.name %></h4>
+  <p><%= task.description %></p>
+<% end %>
