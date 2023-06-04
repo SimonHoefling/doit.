@@ -18,11 +18,14 @@
 <h2>Requested Tasks</h2>
 <% @requested_tasks.each do |task| %>
   <p><%= task.name %></p>
+  <% if task.task_status == "requested" %>
+    <% if task.requested_by %>
+      <p>Requested By: <%= task.requested_by.first_name %> <%= task.requested_by.last_name %></p>
+    <% else %>
+      <p>Requested By: N/A</p>
+    <% end %>
+  <% end %>
 <% end %>
-
-
-
-
 
 <h2>Accepted Tasks</h2>
 <% @accepted_tasks.each do |task| %>

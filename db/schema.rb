@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_04_034400) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_04_102853) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,7 +30,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_04_034400) do
     t.bigint "category_id", null: false
     t.bigint "user_id", null: false
     t.string "task_status"
+    t.bigint "requested_by_id"
     t.index ["category_id"], name: "index_tasks_on_category_id"
+    t.index ["requested_by_id"], name: "index_tasks_on_requested_by_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
@@ -50,4 +52,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_04_034400) do
 
   add_foreign_key "tasks", "categories"
   add_foreign_key "tasks", "users"
+  add_foreign_key "tasks", "users", column: "requested_by_id"
 end

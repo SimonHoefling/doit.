@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[ show edit update destroy ]
+  before_action :set_task, only: %i[show edit update destroy]
 
   # GET /tasks or /tasks.json
   def index
@@ -17,7 +17,8 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     return if @task.user == current_user
 
-    @task.update(task_status: "requested")
+    @task.update(task_status: "requested", requested_by: current_user)
+
     redirect_to task_path(@task), notice: "Request has been sent."
   end
 
