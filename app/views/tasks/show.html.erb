@@ -1,10 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<%# view# task/show %>
+<h1><%= @task.name %></h1>
+<p><%= @task.description %></p>
+<p>Status: <%= @task_status %></p>
 
-<%= render @task %>
-
-<div>
-  <%= link_to "Edit this task", edit_task_path(@task) %> |
-  <%= link_to "Back to tasks", tasks_path %>
-
-  <%= button_to "Destroy this task", @task, method: :delete %>
-</div>
+<% unless @is_own_task %>
+  <% if @task_status == "available" %>
+    <%= button_to "Start Task", start_task_task_path(@task), method: :post %>
+  <% elsif @task_status == "pending" %>
+    <p>Request has been sent.</p>
+  <% end %>
+<% end %>

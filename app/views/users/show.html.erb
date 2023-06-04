@@ -4,10 +4,27 @@
 
 <h3><%= @user.first_name %></h3>
 <h3><%= @user.last_name %></h3>
-<hr>
+<h3><%= @user.email %></h3>
 <%= link_to "Edit Profile", edit_user_registration_path %>
+<hr>
+<hr>
+
+
 <h3>Task that i have posted</h3>
-<% @tasks.each do |task| %>
-  <h4><%= task.name %></h4>
-  <p><%= task.description %></p>
+<% @created_tasks.each do |task| %>
+  <p><%= task.name %></p>
+<% end %>
+
+<h2>Requested Tasks</h2>
+<% @requested_tasks.each do |task| %>
+  <p><%= task.name %></p>
+<% end %>
+
+
+
+
+
+<h2>Accepted Tasks</h2>
+<% @accepted_tasks.each do |task| %>
+  <p><%= task.name %></p>
 <% end %>

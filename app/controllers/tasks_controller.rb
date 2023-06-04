@@ -8,6 +8,24 @@ class TasksController < ApplicationController
 
   # GET /tasks/1 or /tasks/1.json
   def show
+    @task = Task.find(params[:id])
+    @task_status = @task.task_status || "default"
+    @is_own_task = current_user == @task.user
+  end
+
+  def start_task
+    @task = Task.find(params[:id])
+    return if @task.user == current_user
+
+    @task.update(task_status: "requested")
+    redirect_to task_path(@task), notice: "Request has been sent."
+  end
+
+  def accept_request
+    return if @task.user != current_user # Do nothing if the task doesn't belong to the current user
+
+    @task.update(task_status: "in_progress")
+    redirect_to user_path(current_user), notice: "Task request has been accepted."
   end
 
   # GET /tasks/new

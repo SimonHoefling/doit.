@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: [:show]
-  resources :tasks
+  resources :tasks do
+    post 'start_task', on: :member
+  end
+
   resources :categories, except: [:index]
 end
