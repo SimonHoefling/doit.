@@ -6,7 +6,7 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
-  # GET /tasks/1 or /tasks/1.json
+  # GET /tasks/1
   def show
     @task = Task.find(params[:id])
     @task_status = @task.task_status || "default"
@@ -37,7 +37,7 @@ class TasksController < ApplicationController
   def edit
   end
 
-  # POST /tasks or /tasks.json
+  # POST /tasks
   def create
     @task = Task.new(task_params)
     @task.user = current_user
@@ -49,7 +49,7 @@ class TasksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /tasks/1 or /tasks/1.json
+  # PATCH/PUT /tasks/1
   def update
     if @task.update(task_params)
       redirect_to task_url(@task), notice: "Task was successfully updated."
@@ -58,7 +58,7 @@ class TasksController < ApplicationController
     end
   end
 
-  # DELETE /tasks/1 or /tasks/1.json
+  # DELETE /tasks/1
   def destroy
     @task.destroy
 
