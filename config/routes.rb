@@ -4,7 +4,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   resources :tasks do
-    post 'start_task', on: :member
+    member do
+      post 'start_task'
+      patch 'accept_request'
+      patch 'decline_request'
+    end
   end
 
   resources :categories, except: [:index]

@@ -17,16 +17,29 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     return if @task.user == current_user
 
-    @task.update(task_status: "requested", requested_by: current_user)
+    @task.update(task_status: "requested", requested_by_id: current_user.id)
 
     redirect_to task_path(@task), notice: "Request has been sent."
   end
 
   def accept_request
-    return if @task.user != current_user # Do nothing if the task doesn't belong to the current user
+    @task = Task.find(params[:id])
 
-    @task.update(task_status: "in_progress")
-    redirect_to user_path(current_user), notice: "Task request has been accepted."
+    if @task.accept_request!
+      redirect_to user_path(current_user), notice: "Task request has been accepted."
+    else
+      redirect_to task_path(@task), alert: "Failed to accept the task request."
+    end
+  end
+
+  def decline_request
+    @task = Task.find(params[:id])
+
+    if @task.decline_request!
+      redirect_to user_path(current_user), notice: "Task request has been declined."
+    else
+      redirect_to task_path(@task), alert: "Failed to decline the task request."
+    end
   end
 
   # GET /tasks/new
