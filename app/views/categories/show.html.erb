@@ -11,7 +11,6 @@ user that is currently logged in %>
     <% if task.task_status == "available" && task.user != current_user %>
       <%= link_to task.name, task_path(task) %>
       <li><%= task.description %></li>
-      <li>Posted by: <%= task.user.first_name %> <%= task.user.last_name %></li>
       <li>Price: <%= task.price %> IDR</li>
       <li>Posted at: <%= task.created_at.strftime("%d.%m.%Y") %></li>
       <hr>

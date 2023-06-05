@@ -1,6 +1,8 @@
 <%# view# task/show %>
 <h1><%= @task.name %></h1>
 <p><%= @task.description %></p>
+<p>Price: <%= @task.price %>IDR</p>
+<p>Posted by: <%= @task.user.first_name %> <%= @task.user.last_name %></p>
 <p>Status: <%= @task_status %></p>
 
 <%# This might be unnecessary but this checks if the user is the owner of the
