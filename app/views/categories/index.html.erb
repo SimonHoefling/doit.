@@ -4,11 +4,15 @@
 
 <div id="categories">
   <% @categories.each do |category| %>
-    <%= render category %>
+    <h5><%= category.name %></h5>
     <p>
       <%= link_to "Show this category", category %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New category", new_category_path %>
+<%# Savety check that only the user with the email 'simon@gmail.com'
+can add a new category %>
+<% if user_signed_in? && current_user.email == 'simon@gmail.com' %>
+  <%= link_to "Add new category", new_category_path %>
+<% end %>

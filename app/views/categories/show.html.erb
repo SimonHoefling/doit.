@@ -10,7 +10,6 @@ user that is currently logged in %>
   <% @tasks.each do |task| %>
     <% if task.task_status == "available" && task.user != current_user %>
       <%= link_to task.name, task_path(task) %>
-      <li><%= task.description %></li>
       <li>Price: <%= task.price %> IDR</li>
       <li>Posted at: <%= task.created_at.strftime("%d.%m.%Y") %></li>
       <hr>
