@@ -3,6 +3,8 @@
 <p><%= @task.description %></p>
 <p>Status: <%= @task_status %></p>
 
+<%# This might be unnecessary but this checks if the user is the owner of the
+task he will not see the start task button %>
 <% unless @is_own_task %>
   <% if @task_status == "available" %>
     <%= button_to "Start Task", start_task_task_path(@task), method: :post %>
