@@ -10,27 +10,27 @@ User.create([
                 password: '123456'
               },
               {
-                first_name: 'Tester1',
-                last_name: 'Tester',
-                email: 'tester1@gmail.com',
+                first_name: 'User1',
+                last_name: 'Last_name1',
+                email: 'user1@gmail.com',
                 password: '123456'
               },
               {
-                first_name: 'Tester2',
-                last_name: 'Tester',
-                email: 'tester2@gmail.com',
+                first_name: 'User2',
+                last_name: 'Last_name2',
+                email: 'user2@gmail.com',
                 password: '123456'
               },
               {
-                first_name: 'Tester3',
-                last_name: 'Tester',
-                email: 'tester3@gmail.com',
+                first_name: 'User3',
+                last_name: 'Last_name3',
+                email: 'user3@gmail.com',
                 password: '123456'
               },
               {
-                first_name: 'Tester4',
-                last_name: 'Tester',
-                email: 'tester4@gmail.com',
+                first_name: 'User4',
+                last_name: 'Last_name4',
+                email: 'user4@gmail.com',
                 password: '123456'
               }
             ])

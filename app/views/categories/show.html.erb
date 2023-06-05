@@ -2,22 +2,25 @@
 
 <%= render @category %>
 
-<h2>This are the tasks for the category education</h2>
+
+<%# This renders only the tasks that are available %>
+<h2>These are the tasks for the category education</h2>
 <ul>
   <% @tasks.each do |task| %>
-    <%= link_to task.name, task_path(task) %>
-    <li><%= task.description %></li>
-    <li>Posted by: <%= task.user.first_name %> <%= task.user.last_name %></li>
-    <hr>
+    <% if task.task_status == "available" %>
+      <%= link_to task.name, task_path(task) %>
+      <li><%= task.description %></li>
+      <li>Posted by: <%= task.user.first_name %> <%= task.user.last_name %></li>
+      <hr>
+    <% end %>
   <% end %>
 </ul>
 
 
-<div>
+<%# Savety check that only the user with the email 'simon@gmail.com'
+can edit and delete the category %>
+<% if current_user.email == 'simon@gmail.com' %>
   <%= link_to "Edit this category", edit_category_path(@category) %> |
-  <%= link_to "Back to categories", root_path %>
-
-
-
   <%= button_to "Destroy this category", @category, method: :delete %>
-</div>
+<% end %>
+<%= link_to "Back to categories", root_path %>

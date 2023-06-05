@@ -9,33 +9,53 @@
 <hr>
 <hr>
 
+<%# This shows tasks that I have created %>
 <h3>Tasks that I have posted</h3>
 <% @created_tasks.each do |task| %>
   <p><%= task.name %></p>
 <% end %>
 
-<h2>Requested Tasks</h2>
-<% @requested_tasks.each do |task| %>
-  <p><%= task.name %></p>
-  <% if task.task_status == "requested" %>
-    <% if task.requested_by %>
-      <p>Requested By: <%= task.requested_by.first_name %> <%= task.requested_by.last_name %></p>
-      <% if current_user == task.user %>
-        <%= button_to "Accept", accept_request_task_path(task), method: :patch %>
-        <%= button_to "Decline", decline_request_task_path(task), method: :patch %>
+<%# This displays tasks where I have clicked on "Start Task" button %>
+<% if @started_tasks.any? %>
+  <h3>Tasks where I have applied for</h3>
+  <% @started_tasks.each do |task| %>
+    <p><%= task.name %></p>
+    <p>Status: <%= task.task_status %></p>
+  <% end %>
+<% end %>
+
+
+<hr>
+<hr>
+
+<% if @requested_tasks.any? %>
+  <h2>Requested Tasks</h2>
+  <% @requested_tasks.each do |task| %>
+    <p><%= task.name %></p>
+    <% if task.task_status == "requested" %>
+      <% if task.requested_by %>
+        <p>Requested By: <%= task.requested_by.first_name %> <%= task.requested_by.last_name %></p>
+        <% if current_user == task.user %>
+          <%= button_to "Accept", accept_request_task_path(task), method: :patch %>
+          <%= button_to "Decline", decline_request_task_path(task), method: :patch %>
+        <% end %>
+      <% else %>
+        <p>Requested By: N/A</p>
       <% end %>
-    <% else %>
-      <p>Requested By: N/A</p>
     <% end %>
   <% end %>
 <% end %>
 
-<h2>Accepted Tasks</h2>
-<% @accepted_tasks.each do |task| %>
-  <% if task.task_status == "in_work" %>
-    <p><%= task.name %></p>
-    <% if current_user == task.user %>
-      <%= button_to "Done", done_task_path(task), method: :patch %>
+<hr>
+
+<% if @accepted_tasks.any? %>
+  <h2>Accepted Tasks</h2>
+  <% @accepted_tasks.each do |task| %>
+    <% if task.task_status == "in_work" %>
+      <p><%= task.name %></p>
+      <% if current_user == task.user %>
+        <%= button_to "Done", done_task_path(task), method: :patch %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
