@@ -16,13 +16,18 @@
 <% end %>
 
 <%# This displays tasks where I have clicked on "Start Task" button %>
-<% if @started_tasks.any? %>
-  <h3>Tasks where I have applied for</h3>
-  <% @started_tasks.each do |task| %>
-    <p><%= task.name %></p>
-    <p>Status: <%= task.task_status %></p>
+<% if @task %>
+  <% if @started_tasks.any? %>
+    <h3>Tasks where I have applied for</h3>
+    <% @started_tasks.each do |task| %>
+      <p><%= task.name %></p>
+      <p>Status: <%= task.task_status %></p>
+    <% end %>
   <% end %>
 <% end %>
+
+
+
 
 
 <hr>
