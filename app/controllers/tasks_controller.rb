@@ -42,6 +42,16 @@ class TasksController < ApplicationController
     end
   end
 
+  def done_task
+    @task = Task.find(params[:id])
+
+    if @task.update(task_status: "done")
+      redirect_to user_path(current_user), notice: "Task has been marked as done."
+    else
+      redirect_to task_path(@task), alert: "Failed to mark the task as done."
+    end
+  end
+
   # GET /tasks/new
   def new
     @task = Task.new

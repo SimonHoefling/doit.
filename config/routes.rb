@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       post 'start_task'
       patch 'accept_request'
       patch 'decline_request'
+      patch 'done'
     end
   end
 

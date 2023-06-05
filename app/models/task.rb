@@ -17,8 +17,7 @@ class Task < ApplicationRecord
   def accept_request!
     return false unless task_status == 'requested'
 
-    update(task_status: 'in_progress')
-    true
+    update(task_status: 'in_work')
   end
 
   def decline_request!

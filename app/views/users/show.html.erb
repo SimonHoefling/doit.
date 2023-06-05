@@ -9,8 +9,7 @@
 <hr>
 <hr>
 
-
-<h3>Task that i have posted</h3>
+<h3>Tasks that I have posted</h3>
 <% @created_tasks.each do |task| %>
   <p><%= task.name %></p>
 <% end %>
@@ -33,5 +32,10 @@
 
 <h2>Accepted Tasks</h2>
 <% @accepted_tasks.each do |task| %>
-  <p><%= task.name %></p>
+  <% if task.task_status == "in_work" %>
+    <p><%= task.name %></p>
+    <% if current_user == task.user %>
+      <%= button_to "Done", done_task_path(task), method: :patch %>
+    <% end %>
+  <% end %>
 <% end %>
