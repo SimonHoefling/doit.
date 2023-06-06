@@ -52,6 +52,8 @@ class TasksController < ApplicationController
     end
   end
 
+
+
   # GET /tasks/new
   def new
     @task = Task.new
@@ -75,12 +77,15 @@ class TasksController < ApplicationController
 
   # PATCH/PUT /tasks/1
   def update
-    if @task.update(task_params)
-      redirect_to task_url(@task), notice: "Task was successfully updated."
+    @task = Task.find(params[:id])
+
+    if @task.update(task_status: "done")
+      redirect_to user_path(current_user), notice: "Task has been marked as done."
     else
-      render :edit, status: :unprocessable_entity
+      redirect_to task_path(@task), alert: "Failed to mark the task as done."
     end
   end
+
 
   # DELETE /tasks/1
   def destroy
