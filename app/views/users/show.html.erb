@@ -6,12 +6,11 @@
 <h3><%= @user.last_name %></h3>
 <h3><%= @user.email %></h3>
 <%= link_to "Edit Profile", edit_user_registration_path %>
-<hr>
-<hr>
 
 <%# This shows tasks that I have created %>
 
 <% if @created_tasks.any? %>
+<hr>
   <h3>Tasks that I have posted</h3>
   <% @created_tasks.each do |task| %>
     <p><%= task.name %></p>
@@ -30,11 +29,10 @@
   <% end %>
 <% end %>
 
-<hr>
-<hr>
 
 <%# This shows in the User profile page if there are any tasks that are requested by other users. %>
 <% if @requested_tasks.any? %>
+<hr>
   <h2>Requested Tasks</h2>
   <% @requested_tasks.each do |task| %>
     <p><%= task.name %></p>
@@ -52,10 +50,10 @@
   <% end %>
 <% end %>
 
-<hr>
 
 <%# This shows in the User profile page if there are any tasks that are accepted by the user. %>
 <% if @accepted_tasks.any? %>
+<hr>
   <h2>Accepted Tasks</h2>
   <% @accepted_tasks.each do |task| %>
     <% if task.task_status == "in_work" %>
@@ -67,14 +65,15 @@
   <% end %>
 <% end %>
 
-<hr>
 
 <%# This shows in the User profile page if there are any tasks that are done by the user or
 tasks that the user has requested and are done. %>
 <% if @done_tasks.any? %>
+<hr>
   <h2>Task History</h2>
   <% @done_tasks.each do |task| %>
     <p><%= task.name %></p>
     <p>Status: <%= task.task_status %></p>
+    <p><%= task.price %> IDR</p>
   <% end %>
 <% end %>
