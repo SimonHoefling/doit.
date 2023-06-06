@@ -13,6 +13,7 @@ class TasksController < ApplicationController
     @is_own_task = current_user == @task.user
   end
 
+  # Method to start a task
   def start_task
     @task = Task.find(params[:id])
     return if @task.user == current_user
@@ -22,6 +23,7 @@ class TasksController < ApplicationController
     redirect_to task_path(@task), notice: "Request has been sent."
   end
 
+  # Method to accept a task request
   def accept_request
     @task = Task.find(params[:id])
 
@@ -32,16 +34,18 @@ class TasksController < ApplicationController
     end
   end
 
-  def decline_request
+  # Method for the task owner to reject a task request
+  def reject_recuest
     @task = Task.find(params[:id])
 
-    if @task.decline_request!
+    if @task.reject_recuest!
       redirect_to user_path(current_user), notice: "Task request has been declined."
     else
       redirect_to task_path(@task), alert: "Failed to decline the task request."
     end
   end
 
+  # Method for the task owner to mark a task as done
   def done_task
     @task = Task.find(params[:id])
 
@@ -51,8 +55,6 @@ class TasksController < ApplicationController
       redirect_to task_path(@task), alert: "Failed to mark the task as done."
     end
   end
-
-
 
   # GET /tasks/new
   def new
@@ -75,7 +77,7 @@ class TasksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /tasks/1
+  # PATCH/PUT /tasks/1 this also marks a task a done in the database
   def update
     @task = Task.find(params[:id])
 
@@ -85,7 +87,6 @@ class TasksController < ApplicationController
       redirect_to task_path(@task), alert: "Failed to mark the task as done."
     end
   end
-
 
   # DELETE /tasks/1
   def destroy

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     member do
       post 'start_task'
       patch 'accept_request'
-      patch 'decline_request'
+      patch 'reject_recuest'
       patch 'done_task'
     end
   end
