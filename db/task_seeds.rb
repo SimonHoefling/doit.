@@ -23,21 +23,21 @@ Task.create(
       description: 'Seeking a certified personal fitness trainer to help me achieve my fitness goals.',
       price: 430_000.0,
       category: Category.third,
-      user: User.second
+      user: User.third
     },
     {
       name: 'Furniture Assembly and Disassembly',
       description: 'Need assistance with assembling and disassembling furniture during a move.',
       price: 120_000.0,
       category: Category.second,
-      user: User.first
+      user: User.fourth
     },
     {
       name: 'Math Tutor for High School Student',
       description: 'Searching for a math tutor to help my high school student with algebra.',
       price: 100_000.0,
       category: Category.first,
-      user: User.second
+      user: User.fifth
     },
     {
       name: 'Makeup Artist for Photoshoot',
@@ -51,28 +51,28 @@ Task.create(
       description: 'Need a reliable handyman to paint a room in my house. ',
       price: 85_000.00,
       category: Category.fourth,
-      user: User.first
+      user: User.second
     },
     {
       name: 'Running Coach',
       description: 'Seeking a running coach to improve my endurance and speed.',
       price: 120_000.0,
       category: Category.third,
-      user: User.first
+      user: User.third
     },
     {
       name: 'Help with Heavy Lifting',
       description: 'Looking for strong individuals to assist with heavy lifting during a move.',
       price: 95_000.0,
       category: Category.second,
-      user: User.second
+      user: User.fourth
     },
     {
       name: 'English Language Tutor',
       description: 'Seeking an English language tutor to improve my speaking and writing skills.',
       price: 120_000.00,
       category: Category.first,
-      user: User.second
+      user: User.fifth
     },
     {
       name: 'Manicure and Pedicure Services',
@@ -93,28 +93,28 @@ Task.create(
       description: 'Searching for a certified yoga instructor for private yoga sessions.',
       price: 170_000.0,
       category: Category.third,
-      user: User.first
+      user: User.third
     },
     {
       name: 'Packing and Unpacking Assistance',
       description: 'Looking for helpers to assist with packing and unpacking belongings during a move.',
       price: 45_000.00,
       category: Category.second,
-      user: User.second
+      user: User.fourth
     },
     {
       name: 'Science Tutor for Middle School Student',
       description: 'Seeking a science tutor to help my middle school student with biology.',
       price: 85_000.00,
       category: Category.first,
-      user: User.second
+      user: User.fifth
     },
     {
       name: 'Haircut and Styling for Men',
       description: 'Need a skilled hairstylist for a haircut and styling session for men.',
       price: 75_000.0,
       category: Category.fifth,
-      user: User.second
+      user: User.first
     },
     {
       name: 'Installing Shelves in a Closet',
@@ -128,63 +128,63 @@ Task.create(
       description: 'Seeking a personal swimming instructor to improve my swimming technique.',
       price: 85_000.0,
       category: Category.third,
-      user: User.second
+      user: User.third
     },
     {
       name: 'Furniture Disposal and Recycling',
       description: 'Need assistance with disposing and recycling old furniture during a move.',
       price: 40_000.0,
       category: Category.second,
-      user: User.second
+      user: User.fourth
     },
     {
       name: 'History Tutor for College Student',
       description: 'Searching for a history tutor to help me with my college-level history course.',
       price: 30_000.00,
       category: Category.first,
-      user: User.second
+      user: User.fifth
     },
     {
       name: 'SAT Exam Prep Tutor',
       description: 'Seeking an experienced tutor to help me prepare for the SAT exam.',
       price: 140_000.00,
       category: Category.first,
-      user: User.second
+      user: User.first
     },
     {
       name: 'Professional Makeup Application',
       description: 'Looking for a makeup artist to do a professional makeup application for a special occasion.',
       price: 110_000.0,
       category: Category.fifth,
-      user: User.first
+      user: User.second
     },
     {
       name: 'Assembling a Bookshelf',
       description: 'Need help with assembling a bookshelf and ensuring it is stable.',
       price: 45_000.0,
       category: Category.fourth,
-      user: User.second
+      user: User.third
     },
     {
       name: 'Tennis Coach for Beginners',
       description: 'Searching for a tennis coach to teach me the basics of playing tennis.',
       price: 90_000.0,
       category: Category.third,
-      user: User.first
+      user: User.fourth
     },
     {
       name: 'Packing Supplies and Materials Delivery',
       description: 'Looking for someone to deliver packing supplies and materials for an upcoming move.',
       price: 25_000.00,
       category: Category.second,
-      user: User.second
+      user: User.fifth
     },
     {
       name: 'Online Math Tutoring for Elementary Student',
       description: 'Seeking an online math tutor to help my elementary school student with arithmetic.',
       price: 50_000.00,
       category: Category.first,
-      user: User.second
+      user: User.first
     },
     {
       name: 'Bridal Hair and Makeup Services',
@@ -198,21 +198,21 @@ Task.create(
       description: 'Need a skilled handyman to repair a leaky roof in my house.',
       price: 170_000.0,
       category: Category.fourth,
-      user: User.second
+      user: User.third
     },
     {
       name: 'Personal Basketball Trainer',
       description: 'Searching for a personal basketball trainer to improve my basketball skills.',
       price: 95_000.0,
       category: Category.third,
-      user: User.second
+      user: User.fourth
     },
     {
       name: 'Loading and Unloading Truck',
       description: 'Looking for individuals to help with loading and unloading items onto a moving truck.',
       price: 75_000.00,
       category: Category.second,
-      user: User.second
+      user: User.fifth
     }
   ]
 )
