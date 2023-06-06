@@ -10,10 +10,14 @@
 <hr>
 
 <%# This shows tasks that I have created %>
-<h3>Tasks that I have posted</h3>
-<% @created_tasks.each do |task| %>
-  <p><%= task.name %></p>
+
+<% if @created_tasks.any? %>
+  <h3>Tasks that I have posted</h3>
+  <% @created_tasks.each do |task| %>
+    <p><%= task.name %></p>
+  <% end %>
 <% end %>
+
 
 <%# This displays tasks where I have clicked on "Start Task" button %>
 <% if @task %>
@@ -60,5 +64,17 @@
         <%= button_to "Done", task_path(task), method: :patch %>
       <% end %>
     <% end %>
+  <% end %>
+<% end %>
+
+<hr>
+
+<%# This shows in the User profile page if there are any tasks that are done by the user or
+tasks that the user has requested and are done. %>
+<% if @done_tasks.any? %>
+  <h2>Task History</h2>
+  <% @done_tasks.each do |task| %>
+    <p><%= task.name %></p>
+    <p>Status: <%= task.task_status %></p>
   <% end %>
 <% end %>
