@@ -20,6 +20,13 @@
           <li>
             <%= link_to "Add new task", new_task_path, class: "nav-link" %>
           </li>
+          <%# Savety check that only the user with the email 'simon@gmail.com'
+            can add a new category %>
+          <li>
+            <% if user_signed_in? && current_user.email == 'simon@gmail.com' %>
+              <%= link_to "Add new category", new_category_path, class: "nav-link" %>
+            <% end %>
+          </li>
           <li>
             <%= link_to "Profile", user_path(current_user), class: "nav-link" %>
           </li>

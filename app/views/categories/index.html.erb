@@ -1,18 +1,24 @@
+<%# Categories Index Page %>
 <p style="color: green"><%= notice %></p>
 
-<h1>Categories</h1>
-
-<div id="categories">
-  <% @categories.each do |category| %>
-    <h5><%= category.name %></h5>
-    <p>
-      <%= link_to "Show this category", category %>
-    </p>
-  <% end %>
+<div class="text-center">
+  <h1>doit</h1>
 </div>
 
-<%# Savety check that only the user with the email 'simon@gmail.com'
-can add a new category %>
-<% if user_signed_in? && current_user.email == 'simon@gmail.com' %>
-  <%= link_to "Add new category", new_category_path %>
-<% end %>
+<div class="text-center">
+  <h1>EXPLORE</h1>
+</div>
+
+<%# This renders the categories in a grid %>
+<div class="categories-container">
+  <div class="grid-container">
+    <% @categories.each do |category| %>
+      <div class="grid-item">
+        <%= link_to category, class: "category-link" do %>
+          <%= image_tag("default-category.jpeg", alt: "category-default-image") %>
+          <h3><%= category.name %></h3>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

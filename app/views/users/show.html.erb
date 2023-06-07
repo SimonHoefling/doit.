@@ -10,7 +10,7 @@
 <%# This shows tasks that I have created %>
 
 <% if @created_tasks.any? %>
-<hr>
+  <hr>
   <h3>Tasks that I have posted</h3>
   <% @created_tasks.each do |task| %>
     <p><%= task.name %></p>
@@ -20,6 +20,7 @@
 
 <%# This displays tasks where I have clicked on "Start Task" button %>
 <% if @task %>
+  <hr>
   <% if @started_tasks.any? %>
     <h3>Tasks where I have applied for</h3>
     <% @started_tasks.each do |task| %>
@@ -32,7 +33,7 @@
 
 <%# This shows in the User profile page if there are any tasks that are requested by other users. %>
 <% if @requested_tasks.any? %>
-<hr>
+ <hr>
   <h2>Requested Tasks</h2>
   <% @requested_tasks.each do |task| %>
     <p><%= task.name %></p>
@@ -53,7 +54,7 @@
 
 <%# This shows in the User profile page if there are any tasks that are accepted by the user. %>
 <% if @accepted_tasks.any? %>
-<hr>
+ <hr>
   <h2>Accepted Tasks</h2>
   <% @accepted_tasks.each do |task| %>
     <% if task.task_status == "in_work" %>
@@ -69,7 +70,7 @@
 <%# This shows in the User profile page if there are any tasks that are done by the user or
 tasks that the user has requested and are done. %>
 <% if @done_tasks.any? %>
-<hr>
+ <hr>
   <h2>Task History</h2>
   <% @done_tasks.each do |task| %>
     <p><%= task.name %></p>

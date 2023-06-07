@@ -10,3 +10,17 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "categories/index";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(251,180,188);
+  background: linear-gradient(180deg, rgba(251,180,188,1) 30%, rgba(230,121,126,1) 85%);
+  background-attachment: fixed;
+  height: 100vh;
+}

@@ -68,4 +68,7 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # The next line is to allow the use of the localtunnel to check the app on mobile devices
+  config.hosts << /\A[a-z\d-]+\.loca\.lt\z/
 end
