@@ -1,0 +1,49 @@
+// CSS rules for the Navbar on desktop below
+@media only screen and (min-width: 997px) {
+  .mobile-nav-container {
+    display: none;
+  }
+}
+
+// CSS rules for the Navbar on phones below
+@media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 480px) {
+    .mobile-nav-container {
+      display: flex;
+      position: fixed;
+      bottom: -0.8px;
+      width: 100%;
+      height: 10%;
+      -webkit-box-shadow: 0px -1px 4px 0px rgba(0,0,0,0.5);
+      box-shadow: 0px -1px 4px 0px rgba(0,0,0,0.5);
+      // border: 2px solid black;
+      background-color: $white;
+      .navbar-item-container {
+        // border: 1px solid rgb(142, 207, 44);
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        color: $black;
+        .item {
+          // border: 1px solid red;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          i {
+            font-size: 32px;
+          }
+          p {
+            font-size: 10px;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+}
