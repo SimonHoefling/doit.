@@ -30,7 +30,7 @@ class TasksController < ApplicationController
 
     @task.update(task_status: "requested", requested_by_id: current_user.id)
 
-    redirect_to task_path(@task), notice: "Request has been sent."
+    redirect_to my_tasks_tasks_path, notice: "Request has been sent."
   end
 
   # Method to accept a task request
@@ -38,7 +38,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     if @task.accept_request!
-      redirect_to user_path(current_user), notice: "Task request has been accepted."
+      redirect_to my_tasks_tasks_path, notice: "Task request has been accepted."
     else
       redirect_to task_path(@task), alert: "Failed to accept the task request."
     end
@@ -49,7 +49,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     if @task.reject_request!
-      redirect_to user_path(current_user), notice: "Task request has been declined."
+      redirect_to my_tasks_tasks_path, notice: "Task request has been declined."
     else
       redirect_to task_path(@task), alert: "Failed to decline the task request."
     end
@@ -60,11 +60,12 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     if @task.update(task_status: "done")
-      redirect_to user_path(current_user), notice: "Task has been marked as done."
+      redirect_to my_tasks_tasks_path, notice: "Task has been marked as done."
     else
       redirect_to task_path(@task), alert: "Failed to mark the task as done."
     end
   end
+
 
   # GET /tasks/new
   def new

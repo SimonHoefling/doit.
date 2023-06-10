@@ -1,34 +1,36 @@
 This is the my tasks page
 
-
 <!-- my_tasks.html.erb -->
 
 <h1>My Tasks</h1>
 
 <% if @tasks.any? %>
+  <hr>
   <h3>Tasks that I have posted</h3>
   <% @tasks.each do |task| %>
     <p><%= task.name %></p>
   <% end %>
-  <hr>
 <% end %>
 
-<!-- Add the same logic for displaying other task sections as on the user profile page -->
-<% if @started_tasks.any? %>
+<% if @started_tasks.any? && @started_tasks.pluck(:requested_by_id).include?(current_user.id) %>
   <hr>
   <h3>Tasks where I have applied for</h3>
   <% @started_tasks.each do |task| %>
-    <p><%= task.name %></p>
-    <p>Status: <%= task.task_status %></p>
+    <% if task.requested_by_id == current_user.id %>
+      <p><%= task.name %></p>
+      <p>Status: <%= task.task_status %></p>
+    <% end %>
   <% end %>
 <% end %>
+
+
 
 <% if @requested_tasks.any? %>
   <hr>
   <h2>Requested Tasks</h2>
   <% @requested_tasks.each do |task| %>
-    <p><%= task.name %></p>
-    <% if task.task_status == "requested" %>
+    <% if current_user == task.user && task.task_status == "requested" %>
+      <p><%= task.name %></p>
       <% if task.requested_by %>
         <p>Requested By: <%= task.requested_by.first_name %> <%= task.requested_by.last_name %></p>
         <% if current_user == task.user %>
@@ -45,11 +47,11 @@ This is the my tasks page
 <% if @accepted_tasks.any? %>
   <hr>
   <h2>Accepted Tasks</h2>
-  <% @accepted_tasks.each do |task| %>
-    <% if task.task_status == "in_work" %>
-      <p><%= task.name %></p>
-      <% if current_user == task.user %>
-        <%= button_to "Done", task_path(task), method: :patch %>
+  <% @accepted_tasks.each do |accepted_task| %>
+    <% if accepted_task.task_status == "in_work" %>
+      <p><%= accepted_task.name %></p>
+      <% if current_user == accepted_task.user %>
+        <%= button_to "Done", task_path(accepted_task), method: :patch %>
       <% end %>
     <% end %>
   <% end %>
