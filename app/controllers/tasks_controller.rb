@@ -13,6 +13,16 @@ class TasksController < ApplicationController
     @is_own_task = current_user == @task.user
   end
 
+  # GET /tasks/my_tasks
+  def my_tasks
+    @tasks = current_user.tasks
+    @started_tasks = Task.where("(task_status = 'requested' AND requested_by_id = :user_id) OR task_status = 'in_work'", user_id: current_user.id)
+    @requested_tasks = Task.where(task_status: "requested", user: current_user)
+    @accepted_tasks = Task.joins(:user).where(users: { id: current_user.id }, task_status: "in_work")
+    @done_tasks = Task.where(task_status: "done", user: current_user).or(Task.where(task_status: "done", requested_by: current_user))
+  end
+
+
   # Method to start a task
   def start_task
     @task = Task.find(params[:id])
