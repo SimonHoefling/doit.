@@ -51,7 +51,7 @@ This is the my tasks page
     <% if accepted_task.task_status == "in_work" %>
       <p><%= accepted_task.name %></p>
       <% if current_user == accepted_task.user %>
-        <%= button_to "Done", task_path(accepted_task), method: :patch %>
+        <%= button_to "Done", done_task_task_path(accepted_task), method: :patch %>
       <% end %>
     <% end %>
   <% end %>
