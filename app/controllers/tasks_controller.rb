@@ -45,10 +45,10 @@ class TasksController < ApplicationController
   end
 
   # Method for the task owner to reject a task request
-  def reject_recuest
+  def reject_request
     @task = Task.find(params[:id])
 
-    if @task.reject_recuest!
+    if @task.reject_request!
       redirect_to user_path(current_user), notice: "Task request has been declined."
     else
       redirect_to task_path(@task), alert: "Failed to decline the task request."

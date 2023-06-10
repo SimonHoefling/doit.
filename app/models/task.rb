@@ -23,7 +23,7 @@ class Task < ApplicationRecord
   end
 
   # Method to mark a task as done (only available if you are the task owner)
-  def reject_recuest!
+  def reject_request!
     return false unless task_status == 'requested'
 
     update(requested_by_id: nil, task_status: 'available')

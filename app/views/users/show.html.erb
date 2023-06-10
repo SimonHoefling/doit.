@@ -42,7 +42,7 @@
         <p>Requested By: <%= task.requested_by.first_name %> <%= task.requested_by.last_name %></p>
           <% if current_user == task.user %>
             <%= button_to "Accept", accept_request_task_path(task), method: :patch %>
-            <%= button_to "Reject", reject_recuest_task_path(task), method: :patch %>
+            <%= button_to "Reject", reject_request_task_path(task), method: :patch %>
           <% end %>
       <% else %>
         <p>Requested By: N/A</p>
