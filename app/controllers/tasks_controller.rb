@@ -71,6 +71,17 @@ class TasksController < ApplicationController
     @task = Task.new
   end
 
+  # Method to create a chatroom for a task
+  def create_chatroom
+    @task = Task.find(params[:id])
+    @chatroom = Chatroom.new(task: @task, name: @task.name) # Create a chatroom associated with the task
+    if @chatroom.save
+      redirect_to chatroom_path(@chatroom), notice: "Chatroom created successfully."
+    else
+      redirect_to task_path(@task), alert: "Failed to create the chatroom."
+    end
+  end
+
   # GET /tasks/1/edit
   def edit
   end

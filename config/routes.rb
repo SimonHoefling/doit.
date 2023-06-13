@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       patch 'accept_request'
       patch 'reject_request'
       patch 'done_task'
+      post 'create_chatroom'
     end
     collection do
       get 'my_tasks' # Route for "my_tasks"
@@ -16,4 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :categories
+  resources :chatrooms, only: [:index, :show, :new, :create] do
+    resources :messages, only: :create
+  end
 end
