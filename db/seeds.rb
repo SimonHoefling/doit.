@@ -9,6 +9,8 @@ puts "Cleaning database for users..."
 User.destroy_all
 puts "Cleaning database for tasks..."
 Task.destroy_all
+puts "Cleaning database for chatrooms..."
+Chatroom.destroy_all
 
 puts "-" * 50
 
