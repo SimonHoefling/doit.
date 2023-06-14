@@ -9,6 +9,7 @@ class TasksController < ApplicationController
   # GET /tasks/1
   def show
     @task = Task.find(params[:id])
+    @user_can_create_chatroom = @task.user_can_create_chatroom(current_user)
     @task_status = @task.task_status || "default"
     @is_own_task = current_user == @task.user
   end

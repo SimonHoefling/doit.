@@ -31,9 +31,18 @@ class Task < ApplicationRecord
     true
   end
 
+  # This makes sure that the current user can only create once a chatroom for a task
+  def user_can_create_chatroom(current_user)
+    !chatroom_exists?(current_user)
+  end
+
   private
 
   def set_default_task_status
     self.task_status ||= "available"
+  end
+
+  def chatroom_exists?(user)
+    Chatroom.exists?(task: self, user: user)
   end
 end
