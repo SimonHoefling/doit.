@@ -4,19 +4,19 @@
     <%= link_to root_path, class: "navbar-item-container" do %>
       <div class="item">
         <%= image_tag("home-icon.png", alt: "home icon") %>
-        <p>Get it done</p>
+        <p>Home</p>
       </div>
     <% end %>
     <%= link_to categories_path, class: "navbar-item-container" do %>
       <div class="item">
         <%= image_tag("search-icon.png", alt: "search icon") %>
-        <p>Browse</p>
+        <p>Search</p>
       </div>
     <% end %>
-    <%= link_to my_tasks_tasks_path, class: "navbar-item-container" do %>
+    <%= link_to my_tasks_tasks_path, class: "navbar-item-container larger-image" do %>
       <div class="item">
         <%= image_tag("plus-icon.png", alt: "plus icon") %>
-        <p>My tasks</p>
+        <p>Create</p>
       </div>
     <% end %>
     <%= link_to chatrooms_path, class: "navbar-item-container" do %>
@@ -28,7 +28,7 @@
     <%= link_to user_path(current_user), class: "navbar-item-container" do %>
       <div class="item">
         <%= image_tag("profile-icon.png", alt: "profile icon") %>
-        <p>Account</p>
+        <p>Profile</p>
       </div>
     <% end %>
   </div>
