@@ -19,7 +19,6 @@
       // border: 2px solid black;
       background-color: $white;
       .navbar-item-container {
-        // border: 1px solid rgb(142, 207, 44);
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -28,13 +27,13 @@
         text-decoration: none;
         color: $black;
         .item {
-          // border: 1px solid red;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          i {
-            font-size: 32px;
+          img {
+            width: 32px;
+            height: 32px;
           }
           p {
             font-size: 10px;

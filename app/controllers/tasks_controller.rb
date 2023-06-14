@@ -9,6 +9,7 @@ class TasksController < ApplicationController
   # GET /tasks/1
   def show
     @task = Task.find(params[:id])
+    @user_can_create_chatroom = @task.user_can_create_chatroom(current_user)
     @task_status = @task.task_status || "default"
     @is_own_task = current_user == @task.user
   end
@@ -70,6 +71,19 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
   end
+
+  # Method to create a chatroom for a task
+  def create_chatroom
+    @task = Task.find(params[:id])
+    @chatroom = Chatroom.new(task: @task, name: @task.name, user_id: current_user.id)
+
+    if @chatroom.save
+      redirect_to chatroom_path(@chatroom), notice: "Chatroom created successfully."
+    else
+      redirect_to task_path(@task), alert: "Failed to create the chatroom."
+    end
+  end
+
 
   # GET /tasks/1/edit
   def edit

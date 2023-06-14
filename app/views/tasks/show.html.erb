@@ -1,16 +1,20 @@
-<%# view# task/show %>
+<!-- app/views/tasks/show.html.erb -->
 <h1><%= @task.name %></h1>
 <p><%= @task.description %></p>
 <p>Price: <%= @task.price %> IDR</p>
 <p>Posted by: <%= @task.user.first_name %> <%= @task.user.last_name %></p>
 <p>Status: <%= @task_status %></p>
 
-<%# This might be unnecessary but this checks if the user is the owner of the
-task he will not see the start task button %>
+<%# Only show the "Start Task" button to the appropriate users %>
 <% unless @is_own_task %>
   <% if @task_status == "available" %>
     <%= button_to "Start Task", start_task_task_path(@task), method: :post %>
   <% elsif @task_status == "pending" %>
     <p>Request has been sent.</p>
   <% end %>
+<% end %>
+
+<%# Add this button to create a new chatroom %>
+<% if @task_status == "available" && @user_can_create_chatroom %>
+  <%= button_to "Create Chatroom", create_chatroom_task_path(@task), method: :post %>
 <% end %>

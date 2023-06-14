@@ -2,6 +2,7 @@ class Task < ApplicationRecord
   belongs_to :category
   belongs_to :user
   belongs_to :requested_by, class_name: "User", foreign_key: "requested_by_id", optional: true
+  has_many :chatrooms, dependent: :destroy
 
   validates :task_status, inclusion: { in: %w[available requested in_work done] }, allow_nil: true
 
@@ -30,9 +31,18 @@ class Task < ApplicationRecord
     true
   end
 
+  # This makes sure that the current user can only create once a chatroom for a task
+  def user_can_create_chatroom(current_user)
+    !chatroom_exists?(current_user)
+  end
+
   private
 
   def set_default_task_status
     self.task_status ||= "available"
+  end
+
+  def chatroom_exists?(user)
+    Chatroom.exists?(task: self, user: user)
   end
 end

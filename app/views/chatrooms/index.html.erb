@@ -1,0 +1,9 @@
+<h1>This is the chatroom index page</h1>
+
+<div class="container chatroom-index">
+  <h1>Chatrooms</h1>
+
+  <% @chatrooms.each do |chatroom| %>
+    <h3><%= link_to chatroom.name, chatroom_path(chatroom) %></h3>
+  <% end %>
+</div>
