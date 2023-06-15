@@ -3,7 +3,7 @@
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <div class="form-inputs" data-controller="hide-show-password">
     <%= f.input :first_name,
                 label: "First name",
                 required: true,
@@ -19,10 +19,14 @@
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { autocomplete: "new-password", type: "password" } %>
     <%= f.input :password_confirmation,
                 required: true,
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { autocomplete: "new-password", type: "password" } %>
+    <label>
+      <%= check_box_tag 'password_visibility', 1, false %>
+      Show passwords
+    </label>
   </div>
 
   <div class="form-actions">
