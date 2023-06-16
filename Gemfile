@@ -76,3 +76,6 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+# Added after create
+gem "cloudinary"
