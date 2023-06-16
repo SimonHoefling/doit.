@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_16_042235) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_16_054027) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -93,6 +93,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_16_042235) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
+    t.bigint "avatar_id"
+    t.index ["avatar_id"], name: "index_users_on_avatar_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -105,4 +107,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_16_042235) do
   add_foreign_key "tasks", "categories"
   add_foreign_key "tasks", "users"
   add_foreign_key "tasks", "users", column: "requested_by_id"
+  add_foreign_key "users", "active_storage_attachments", column: "avatar_id"
 end

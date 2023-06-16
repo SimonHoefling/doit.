@@ -9,4 +9,10 @@ class UsersController < ApplicationController
     @done_tasks = Task.where(task_status: "done", user: @user).or(Task.where(task_status: "done", requested_by: @user))
     @task = Task.find_by(requested_by: current_user)
   end
+
+  private
+
+  def sign_up_params
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :avatar)
+  end
 end
