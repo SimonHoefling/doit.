@@ -35,5 +35,11 @@ User.create([
               }
             ])
 
+# I added this to give my user an avatar from the seed file
+simon = User.first
+file = File.open(Rails.root.join("app/assets/images/Simon-Avatar.jpg"))
+simon.avatar.attach(io: file, filename: "Simon-Avatar.jpg", content_type: "image/jpg")
+simon.save
+
 user_count = User.count
 puts "#{user_count} #{user_count == 1 ? 'user' : 'users'} got created!"
