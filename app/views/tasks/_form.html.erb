@@ -3,10 +3,17 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :price %>
+    <%= f.input :name,
+                required: true %>
+    <%= f.input :description,
+                required: true %>
     <%= f.association :category %>
+    <%= f.input :photo,
+                as: :file,
+                required: false,
+                label: "Profile picture" %>
+    <%= f.input :price,
+                required: true %>
   </div>
 
   <div class="form-actions">

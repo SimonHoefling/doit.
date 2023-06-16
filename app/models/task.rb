@@ -3,6 +3,7 @@ class Task < ApplicationRecord
   belongs_to :user
   belongs_to :requested_by, class_name: "User", foreign_key: "requested_by_id", optional: true
   has_many :chatrooms, dependent: :destroy
+  has_one_attached :photo
 
   validates :task_status, inclusion: { in: %w[available requested in_work done] }, allow_nil: true
 

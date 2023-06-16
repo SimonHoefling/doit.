@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_16_054027) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_16_102453) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,7 +78,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_16_054027) do
     t.bigint "user_id", null: false
     t.string "task_status"
     t.bigint "requested_by_id"
+    t.bigint "photo_id"
     t.index ["category_id"], name: "index_tasks_on_category_id"
+    t.index ["photo_id"], name: "index_tasks_on_photo_id"
     t.index ["requested_by_id"], name: "index_tasks_on_requested_by_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
@@ -104,6 +106,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_16_054027) do
   add_foreign_key "chatrooms", "tasks"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "tasks", "active_storage_attachments", column: "photo_id"
   add_foreign_key "tasks", "categories"
   add_foreign_key "tasks", "users"
   add_foreign_key "tasks", "users", column: "requested_by_id"
