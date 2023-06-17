@@ -8,9 +8,9 @@ This is the my tasks page
 
 <% if @tasks.any? %>
   <hr>
-  <h3>Tasks that I have posted</h3>
+<h3>Tasks that I have posted</h3>
   <% @tasks.each do |task| %>
-    <p><%= task.name %></p>
+    <p><%= link_to task.name, task_path(task) %></p>
   <% end %>
 <% end %>
 
