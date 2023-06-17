@@ -21,6 +21,6 @@
 <% end %>
 
 <%# Add this button to create a new chatroom %>
-<% if @task_status == "available" && @user_can_create_chatroom %>
+<% if @task_status == "available" && @user_can_create_chatroom && !@is_own_task %>
   <%= button_to "Create Chatroom", create_chatroom_task_path(@task), method: :post %>
 <% end %>
