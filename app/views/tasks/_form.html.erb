@@ -1,4 +1,4 @@
-<%= simple_form_for(@task) do |f| %>
+<%= simple_form_for(@task, data: { controller: 'flatpickr' }) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -8,10 +8,14 @@
     <%= f.input :description,
                 required: true %>
     <%= f.association :category %>
-    <%= f.input :photo,
-                as: :file,
+    <%= f.input :photo, as: :file,
                 required: false,
-                label: "Profile picture" %>
+                label: "Task photo" %>
+    <%= f.input :start_time, as: :string,
+                required: false,
+                input_html: { data: { flatpickr_target: "startTime",
+                min_date: Date.today.strftime('%Y-%m-%d') } },
+                label: "Start date (starts immediately if not selected)" %>
     <%= f.input :price,
                 required: true %>
   </div>
