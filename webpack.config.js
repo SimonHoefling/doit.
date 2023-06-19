@@ -16,5 +16,14 @@ module.exports = {
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
     })
-  ]
+  ],
+  // The performance part gets rid of the error message: WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+  // This can impact web performance.
+  // Assets:
+  // application.js (499 KiB)
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
+  }
 }
