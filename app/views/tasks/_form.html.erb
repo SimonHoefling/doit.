@@ -16,6 +16,9 @@
                 input_html: { data: { flatpickr_target: "startTime",
                 min_date: Date.today.strftime('%Y-%m-%d') } },
                 label: "Start date (starts immediately if not selected)" %>
+    <%= f.input :location,
+                required: true,
+                label: "Add City" %>
     <%= f.input :price,
                 required: true %>
   </div>

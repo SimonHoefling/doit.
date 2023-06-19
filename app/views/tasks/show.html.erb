@@ -3,6 +3,7 @@
 <p><%= @task.description %></p>
 <p>Price: <%= @task.price %> IDR</p>
 <p>Posted by: <%= @task.user.first_name %> <%= @task.user.last_name %></p>
+<p>Location: <%= @task.location %></p>
 <p>Status: <%= @task_status %></p>
 <% if @task.start_time.present? %>
   <p>Start date: <%= @task.start_time.to_date.strftime("%d.%m.%Y") %></p>
