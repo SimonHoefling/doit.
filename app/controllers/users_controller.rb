@@ -10,9 +10,30 @@ class UsersController < ApplicationController
     @task = Task.find_by(requested_by: current_user)
   end
 
+  def create
+    @user = User.new(sign_up_params)
+    if @user.save
+      # Handle successful user creation
+      redirect_to @user
+    else
+      # Handle validation errors
+      render 'new'
+    end
+  end
+
   private
 
   def sign_up_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :avatar)
+    params.require(:user).permit(
+      :first_name,
+      :last_name,
+      :email,
+      :password,
+      :password_confirmation,
+      :avatar,
+      :zip_code,
+      :street_name,
+      :house_number
+    )
   end
 end

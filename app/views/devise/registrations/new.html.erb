@@ -12,6 +12,18 @@
                 required: true,
                 label: "Last name",
                 autofocus: true %>
+    <%= f.input :zip_code,
+                required: true,
+                autofocus: true,
+                label: "Zip code" %>
+    <%= f.input :street_name,
+                required: true,
+                autofocus: true,
+                label: "Streetname" %>
+    <%= f.input :house_number,
+                required: true,
+                autofocus: true,
+                label: "House/Unit number" %>
     <%= f.input :avatar,
                 as: :file,
                 required: false,

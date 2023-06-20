@@ -10,6 +10,15 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
+    <%= f.input :zip_code,
+                required: false,
+                label: "Zip Code" %>
+    <%= f.input :street_name,
+                required: false,
+                label: "Street" %>
+    <%= f.input :house_number,
+                required: false,
+                label: "House/Unit number" %>
     <%= f.input :avatar,
                 as: :file,
                 required: false,
