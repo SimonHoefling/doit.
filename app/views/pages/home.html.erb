@@ -3,7 +3,7 @@
 <div class="top-container">
 
   <div class="text-center">
-    <h1 class="doit">doit.</h1>
+    <h1 class="doit mt-4">doit.</h1>
   </div>
   <h1><%= current_user.first_name %>, need something done?</h1>
   <h5>Post a task. Receive offers. Get it done.</h5>
@@ -12,5 +12,5 @@
 
 <div class="link-container">
   <%= link_to "Post a task", new_task_path, class: "btn btn-primary" %>
-  <%= link_to "Find a task", categories_path, class: "btn btn-primary" %>
+  <%= link_to "See categories", categories_path, class: "btn btn-primary" %>
 </div>

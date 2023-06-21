@@ -1,17 +1,21 @@
-<div id="<%= dom_id task %>">
-  <p>
-    <strong>Name:</strong>
-    <%= task.name %>
-  </p>
+<%= link_to task, class: "task-link" do %>
+  <div class="task-container">
+    <div class="task-card-left">
+      <ul>
+        <li class="task-name"><%= task.name %></li>
+        <li><i class="fa-solid fa-location-dot" style="color: #757070;"></i> <%= task.location %></li>
+        <li><i class="fa-regular fa-calendar" style="color: #757070;"></i> <%= task.start_time.nil? ? 'immediately' : DateTime.parse(task.start_time).strftime('%a. %d. %B') %></li>
+        <li class="task-status"><%= task.task_status == "available" ? "open" : "" %></li>
+      </ul>
+    </div>
 
-  <p>
-    <strong>Description:</strong>
-    <%= task.description %>
-  </p>
-
-  <p>
-    <strong>Price:</strong>
-    <%= task.price %>
-  </p>
-
-</div>
+    <div class="task-card-right">
+      <% if task.user.avatar.attached? %>
+        <%= cl_image_tag task.user.avatar.key, class: "avatar" %>
+      <% else %>
+        <%= image_tag 'default-profile.jpg', class: "avatar" %>
+      <% end %>
+      <p><%= task.price %> IDR</p>
+    </div>
+  </div>
+<% end %>
