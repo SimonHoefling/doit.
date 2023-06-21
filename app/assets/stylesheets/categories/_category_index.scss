@@ -1,10 +1,11 @@
-// CSS rules for the Category grid for everything that bigger than a phone screen
+// CSS rules for the Category index for everything that bigger than a phone screen
 @media only screen and (min-width: 481px) {
-  h1, a, .categories-container {
+  h1, a {
     display: none;
   }
 }
-// CSS rules for the Category grid container on phones
+
+// CSS rules for the Category index page on phones
 @media only screen and (max-width: 480px) {
   .top-container {
     width: 100%;

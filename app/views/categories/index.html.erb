@@ -15,19 +15,17 @@
 </div>
 
 <%# This renders the categories in a grid %>
-<div class="categories-container">
-  <div class="grid-container">
-    <% @categories.each do |category| %>
-      <div class="grid-item">
-        <%= link_to category, class: "category-link" do %>
-          <% if category.photo.attached? %>
-            <%= image_tag(category.photo, class: "category-image") %>
-          <% else %>
-            <%= image_tag("default-category.jpeg", alt: "category-default-image", class: "category-image") %>
-          <% end %>
-          <h3><%= category.name %></h3>
+<div class="grid-container">
+  <% @categories.each do |category| %>
+    <div class="grid-item">
+      <%= link_to category, class: "category-link" do %>
+        <% if category.photo.attached? %>
+          <%= image_tag(category.photo, class: "category-image") %>
+        <% else %>
+          <%= image_tag("default-category.jpeg", alt: "category-default-image", class: "category-image") %>
         <% end %>
-      </div>
-    <% end %>
-  </div>
+        <h3><%= category.name %></h3>
+      <% end %>
+    </div>
+  <% end %>
 </div>
