@@ -15,7 +15,7 @@
       <% else %>
         <%= image_tag 'default-profile.jpg', class: "avatar" %>
       <% end %>
-      <p><%= task.price %> IDR</p>
+      <p><%= task.price.round(0) %> IDR</p>
     </div>
   </div>
 <% end %>

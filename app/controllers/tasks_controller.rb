@@ -84,7 +84,6 @@ class TasksController < ApplicationController
     end
   end
 
-
   # GET /tasks/1/edit
   def edit
   end
