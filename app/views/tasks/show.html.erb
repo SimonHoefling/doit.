@@ -1,5 +1,60 @@
 <!-- app/views/tasks/show.html.erb -->
-<h1><%= @task.name %></h1>
+<%# Top bar container for task show page %>
+<div class="top-bar-container">
+  <div class="left">
+    <%= link_to tasks_path do %>
+      <i class="fa-solid fa-arrow-left" style="color: #0E0000;"></i>
+    <% end %>
+  </div>
+  <div class="right">
+    <h4>Task details</h4>
+  </div>
+</div>
+
+
+
+<%# Task details container %>
+<div class="show-task-container">
+  <h1><%= @task.name %></h1>
+
+  <div class="details-container">
+    <div class="left">
+      <ul>
+        <li>
+          <% if @task.user.avatar.attached? %>
+            <%= cl_image_tag task.user.avatar.key %>
+          <% else %>
+            <%= image_tag 'default-profile.jpg' %>
+          <% end %>
+        </li>
+        <li><i class="fa-solid fa-location-dot" style="color: #0E0000;"></i></li>
+        <li><i class="fa-regular fa-calendar" style="color: #0E0000;"></i></li>
+      </ul>
+    </div>
+    <div class="right">
+      <ul>
+        <li>
+          <p>Posted by:</p>
+          <p><%= @task.user.first_name %></p>
+        </li>
+        <li>
+          <p>Location:</p>
+          <p><%= @task.location %></p>
+        </li>
+        <li>
+          <p>To be done:</p>
+          <% if @task.start_time.present? %>
+            <p>Start date: <%= @task.start_time.to_date.strftime("%d.%m.%Y") %></p>
+          <% else %>
+            <p>Start date: immediately</p>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
 <p><%= @task.description %></p>
 <p>Price: <%= @task.price %> IDR</p>
 <p>Posted by: <%= @task.user.first_name %> <%= @task.user.last_name %></p>
