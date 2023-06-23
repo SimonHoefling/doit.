@@ -11,8 +11,6 @@
   </div>
 </div>
 
-
-
 <%# Task details container %>
 <div class="show-task-container">
   <h1><%= @task.name %></h1>
@@ -35,24 +33,37 @@
       <ul>
         <li>
           <p>Posted by:</p>
-          <p><%= @task.user.first_name %></p>
+          <p class="detail"><%= @task.user.first_name %></p>
         </li>
         <li>
           <p>Location:</p>
-          <p><%= @task.location %></p>
+          <p class="detail"><%= @task.location %></p>
         </li>
         <li>
           <p>To be done:</p>
           <% if @task.start_time.present? %>
-            <p>Start date: <%= @task.start_time.to_date.strftime("%d.%m.%Y") %></p>
+            <p class="detail"><%= @task.start_time.to_date.strftime("%d.%m.%Y") %></p>
           <% else %>
-            <p>Start date: immediately</p>
+            <p class="detail">immediately</p>
           <% end %>
         </li>
       </ul>
     </div>
   </div>
 
+</div>
+
+<%# Task price card %>
+<div class="price-card">
+  <p>TASK PRICE</p>
+  <h1><%= @task.price.round(0) %> IDR</h1>
+  <% unless @is_own_task %>
+  <% if @task_status == "available" %>
+    <%= button_to "SEND REQUEST", start_task_task_path(@task), method: :post %>
+  <% elsif @task_status == "pending" %>
+    <p>Request has been sent.</p>
+  <% end %>
+<% end %>
 </div>
 
 <p><%= @task.description %></p>

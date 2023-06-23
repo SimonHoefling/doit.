@@ -14,23 +14,24 @@
   .top-bar-container {
     display: flex;
     width: 100%;
-    height: 6%;
-    border: 2px solid red;
+    height: 8%;
+    margin-bottom: 3%;
+
     .left {
       height: 100%;
       width: 20%;
-      border: 2px solid blue;
+
       .fa-solid {
         font-size: 32px;
-        margin: 10px;
+        margin: 15px;
       }
     }
     .right {
       height: 100%;
       flex-grow: 1;
-      border: 2px solid green;
+
       h4 {
-        margin: 10px;
+        margin: 15px;
         font-size: 26px;
       }
     }
@@ -39,13 +40,17 @@
   .show-task-container {
     width: 95%;
     margin: 0 auto;
-    border: 2px solid black;
+
+    h1 {
+      font-weight: bold;
+      margin-bottom: 2%;
+    }
     .details-container {
-      border: 2px solid red;
+
       display: flex;
 
       .left {
-        border: 2px solid blue;
+
         ul {
           list-style: none;
           text-align: center;
@@ -74,7 +79,7 @@
 
       .right {
         flex-grow: 1;
-        border: 2px solid green;
+
         ul {
           list-style: none;
           padding: 0;
@@ -83,10 +88,42 @@
             padding: 8px 0;
             p {
               margin: 0;
+              padding-left: 10px;
+            }
+            .detail {
+              font-weight: bold;
             }
           }
         }
       }
+    }
+  }
+  // Task price card
+  .price-card {
+    width: 95%;
+    margin: 4% auto;
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: $main-border-radius;
+    p, h1, button {
+      margin: 12px 0;
+    }
+    h1 {
+      font-weight: bold;
+      font-size: 38px;
+      letter-spacing: 2px;
+    }
+    button {
+      width: 260px;
+      height: 48px;
+      border: none;
+      border-radius: 24px;
+      background-color: $app-blue;
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-size: 16px;
     }
   }
 }
