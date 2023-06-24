@@ -12,3 +12,6 @@ application.register("hello", HelloController)
 
 import HideShowPasswordController from "./hide_show_password_controller"
 application.register("hide-show-password", HideShowPasswordController)
+
+import ImageGridModalController from "./image_grid_modal_controller"
+application.register("image-grid-modal", ImageGridModalController)

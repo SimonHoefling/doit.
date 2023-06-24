@@ -1,0 +1,203 @@
+// CSS rules for the Task show page for everything that bigger than a phone screen
+@media only screen and (min-width: 481px) {
+  .top-bar-container,
+  .show-task-container,
+  .price-card,
+  .contact-container,
+  .details,
+  .task-photo-grid-container {
+    display: none;
+  }
+}
+
+// CSS rules for the Task show page on phones
+@media only screen and (max-width: 480px) {
+  // Top bar container for task show page
+  .top-bar-container {
+    display: flex;
+    width: 100%;
+    height: 8%;
+    margin-bottom: 3%;
+
+    .left {
+      height: 100%;
+      width: 20%;
+
+      .fa-solid {
+        font-size: 32px;
+        margin: 15px;
+      }
+    }
+    .right {
+      height: 100%;
+      flex-grow: 1;
+
+      h4 {
+        margin: 15px;
+        font-size: 26px;
+      }
+    }
+  }
+  // Task details container
+  .show-task-container {
+    width: 95%;
+    margin: 0 auto;
+
+    h1 {
+      font-weight: bold;
+      margin-bottom: 2%;
+    }
+    .details-container {
+
+      display: flex;
+
+      .left {
+
+        ul {
+          list-style: none;
+          text-align: center;
+          padding: 0;
+          li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-top: 8px;
+          }
+          .fa-solid {
+            font-size: 32px;
+            margin-top: 22px;
+          }
+          .fa-regular {
+            font-size: 32px;
+            margin-top: 32px;
+          }
+        }
+      }
+
+      .right {
+        flex-grow: 1;
+
+        ul {
+          list-style: none;
+          padding: 0;
+          li {
+            border-bottom: 1px solid $dark-gray;
+            padding: 8px 0;
+            p {
+              margin: 0;
+              padding-left: 10px;
+            }
+            .detail {
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+  // Task price card
+  .price-card {
+    width: 95%;
+    margin: 4% auto;
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: $main-border-radius;
+    p, h1, button {
+      margin: 12px 0;
+    }
+    h1 {
+      font-weight: bold;
+      font-size: 38px;
+      letter-spacing: 2px;
+    }
+    button {
+      width: 260px;
+      height: 48px;
+      border: none;
+      border-radius: 24px;
+      background-color: $app-blue;
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-size: 16px;
+    }
+  }
+  // Contact to open a chatroom
+  .contact-container {
+    width: 95%;
+    margin: 4% auto;
+    display: flex;
+    align-items: center;
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      background: transparent;
+      border: none;
+      i {
+        font-size: 48px;
+        margin-right: 10px;
+      }
+    }
+  }
+  // Task description
+  .details {
+    width: 95%;
+    margin: 0 auto;
+    padding-left: 5px;
+    margin-bottom: 4%;
+    .detail-heading {
+      letter-spacing: 2px;
+    }
+  }
+  /* Task photos */
+  .task-photo-grid-container {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px; /* Adjust the gap size as desired */
+    width: 95%;
+    margin-bottom: 110px;
+    .grid-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding-bottom: 100%; /* 1:1 aspect ratio (square) */
+      overflow: hidden;
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: $main-border-radius;
+      }
+    }
+  }
+  /* The Modal (to pop up the images belongs to the task photos) */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999; /* Increase the z-index value to ensure the modal is on top */
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      margin: auto;
+    }
+  }
+}

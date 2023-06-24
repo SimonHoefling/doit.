@@ -10,7 +10,8 @@
     <%= f.association :category %>
     <%= f.input :photo, as: :file,
                 required: false,
-                label: "Task photo" %>
+                input_html: { multiple: true },
+                label: "Task photo (max. 4 Photos)" %>
     <%= f.input :start_time, as: :string,
                 required: false,
                 input_html: { data: { flatpickr_target: "startTime",

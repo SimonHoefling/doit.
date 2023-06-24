@@ -93,12 +93,16 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.user = current_user
 
+    photos = Array(params[:task][:photo])
+    @task.photos.attach(photos) if photos.present?
+
     if @task.save
       redirect_to task_url(@task), notice: "Task was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
   end
+
 
   # PATCH/PUT /tasks/1 this also marks a task a done in the database
   def update
@@ -127,6 +131,6 @@ class TasksController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def task_params
-    params.require(:task).permit(:name, :description, :price, :category_id, :photo, :start_time, :location)
+    params.require(:task).permit(:name, :description, :price, :category_id, :photo, :start_time, :location, photos: [])
   end
 end
