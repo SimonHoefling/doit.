@@ -3,9 +3,10 @@ class Task < ApplicationRecord
   belongs_to :user
   belongs_to :requested_by, class_name: "User", foreign_key: "requested_by_id", optional: true
   has_many :chatrooms, dependent: :destroy
-  has_one_attached :photo
+  has_many_attached :photos
 
   validates :task_status, inclusion: { in: %w[available requested in_work done] }, allow_nil: true
+  validate :validate_photo_count
 
   before_validation :set_default_task_status, on: :create
 
@@ -45,5 +46,12 @@ class Task < ApplicationRecord
 
   def chatroom_exists?(user)
     Chatroom.exists?(task: self, user: user)
+  end
+
+  # This makes sure that the user can only upload 4 photos for a task
+  def validate_photo_count
+    if photos.attached? && photos.length > 4
+      errors.add(:photos, "can't exceed 4 photos")
+    end
   end
 end
