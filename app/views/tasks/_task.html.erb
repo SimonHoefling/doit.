@@ -4,7 +4,7 @@
       <ul>
         <li class="task-name"><%= task.name %></li>
         <li><i class="fa-solid fa-location-dot" style="color: #757070;"></i> <%= task.location %></li>
-        <li><i class="fa-regular fa-calendar" style="color: #757070;"></i> <%= task.start_time.nil? ? 'immediately' : DateTime.parse(task.start_time).strftime('%a. %d. %B') %></li>
+        <%= task.start_time.nil? ? 'immediately' : task.start_time.to_s %>
         <li class="task-status"><%= task.task_status == "available" ? "open" : "" %></li>
       </ul>
     </div>

@@ -2,7 +2,7 @@
 <%# Top bar container for task show page %>
 <div class="top-bar-container">
   <div class="left">
-    <%= link_to tasks_path do %>
+    <%= link_to :back do %>
       <i class="fa-solid fa-arrow-left" style="color: #0E0000;"></i>
     <% end %>
   </div>
@@ -11,7 +11,9 @@
   </div>
 </div>
 
-<p>Status: <%= @task_status %></p>
+<%# I can implement later someting that the user can see the task status
+somewhere %>
+<%#= @task_status %>
 
 <%# Task details container %>
 <div class="show-task-container">
@@ -34,15 +36,15 @@
     <div class="right">
       <ul>
         <li>
-          <p>Posted by:</p>
+          <p>Posted by</p>
           <p class="detail"><%= @task.user.first_name %></p>
         </li>
         <li>
-          <p>Location:</p>
+          <p>Location</p>
           <p class="detail"><%= @task.location %></p>
         </li>
         <li>
-          <p>To be done:</p>
+          <p>To be done</p>
           <% if @task.start_time.present? %>
             <p class="detail"><%= @task.start_time.to_date.strftime("%d.%m.%Y") %></p>
           <% else %>
@@ -56,17 +58,28 @@
 </div>
 
 <%# Task price card %>
+<%# The request task button gets only rendered if user is not the task owner %>
 <div class="price-card">
   <p>TASK PRICE</p>
   <h1><%= @task.price.round(0) %> IDR</h1>
   <%# Only show the "Start Task" button to the appropriate users %>
   <% unless @is_own_task %>
-  <% if @task_status == "available" %>
-    <%= button_to "SEND REQUEST", start_task_task_path(@task), method: :post %>
-  <% elsif @task_status == "pending" %>
-    <p>Request has been sent.</p>
+    <% if @task_status == "available" %>
+      <%= button_to "SEND REQUEST", start_task_task_path(@task), method: :post %>
+    <% elsif @task_status == "pending" %>
+      <p>Request has been sent.</p>
+    <% end %>
   <% end %>
-<% end %>
+</div>
+
+<%# Contact to open a chatroom %>
+<div class="contact-container">
+  <% if @task_status == "available" && @user_can_create_chatroom && !@is_own_task %>
+    <%= button_to create_chatroom_task_path(@task), method: :post, class: "contact-btn" do %>
+      <i class="fa-regular fa-comment-dots fa-flip-horizontal" style="color: #2196f3;"></i>
+      CONTACT <%= @task.user.first_name %>
+    <% end %>
+  <% end %>
 </div>
 
 <%# Task description %>
@@ -92,31 +105,3 @@
     <% end %>
   <% end %>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<%# Only show the "Start Task" button to the appropriate users %>
-<% unless @is_own_task %>
-  <% if @task_status == "available" %>
-    <%= button_to "Start Task", start_task_task_path(@task), method: :post %>
-  <% elsif @task_status == "pending" %>
-    <p>Request has been sent.</p>
-  <% end %>
-<% end %>
-
-<%# Add this button to create a new chatroom %>
-<% if @task_status == "available" && @user_can_create_chatroom && !@is_own_task %>
-  <%= button_to "Create Chatroom", create_chatroom_task_path(@task), method: :post %>
-<% end %>
