@@ -1,7 +1,16 @@
-<div class="container">
+<div class="top-container">
+
   <div class="text-center">
-    <h2>Log in</h2>
+    <h1 class="doit mt-4">doit.</h1>
   </div>
+</div>
+
+
+
+
+
+<div class="form-container">
+  <h1 class="heading">LOG IN</h1>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
     <div class="form-inputs">
@@ -16,7 +25,7 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Log in" %>
+      <%= f.button :submit, "Log in", class: "form-btn" %>
     </div>
   <% end %>
 

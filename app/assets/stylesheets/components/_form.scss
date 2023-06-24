@@ -1,0 +1,39 @@
+// In this file is the basic styling for all forms. Forms like:
+// - Log in
+// - Sign up
+// - Create a new task
+// - Create a new category
+// - Edit user profile
+
+// CSS rules for Forms for everything that bigger than a phone screen
+@media only screen and (min-width: 481px) {
+  .form-container {
+    display: none;
+  }
+}
+
+// CSS rules for the Forms on phones
+@media only screen and (max-width: 480px) {
+  .form-container {
+    width: 95%;
+    margin: 20px auto;
+    .heading {
+      color: $black;
+      font-size: 54px;
+      text-align: center;
+    }
+    .form-btn {
+      width: 100%;
+      font-size: 28px;
+      color: $white;
+      background-color: $app-blue;
+      text-align: center;
+      border-radius: 999px;
+      margin-bottom: 4%;
+    }
+    a {
+      text-decoration: none;
+      color: $black;
+    }
+  }
+}
