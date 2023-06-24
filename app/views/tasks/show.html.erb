@@ -83,20 +83,18 @@
 </div>
 
 <%# Task photos %>
-
-<div class="grid-container">
+<div class="task-photo-grid-container" data-controller="image-grid-modal">
   <% if @task.photos.attached? %>
     <% @task.photos.each do |photo| %>
-      <div class="grid-item">
-        <%= cl_image_tag photo.key %>
+      <div class="grid-item" data-action="click->image-grid-modal#openModal">
+        <%= cl_image_tag photo.key, data: { src: photo.url }, "data-src": photo.url %>
       </div>
     <% end %>
-  <% else %>
-    <div class="grid-item">
-      <%= image_tag 'default-task.webp' %>
-    </div>
   <% end %>
 </div>
+
+
+
 
 
 
