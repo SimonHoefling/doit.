@@ -15,7 +15,7 @@
       <h4><%= @user.last_name %></h4>
       <% if user_signed_in? && current_user == @user %>
         <%= link_to edit_user_registration_path do %>
-          <i class="fa-regular fa-pen-to-square" style="color: #757070;"></i>
+          <i class="fa-regular fa-pen-to-square" style="color: #0E0000;"></i>
         <% end %>
         <p><%= @user.email %></p>
         <p><%= @user.zip_code %></p>
@@ -38,7 +38,7 @@
           <p>MANAGE MY TASKS</p>
         </div>
         <%= link_to my_tasks_tasks_path do %>
-          <i class="fa-solid fa-angle-right" style="color: #757070;"></i>
+          <i class="fa-solid fa-angle-right" style="color: #0E0000;"></i>
         <% end %>
       </li>
       <li>
@@ -46,7 +46,7 @@
           <i class="fa-solid fa-clock-rotate-left" style="color: #0E0000"></i>
           <p>TASK HISTORY</p>
         </div>
-        <i class="fa-solid fa-angle-right" style="color: #757070;"></i>
+        <i class="fa-solid fa-angle-right" style="color: #0E0000;"></i>
       </li>
       <li>
         <div class="left-content">
@@ -54,7 +54,7 @@
           <p>LOG OUT</p>
         </div>
         <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do %>
-          <i class="fa-solid fa-angle-right" style="color: #757070;"></i>
+          <i class="fa-solid fa-angle-right" style="color: #0E0000;"></i>
         <% end %>
       </li>
     </ul>

@@ -64,7 +64,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin: 20px 0;
+        margin: 24px 0;
 
         .left-content {
           display: flex;
@@ -75,15 +75,15 @@
           }
           p {
             margin-left: 10px;
-            color: #0E0000;
+            color: $black;
             font-size: 18px;
             letter-spacing: 2px;
           }
         }
 
         i.fa-angle-right {
-          color: #757070;
           font-size: 32px;
+          margin-right: 10px;
         }
       }
     }
