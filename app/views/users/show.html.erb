@@ -1,5 +1,6 @@
 <%# app/views/users/show.html.erb %>
 
+<%# User top conatiner %>
 <div class="user-top-container">
   <div class="user-overview-container">
     <div class="profile-picture-container">
@@ -17,6 +18,8 @@
         <% end %>
         <h4><%= @user.last_name %></h4>
         <p><%= @user.email %></p>
+        <p><%= @user.zip_code %></p>
+        <p><%= @user.street_name %> <%= @user.house_number %></p>
       <% end %>
     </div>
     </div>
@@ -24,17 +27,43 @@
     </div>
 </div>
 
+<%# User accout overview %>
+<div class="profile-account-overview">
+  <% if user_signed_in? && current_user == @user %>
+    <p>ACCOUNT OVERVIEW</p>
+    <ul>
+      <li>
+        <div class="left-content">
+          <i class="fa-solid fa-list-check" style="color: #0E0000;"></i>
+          <p>MANAGE MY TASKS</p>
+        </div>
+        <%= link_to my_tasks_tasks_path do %>
+          <i class="fa-solid fa-angle-right" style="color: #757070;"></i>
+        <% end %>
+      </li>
+      <li>
+        <div class="left-content">
+          <i class="fa-solid fa-clock-rotate-left" style="color: #0E0000"></i>
+          <p>TASK HISTORY</p>
+        </div>
+        <i class="fa-solid fa-angle-right" style="color: #757070;"></i>
+      </li>
+      <li>
+        <div class="left-content">
+          <i class="fa-solid fa-lock" style="color: #0E0000;"></i>
+          <p>LOG OUT</p>
+        </div>
+        <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do %>
+          <i class="fa-solid fa-angle-right" style="color: #757070;"></i>
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
+</div>
 
 
 
-<br>
-<% if user_signed_in? && current_user == @user %>
-  <%= link_to "Edit Profile", edit_user_registration_path %> <br>
-  <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete } %>
-<% end %>
-
-<hr>
-
+<%# This checks that only the users with the email simon@gmail.com can add a new category %>
 <% if user_signed_in? && current_user.email == "simon@gmail.com" && current_user == @user %>
   <%= link_to "Add new category", new_category_path %>
 <% end %>

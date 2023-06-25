@@ -1,9 +1,16 @@
 // CSS rules for the User show page for everything that bigger than a phone screen
 @media only screen and (min-width: 481px) {
+  .user-top-container {
+    display: none;
+  }
+  .profile-account-overview {
+    display: none;
+  }
 }
 
 // CSS rules for the User show page on phones
 @media only screen and (max-width: 480px) {
+  // User top container
   .user-top-container {
     width: 100%;
     height: 260px;
@@ -44,6 +51,41 @@
       bottom: -1px;
       background-color: #fbb3ba;
       border-radius: 100px 100px 0 0;
+    }
+  }
+  // User account overview
+  .profile-account-overview {
+    width: 95%;
+    margin: 4% auto;
+    ul {
+      list-style: none;
+
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 20px 0;
+
+        .left-content {
+          display: flex;
+          align-items: center;
+
+          i.fa-solid {
+            font-size: 32px;
+          }
+          p {
+            margin-left: 10px;
+            color: #0E0000;
+            font-size: 18px;
+            letter-spacing: 2px;
+          }
+        }
+
+        i.fa-angle-right {
+          color: #757070;
+          font-size: 32px;
+        }
+      }
     }
   }
 }

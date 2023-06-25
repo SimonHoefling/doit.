@@ -8,19 +8,27 @@ User.create([
                 last_name: 'Hoefling',
                 email: 'simon@gmail.com',
                 password: '123456',
-                zip_code: '10997'
+                zip_code: '10997',
+                street_name: 'Banana Avenue',
+                house_number: '9'
               },
               {
                 first_name: 'User1',
                 last_name: 'Last_name1',
                 email: 'user1@gmail.com',
-                password: '123456'
+                password: '123456',
+                zip_code: '10996',
+                street_name: 'Banana Road',
+                house_number: '14'
               },
               {
                 first_name: 'User2',
                 last_name: 'Last_name2',
                 email: 'user2@gmail.com',
-                password: '123456'
+                password: '123456',
+                zip_code: '10995',
+                street_name: 'Penny Lane',
+                house_number: '45'
               },
               {
                 first_name: 'User3',
