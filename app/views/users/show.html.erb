@@ -1,16 +1,31 @@
-# app/views/users/show.html.erb
+<%# app/views/users/show.html.erb %>
 
-<h1>This is the profile page</h1>
+<div class="user-top-container">
+  <div class="user-overview-container">
+    <div class="profile-picture-container">
+      <% if @user.avatar.attached? %>
+        <%= cl_image_tag @user.avatar.key, class: "avatar" %>
+      <% else %>
+        <%= image_tag 'default-profile.jpeg', class: "avatar" %>
+      <% end %>
+    </div>
+    <div class="user-profile-info">
+      <h4><%= @user.first_name %></h4>
+      <% if user_signed_in? && current_user == @user %>
+        <%= link_to edit_user_registration_path do %>
+          <i class="fa-regular fa-pen-to-square" style="color: #757070;"></i>
+        <% end %>
+        <h4><%= @user.last_name %></h4>
+        <p><%= @user.email %></p>
+      <% end %>
+    </div>
+    </div>
+    <div class="style-element-container">
+    </div>
+</div>
 
-<h3><%= @user.first_name %></h3>
-<h3><%= @user.last_name %></h3>
-<h3><%= @user.email %></h3>
-<hr>
-<% if @user.avatar.attached? %>
-  <%= cl_image_tag @user.avatar.key, class: "avatar" %>
-<% else %>
-  <%= image_tag 'default-profile.jpg', class: "avatar" %>
-<% end %>
+
+
 
 <br>
 <% if user_signed_in? && current_user == @user %>

@@ -7,7 +7,8 @@ User.create([
                 first_name: 'Simon',
                 last_name: 'Hoefling',
                 email: 'simon@gmail.com',
-                password: '123456'
+                password: '123456',
+                zip_code: '10997'
               },
               {
                 first_name: 'User1',

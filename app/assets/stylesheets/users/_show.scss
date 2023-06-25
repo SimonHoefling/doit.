@@ -1,0 +1,49 @@
+// CSS rules for the User show page for everything that bigger than a phone screen
+@media only screen and (min-width: 481px) {
+}
+
+// CSS rules for the User show page on phones
+@media only screen and (max-width: 480px) {
+  .user-top-container {
+    width: 100%;
+    height: 260px;
+    background-color: $app-blue;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .user-overview-container {
+      width: 95%;
+      display: flex;
+      .profile-picture-container {
+        img {
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+        }
+      }
+      .user-profile-info {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex-grow: 1;
+        padding-left: 10px;
+        .fa-regular {
+          font-size: 32px;
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+      }
+    }
+    .style-element-container {
+      width: 100%;
+      height: 20px;
+      position: absolute;
+      bottom: -1px;
+      background-color: #fbb3ba;
+      border-radius: 100px 100px 0 0;
+    }
+  }
+}
