@@ -12,11 +12,11 @@
     </div>
     <div class="user-profile-info">
       <h4><%= @user.first_name %></h4>
+      <h4><%= @user.last_name %></h4>
       <% if user_signed_in? && current_user == @user %>
         <%= link_to edit_user_registration_path do %>
           <i class="fa-regular fa-pen-to-square" style="color: #757070;"></i>
         <% end %>
-        <h4><%= @user.last_name %></h4>
         <p><%= @user.email %></p>
         <p><%= @user.zip_code %></p>
         <p><%= @user.street_name %> <%= @user.house_number %></p>
@@ -58,6 +58,26 @@
         <% end %>
       </li>
     </ul>
+  <% end %>
+</div>
+
+<%# If the current user is on a different user's profile page, show the tasks of that user that are currently available. %>
+<div class="container">
+  <% if user_signed_in? && current_user != @user %>
+    <% if @user.tasks.any? %>
+      <h3 class="text-center"><%= @user.first_name.upcase %>'S ACTIVE TASKS</h3>
+      <ul>
+        <% @user.tasks.each do |task| %>
+          <% if task.task_status == "available" && task.user != current_user %>
+            <%= link_to task do %>
+              <%= render task %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+    <% else %>
+      <p><%= @user.first_name %> has no active tasks posted at the moment.</p>
+    <% end %>
   <% end %>
 </div>
 

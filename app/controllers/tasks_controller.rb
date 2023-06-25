@@ -23,7 +23,6 @@ class TasksController < ApplicationController
     @done_tasks = Task.where(task_status: "done", user: current_user).or(Task.where(task_status: "done", requested_by: current_user))
   end
 
-
   # Method to start a task
   def start_task
     @task = Task.find(params[:id])
@@ -31,7 +30,7 @@ class TasksController < ApplicationController
 
     @task.update(task_status: "requested", requested_by_id: current_user.id)
 
-    redirect_to my_tasks_tasks_path, notice: "Request has been sent."
+    redirect_to task_path, notice: "Request has been sent."
   end
 
   # Method to accept a task request
