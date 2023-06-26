@@ -1,0 +1,15 @@
+<!-- tasks/_categories.html.erb -->
+<div class="category-grid-container">
+  <% @categories.each do |category| %>
+    <div class="grid-item">
+      <%= link_to category, class: "category-link" do %>
+        <% if category.photo.attached? %>
+          <%= image_tag(category.photo, class: "category-image") %>
+        <% else %>
+          <%= image_tag("default-category.jpeg", alt: "category-default-image", class: "category-image") %>
+        <% end %>
+        <h3><%= category.name %></h3>
+      <% end %>
+    </div>
+  <% end %>
+</div>

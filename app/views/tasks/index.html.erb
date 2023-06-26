@@ -1,17 +1,42 @@
 <p style="color: green"><%= notice %></p>
 
+<%# This renders the top container %>
 <div class="top-container">
+  <p style="color: green"><%= notice %></p>
+
   <div class="text-center">
     <h1 class="doit mt-4">doit.</h1>
   </div>
+
+  <div class="text-center">
+    <h1 class="explore">explore</h1>
+  </div>
+
 </div>
 
+<%# This is the search bar to filter all the tasks %>
+<form action="<%= tasks_path %>" method="get">
+  <div class="form-group">
+    <select name="sort" id="sort" class="form-control" onchange="this.form.submit()">
+      <option value="" disabled selected>FILTER</option>
+      <option value="newest">Newest</option>
+      <option value="oldest">Oldest</option>
+      <option value="category">Category</option>
+      <option value="highest_payment">Highest Payment</option>
+    </select>
+  </div>
+</form>
+
+<%# This renders all the tasks based on what the user is seraching for %>
 <div id="tasks">
   <div class="container">
-    <% @tasks.each do |task| %>
-      <%# This checks only for other users tasks %>
-      <% if task.task_status == "available" && task.user != current_user %>
-        <%= render task %>
+    <% if @sort_option == "category" %>
+      <%= render partial: "tasks/categories" %>
+    <% else %>
+      <% @tasks.order(created_at: :desc).each do |task| %>
+        <% if task.task_status == "available" && task.user != current_user %>
+          <%= render task %>
+        <% end %>
       <% end %>
     <% end %>
   </div>
