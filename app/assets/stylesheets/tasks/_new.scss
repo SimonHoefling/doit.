@@ -1,0 +1,42 @@
+// CSS rules for the Task new page for everything that bigger than a phone screen
+@media only screen and (min-width: 481px) {
+  .new-task-container {
+    display: none;
+  }
+}
+
+// CSS rules for the Task new page on phones
+@media only screen and (max-width: 480px) {
+  // Log in form container
+  .new-task-container {
+    width: 95%;
+    margin: 0 auto;
+    padding-bottom: 100px;
+    font-family: $body-font, Arial, sans-serif;
+    .form-inputs {
+      margin: 20px 0 20px 0;
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      .form-control,
+      .form-control-file {
+        margin-bottom: 20px;
+      }
+    }
+    .form-inputs input[type="text"],
+    .form-inputs textarea,
+    .form-inputs select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .form-inputs .file-input {
+      margin-top: 10px;
+    }
+  }
+}

@@ -1,30 +1,52 @@
-<%= simple_form_for(@task, data: { controller: 'flatpickr' }) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<%# Log in form conatiner %>
+<div class="new-task-container">
+  <%= simple_form_for(@task, data: { controller: 'flatpickr' }) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.input :name,
-                required: true %>
-    <%= f.input :description,
-                required: true %>
-    <%= f.association :category %>
-    <%= f.input :photo, as: :file,
-                required: false,
-                input_html: { multiple: true },
-                label: "Task photo (max. 4 Photos)" %>
-    <%= f.input :start_time, as: :string,
-                required: false,
-                input_html: { data: { flatpickr_target: "startTime",
-                min_date: Date.today.strftime('%Y-%m-%d') } },
-                label: "Start date (starts immediately if not selected)" %>
-    <%= f.input :location,
-                required: true,
-                label: "Add City" %>
-    <%= f.input :price,
-                required: true %>
-  </div>
+    <div class="form-inputs">
+      <%= f.label :name %>
+      <%= f.text_field :name,
+                  required: true,
+                  class: 'form-control' %>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+      <%= f.label :description %>
+      <%= f.text_area :description,
+                  required: true,
+                  class: 'form-control' %>
+
+      <%= f.association :category,
+                  class: 'form-control' %>
+
+      <div class="file-input">
+        <%= f.label :photo, "Task photo (max. 4 Photos)" %>
+        <%= f.file_field :photo,
+                  required: false,
+                  multiple: true,
+                  class: 'form-control-file' %>
+      </div>
+
+      <%= f.label :start_time, "Start date (starts immediately if not selected)" %>
+      <%= f.text_field :start_time,
+                  required: false,
+                  data: { flatpickr_target: "startTime",
+                  min_date: Date.today.strftime('%Y-%m-%d') },
+                  class: 'form-control' %>
+
+      <%= f.label :location, "Add City" %>
+      <%= f.text_field :location,
+                  required: true,
+                  class: 'form-control' %>
+
+      <%= f.label :price %>
+      <%= f.text_field :price,
+                  required: true,
+                  class: 'form-control' %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit,
+                  class: 'form-btn' %>
+    </div>
+  <% end %>
+</div>

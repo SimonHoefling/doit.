@@ -1,0 +1,16 @@
+// CSS rules for buttons for everything that bigger than a phone screen
+@media only screen and (min-width: 481px) {
+}
+
+// CSS rules for buttons on phones
+@media only screen and (max-width: 480px) {
+  .form-btn {
+    width: 100%;
+    font-size: 28px;
+    color: $white;
+    background-color: $app-blue;
+    text-align: center;
+    border-radius: 999px;
+    margin-bottom: 4%;
+  }
+}
