@@ -12,11 +12,12 @@ class TasksController < ApplicationController
       @tasks = Task.order(created_at: :asc)
     when "category"
       @categories = Category.all
+    when "highest_payment"
+      @tasks = Task.order(price: :desc)
     else
       @tasks = Task.all
     end
   end
-
 
   # GET /tasks/1
   def show

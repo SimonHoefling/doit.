@@ -1,9 +1,17 @@
 <p style="color: green"><%= notice %></p>
 
+<%# This renders the top container %>
 <div class="top-container">
+  <p style="color: green"><%= notice %></p>
+
   <div class="text-center">
     <h1 class="doit mt-4">doit.</h1>
   </div>
+
+  <div class="text-center">
+    <h1 class="explore">explore</h1>
+  </div>
+
 </div>
 
 <%# This is the search bar to filter all the tasks %>
@@ -15,9 +23,11 @@
       <option value="newest">Newest</option>
       <option value="oldest">Oldest</option>
       <option value="category">Category</option>
+      <option value="highest_payment">Highest Payment</option>
     </select>
   </div>
 </form>
+
 
 
 
