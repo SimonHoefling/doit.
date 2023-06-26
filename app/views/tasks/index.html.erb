@@ -15,9 +15,8 @@
 </div>
 
 <%# This is the search bar to filter all the tasks %>
-<form action="<%= tasks_path %>" method="get" class="mb-3">
+<form action="<%= tasks_path %>" method="get">
   <div class="form-group">
-    <label for="sort">Sort By:</label>
     <select name="sort" id="sort" class="form-control" onchange="this.form.submit()">
       <option value="" disabled selected>FILTER BY</option>
       <option value="newest">Newest</option>
@@ -27,9 +26,6 @@
     </select>
   </div>
 </form>
-
-
-
 
 <%# This renders all the tasks based on what the user is seraching for %>
 <div id="tasks">
