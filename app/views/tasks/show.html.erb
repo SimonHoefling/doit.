@@ -37,7 +37,7 @@ somewhere %>
       <ul>
         <li>
           <p>Posted by</p>
-          <%= link_to user_path do %>
+          <%= link_to user_path(@task.user) do %>
             <p class="detail"><%= @task.user.first_name %></p>
           <% end %>
         </li>
@@ -76,13 +76,16 @@ somewhere %>
 
 <%# Contact to open a chatroom %>
 <div class="contact-container">
-  <% if @task_status == "available" || @task_status =="requested" && @user_can_create_chatroom && !@is_own_task %>
-    <%= button_to create_chatroom_task_path(@task), method: :post, class: "contact-btn" do %>
-      <i class="fa-regular fa-comment-dots fa-flip-horizontal" style="color: #2196f3;"></i>
-      CONTACT <%= @task.user.first_name %>
+  <% unless @is_own_task %>
+    <% if @task_status == "available" || (@task_status == "requested" && @user_can_create_chatroom) %>
+      <%= button_to create_chatroom_task_path(@task), method: :post, class: "contact-btn" do %>
+        <i class="fa-regular fa-comment-dots fa-flip-horizontal" style="color: #2196f3;"></i>
+        CONTACT <%= @task.user.first_name %>
+      <% end %>
     <% end %>
   <% end %>
 </div>
+
 
 <%# Task description %>
 <div class="details">

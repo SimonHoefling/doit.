@@ -102,7 +102,6 @@ class TasksController < ApplicationController
     end
   end
 
-
   # PATCH/PUT /tasks/1 this also marks a task a done in the database
   def update
     @task = Task.find(params[:id])
@@ -130,6 +129,6 @@ class TasksController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def task_params
-    params.require(:task).permit(:name, :description, :price, :category_id, :photo, :start_time, :location, photos: [])
+    params.require(:task).permit(:name, :description, :price, :category_id, :start_time, :location, photos: [])
   end
 end
