@@ -35,7 +35,7 @@
 <div id="tasks">
   <div class="container">
     <% if @sort_option == "category" %>
-      <%= render partial: "tasks/categories", collection: @categories %>
+      <%= render partial: "tasks/categories" %>
     <% else %>
       <% @tasks.order(created_at: :desc).each do |task| %>
         <% if task.task_status == "available" && task.user != current_user %>
