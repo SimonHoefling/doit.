@@ -37,7 +37,9 @@ somewhere %>
       <ul>
         <li>
           <p>Posted by</p>
-          <p class="detail"><%= @task.user.first_name %></p>
+          <%= link_to user_path do %>
+            <p class="detail"><%= @task.user.first_name %></p>
+          <% end %>
         </li>
         <li>
           <p>Location</p>
