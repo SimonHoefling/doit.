@@ -6,12 +6,31 @@
   </div>
 </div>
 
+<%# This is the search bar to filter all the tasks %>
+<form action="<%= tasks_path %>" method="get" class="mb-3">
+  <div class="form-group">
+    <label for="sort">Sort By:</label>
+    <select name="sort" id="sort" class="form-control" onchange="this.form.submit()">
+      <option value="" disabled selected>FILTER BY</option>
+      <option value="newest">Newest</option>
+      <option value="oldest">Oldest</option>
+      <option value="category">Category</option>
+    </select>
+  </div>
+</form>
+
+
+
+<%# This renders all the tasks based on what the user is seraching for %>
 <div id="tasks">
   <div class="container">
-    <% @tasks.each do |task| %>
-      <%# This checks only for other users tasks %>
-      <% if task.task_status == "available" && task.user != current_user %>
-        <%= render task %>
+    <% if @sort_option == "category" %>
+      <%= render partial: "tasks/categories", collection: @categories %>
+    <% else %>
+      <% @tasks.order(created_at: :desc).each do |task| %>
+        <% if task.task_status == "available" && task.user != current_user %>
+          <%= render task %>
+        <% end %>
       <% end %>
     <% end %>
   </div>

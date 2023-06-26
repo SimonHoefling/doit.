@@ -3,8 +3,20 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all
+    @sort_option = params[:sort]
+
+    case @sort_option
+    when "newest"
+      @tasks = Task.order(created_at: :desc)
+    when "oldest"
+      @tasks = Task.order(created_at: :asc)
+    when "category"
+      @categories = Category.all
+    else
+      @tasks = Task.all
+    end
   end
+
 
   # GET /tasks/1
   def show
