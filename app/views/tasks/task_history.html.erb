@@ -17,7 +17,9 @@
     <% @done_tasks.each do |task| %>
       <%# This makes sure it only gets rendered in the task owner or the doer profile history %>
       <% if task.user == current_user || task.requested_by == current_user %>
-        <p class="task-name"><%= task.name %></p>
+        <%= link_to task_path(task) do %>
+          <p class="task-name"><%= task.name %></p>
+        <% end %>
         <% if task.user == current_user %>
           <!-- Displayed when you are the one who has posted the task -->
           <p>Task done by:

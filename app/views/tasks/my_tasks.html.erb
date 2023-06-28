@@ -15,11 +15,15 @@
 
 <% if @tasks.any? %>
   <hr>
-<h3>Tasks that I have posted</h3>
+  <h3>My active tasks</h3>
   <% @tasks.each do |task| %>
-    <p><%= link_to task.name, task_path(task) %></p>
+    <% if task.user == current_user && task.task_status == "available" %>
+      <p><%= link_to task.name, task_path(task) %></p>
+    <% end %>
   <% end %>
 <% end %>
+
+
 
 <% if @started_tasks.any? && @started_tasks.pluck(:requested_by_id).include?(current_user.id) %>
   <hr>
