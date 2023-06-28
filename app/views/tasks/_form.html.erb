@@ -5,12 +5,12 @@
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
     <div class="form-inputs">
-      <%= f.label :name %>
+      <%= f.label :name, "Name*" %>
       <%= f.text_field :name,
                   required: true,
                   class: 'form-control' %>
 
-      <%= f.label :description %>
+      <%= f.label :description, "Description*" %>
       <%= f.text_area :description,
                   required: true,
                   class: 'form-control' %>
@@ -33,12 +33,12 @@
                   min_date: Date.today.strftime('%Y-%m-%d') },
                   class: 'form-control' %>
 
-      <%= f.label :location, "Location" %>
+      <%= f.label :location, "Location*" %>
       <%= f.text_field :location,
                   required: true,
                   class: 'form-control' %>
 
-      <%= f.label :price %>
+      <%= f.label :price, "Price*" %>
       <%= f.text_field :price,
                   required: true,
                   class: 'form-control' %>
