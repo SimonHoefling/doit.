@@ -8,6 +8,9 @@ class UsersController < ApplicationController
     @started_tasks = Task.where("(task_status = 'requested' AND requested_by_id = :user_id) OR task_status = 'in_work'", user_id: @user.id)
     @done_tasks = Task.where(task_status: "done", user: @user).or(Task.where(task_status: "done", requested_by: @user))
     @task = Task.find_by(requested_by: current_user)
+
+    @earned_money = @done_tasks.where(requested_by: current_user).sum(:price) # shows the earned money in the profile
+    @spent_money = current_user.tasks.where(task_status: 'done').sum(:price) # shows the spent money in the profile
   end
 
   def create

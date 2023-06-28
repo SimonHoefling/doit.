@@ -81,7 +81,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/task_history
   def task_history
-    @done_tasks = Task.where(task_status: 'done', user: current_user).or(Task.where(task_status: 'done', requested_by: current_user))
+    @done_tasks = Task.where(task_status: 'done')
   end
 
   # GET /tasks/new

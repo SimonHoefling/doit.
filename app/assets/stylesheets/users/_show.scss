@@ -57,6 +57,54 @@
   .profile-account-overview {
     width: 95%;
     margin: 4% auto;
+
+    .money-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 4%;
+      .money-left{
+        background-color: $app-blue;
+        border-radius: $main-border-radius;
+        padding: 4px 8px;
+        -webkit-box-shadow: 0px 0px 10px -5px #000000;
+        box-shadow: 0px 0px 10px -5px #000000;
+        .money-text {
+          font-size: 18px;
+          color: $white;
+          letter-spacing: 2px;
+          text-align: center;
+        }
+        .money-plus {
+          font-size: 18px;
+          color: $black;
+          letter-spacing: 2px;
+          text-align: center;
+          font-weight: bold;
+        }
+      }
+      .money-right {
+        background-color: $app-blue;
+        border-radius: $main-border-radius;
+        padding: 4px 8px;
+        -webkit-box-shadow: 0px 0px 10px -5px #000000;
+        box-shadow: 0px 0px 10px -5px #000000;
+        .money-text {
+          font-size: 18px;
+          color: $white;
+          letter-spacing: 2px;
+          text-align: center;
+        }
+        .money-minus {
+          font-size: 18px;
+          color: $red;
+          letter-spacing: 2px;
+          text-align: center;
+          font-weight: bold;
+        }
+      }
+
+    }
+
     ul {
       list-style: none;
       a {
