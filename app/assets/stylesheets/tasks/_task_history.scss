@@ -1,0 +1,20 @@
+// CSS rules for the Task history page for everything that bigger than a phone screen
+@media only screen and (min-width: 481px) {
+}
+
+
+// CSS rules for the Task history page on phones
+@media only screen and (max-width: 480px) {
+  // Task history conatiner
+  .history-container {
+    width: 95%;
+    margin: 0 auto;
+    .task-name {
+      font-weight: bold;
+    }
+    a {
+      text-decoration: none;
+      color: $dark-gray;
+    }
+  }
+}

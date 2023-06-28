@@ -10,14 +10,47 @@
   </div>
 </div>
 
-<% if @done_tasks.any? %>
-  <h2>Task History</h2>
-  <% @done_tasks.each do |task| %>
-    <p><%= task.name %></p>
-    <p>Status: <%= task.task_status %></p>
-    <p><%= task.price %> IDR</p>
-    <!-- Add any additional information you want to display for each task -->
+<%# Task history conatiner %>
+<div class="history-container">
+  <% if @done_tasks.any? %>
+    <% has_task_history = false %>
+    <% @done_tasks.each do |task| %>
+      <%# This makes sure it only gets rendered in the task owner or the doer profile history %>
+      <% if task.user == current_user || task.requested_by == current_user %>
+        <p class="task-name"><%= task.name %></p>
+        <% if task.user == current_user %>
+          <!-- Displayed when you are the one who has posted the task -->
+          <p>Task done by:
+            <%= link_to user_path(task.requested_by) do %>
+              <%= task.requested_by.first_name %> <%= task.requested_by.last_name %>
+            <% end %>
+          </p>
+        <% elsif task.requested_by == current_user %>
+          <!-- Displayed when you are the one who has done the task -->
+            <p>Task posted by:
+              <%= link_to user_path(task.user) do %>
+                <%= task.user.first_name %> <%= task.user.last_name %>
+              <% end %>
+            </p>
+        <% end %>
+
+        <p>Status: <%= task.task_status %> (Completed on <%= task.updated_at.to_date.strftime("%d.%m.%Y") %>)</p>
+
+        <% if task.user == current_user %>
+          <p>You spent: <%= task.price %> IDR</p>
+        <% elsif task.requested_by == current_user %>
+          <p>You earned: <%= task.price %> IDR</p>
+        <% end %>
+        <hr>
+
+        <% has_task_history = true %>
+        <!-- Add any additional information you want to display for each task -->
+      <% end %>
+    <% end %>
+    <% unless has_task_history %>
+      <p>No task history available.</p>
+    <% end %>
+  <% else %>
+    <p>No task history available.</p>
   <% end %>
-<% else %>
-  <p>No task history available.</p>
-<% end %>
+</div>
