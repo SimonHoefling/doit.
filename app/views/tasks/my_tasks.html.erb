@@ -1,6 +1,15 @@
-This is the my tasks page
-
 <!-- my_tasks.html.erb -->
+
+<div class="top-bar-container">
+  <div class="left">
+    <%= link_to user_path(current_user) do %>
+      <i class="fa-solid fa-arrow-left" style="color: #0E0000;"></i>
+    <% end %>
+  </div>
+  <div class="right">
+    <h4>Task management</h4>
+  </div>
+</div>
 
 <h1>My Tasks</h1>
 

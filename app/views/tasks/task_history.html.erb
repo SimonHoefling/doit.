@@ -1,4 +1,15 @@
 <!-- app/views/tasks/task_history.html.erb -->
+<div class="top-bar-container">
+  <div class="left">
+    <%= link_to user_path(current_user) do %>
+      <i class="fa-solid fa-arrow-left" style="color: #0E0000;"></i>
+    <% end %>
+  </div>
+  <div class="right">
+    <h4>Task history</h4>
+  </div>
+</div>
+
 <% if @done_tasks.any? %>
   <h2>Task History</h2>
   <% @done_tasks.each do |task| %>
