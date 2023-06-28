@@ -1,0 +1,12 @@
+<!-- app/views/tasks/task_history.html.erb -->
+<% if @done_tasks.any? %>
+  <h2>Task History</h2>
+  <% @done_tasks.each do |task| %>
+    <p><%= task.name %></p>
+    <p>Status: <%= task.task_status %></p>
+    <p><%= task.price %> IDR</p>
+    <!-- Add any additional information you want to display for each task -->
+  <% end %>
+<% else %>
+  <p>No task history available.</p>
+<% end %>

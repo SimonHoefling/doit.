@@ -56,13 +56,3 @@ This is the my tasks page
     <% end %>
   <% end %>
 <% end %>
-
-<% if @done_tasks.any? %>
-  <hr>
-  <h2>Task History</h2>
-  <% @done_tasks.each do |task| %>
-    <p><%= task.name %></p>
-    <p>Status: <%= task.task_status %></p>
-    <p><%= task.price %> IDR</p>
-  <% end %>
-<% end %>

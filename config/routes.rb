@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     end
     collection do
       get 'my_tasks' # Route for "my_tasks"
+      get 'task_history', to: 'tasks#task_history' # Route for "task_history"
     end
   end
 
