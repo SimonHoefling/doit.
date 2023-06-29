@@ -41,28 +41,34 @@
     <hr>
   <% end %>
 
-  <%# Task requests container %>
-  <div class="request-container">
-    <% if @requested_tasks.any? %>
-      <h3>Requested Tasks</h3>
-      <% @requested_tasks.each do |task| %>
-        <% if current_user == task.user && task.task_status == "requested" %>
-          <h4><%= task.name %></h4>
-          <% if task.requested_by %>
-            <p>Requested By: <%= link_to "#{task.requested_by.first_name} #{task.requested_by.last_name}", user_path(task.requested_by) %></p>
-            <% if current_user == task.user %>
-              <div class="button-container">
-                <%= button_to "Accept", accept_request_task_path(task), class: "accept-btn", method: :patch %>
-                <%= button_to "Reject", reject_request_task_path(task), class: "reject-btn", method: :patch %>
-              </div>
-            <% end %>
-          <% else %>
-            <p>Requested By: N/A</p>
+  <% if @requested_tasks.any? %>
+    <h2>Requested Tasks</h2>
+    <% @requested_tasks.each do |task| %>
+      <% if current_user == task.user && task.task_status == "requested" %>
+        <h4><%= task.name %></h4>
+        <% if task.requested_by %>
+          <p>Requested By: <%= link_to "#{task.requested_by.first_name} #{task.requested_by.last_name}", user_path(task.requested_by) %></p>
+          <% if current_user == task.user %>
+            <div class="button-container">
+              <%= button_to "Accept", accept_request_task_path(task), method: :patch %>
+              <%= button_to "Reject", reject_request_task_path(task), method: :patch %>
+              <%# Check if a chatroom exists between the task owner and the requested user %>
+              <% existing_chatroom = Chatroom.joins(:task, :user).where(tasks: { user_id: task.user_id }, users: { id: task.requested_by_id }).first %>
+              <% if existing_chatroom %>
+                <%= button_to "Open Chatroom", chatroom_path(existing_chatroom), method: :get %>
+              <% else %>
+                <%= button_to "Create Chatroom", create_chatroom_task_path(task), method: :post %>
+              <% end %>
+            </div>
           <% end %>
+        <% else %>
+          <p>Requested By: N/A</p>
         <% end %>
       <% end %>
     <% end %>
-  </div>
+  <% end %>
+
+
 
   <% if @accepted_tasks.any? %>
     <hr>

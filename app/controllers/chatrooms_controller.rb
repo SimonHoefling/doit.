@@ -13,11 +13,21 @@ class ChatroomsController < ApplicationController
   end
 
   def create
-    @chatroom = Chatroom.new(chatroom_params)
-    if @chatroom.save
-      redirect_to chatroom_path(@chatroom), notice: "Chatroom created successfully."
+    task = Task.find(params[:task_id])
+    requested_user = task.requested_by
+
+    # Check if a chatroom already exists between the task owner and the requested user
+    existing_chatroom = Chatroom.joins(:task, :user).where(tasks: { user_id: task.user_id }, users: { id: requested_user.id }).first
+
+    if existing_chatroom
+      redirect_to chatroom_path(existing_chatroom), notice: "You are now connected to the existing chatroom."
     else
-      render :new
+      @chatroom = Chatroom.new(user: task.user, task: task)
+      if @chatroom.save
+        redirect_to chatroom_path(@chatroom), notice: "Chatroom created successfully."
+      else
+        render :new
+      end
     end
   end
 
