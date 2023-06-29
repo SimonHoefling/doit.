@@ -52,13 +52,6 @@
             <div class="button-container">
               <%= button_to "Accept", accept_request_task_path(task), method: :patch %>
               <%= button_to "Reject", reject_request_task_path(task), method: :patch %>
-              <%# Check if a chatroom exists between the task owner and the requested user %>
-              <% existing_chatroom = Chatroom.joins(:task, :user).where(tasks: { user_id: task.user_id }, users: { id: task.requested_by_id }).first %>
-              <% if existing_chatroom %>
-                <%= button_to "Open Chatroom", chatroom_path(existing_chatroom), method: :get %>
-              <% else %>
-                <%= button_to "Create Chatroom", create_chatroom_task_path(task), method: :post %>
-              <% end %>
             </div>
           <% end %>
         <% else %>

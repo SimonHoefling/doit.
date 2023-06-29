@@ -1,9 +1,14 @@
 <h1>This is the chatroom index page</h1>
 
 <div class="container chatroom-index">
-  <h1>Chatrooms</h1>
+  <h1>INBOX</h1>
 
   <% @chatrooms.each do |chatroom| %>
     <h3><%= link_to chatroom.name, chatroom_path(chatroom) %></h3>
+    <% if chatroom.user == current_user %>
+      <p>Chat between you and <%= chatroom.task.user.first_name %></p>
+    <% else %>
+      <p>Inquiry from <%= chatroom.user.first_name %></p>
+    <% end %>
   <% end %>
 </div>

@@ -10,7 +10,7 @@ class Task < ApplicationRecord
 
   before_validation :set_default_task_status, on: :create
 
-  # Method to start a task request (only availabe if you are not the task owner)
+  # Method to start a task request (only available if you are not the task owner)
   def start_request(user)
     puts "start_request method called"
     return false unless task_status == 'available'
@@ -33,19 +33,15 @@ class Task < ApplicationRecord
     true
   end
 
-  # This makes sure that the current user can only create once a chatroom for a task
+  # This makes sure that the current user can only create one chatroom for a task
   def user_can_create_chatroom(current_user)
-    !chatroom_exists?(current_user)
+    !Chatroom.exists?(task: self, user: current_user)
   end
 
   private
 
   def set_default_task_status
     self.task_status ||= "available"
-  end
-
-  def chatroom_exists?(user)
-    Chatroom.exists?(task: self, user: user)
   end
 
   # This makes sure that the user can only upload 4 photos for a task

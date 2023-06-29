@@ -85,13 +85,18 @@ somewhere %>
 <div class="contact-container">
   <% unless @is_own_task %>
     <% if @task_status == "available" || (@task_status == "requested" && @user_can_create_chatroom) %>
-      <%= button_to create_chatroom_task_path(@task), method: :post, class: "contact-btn" do %>
-        <i class="fa-regular fa-comment-dots fa-flip-horizontal" style="color: #2196f3;"></i>
-        CONTACT <%= @task.user.first_name %>
+      <% if @task.user_can_create_chatroom(current_user) %>
+        <%= button_to create_chatroom_task_path(@task), method: :post, class: "contact-btn" do %>
+          <i class="fa-regular fa-comment-dots fa-flip-horizontal" style="color: #2196f3;"></i>
+          CONTACT <%= @task.user.first_name %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
 </div>
+
+
+
 
 
 <%# Task description %>
