@@ -16,7 +16,20 @@
       text-decoration: underline;
       margin-bottom: 4px;
     }
+    // My active tasks
+    .active-tasks-section {
+      a {
+        text-decoration: none;
+        color: $black;
+      }
+    }
     // Requested Tasks
+    .requested-tasks-section {
+      a {
+        text-decoration: none;
+        color: $black;
+      }
+    }
     .button-container {
       display: flex;
       justify-content: space-evenly;

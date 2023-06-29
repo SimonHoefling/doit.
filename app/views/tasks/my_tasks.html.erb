@@ -13,21 +13,24 @@
 
 <div class="my-tasks-container">
 
-  <% if @tasks.any? %>
-    <h3 class="mb-3">My active tasks</h3>
-      <% @tasks.each do |task| %>
-        <% if task.user == current_user && task.task_status == "available" %>
-          <p><%= link_to task.name, task_path(task) %></p>
+  <%# My active tasks %>
+  <div class="active-tasks-section">
+
+    <% if @tasks.any? %>
+      <h3 class="mb-3">My active tasks</h3>
+        <% @tasks.each do |task| %>
+          <% if task.user == current_user && task.task_status == "available" %>
+            <p><%= link_to task.name, task_path(task) %></p>
+          <% end %>
         <% end %>
-      <% end %>
-      <hr>
-    <% else %>
-      <h3>My active tasks</h3>
-      <p>You don't have any tasks posted...</p>
-      <hr>
-  <% end %>
+        <hr>
+      <% else %>
+        <h3>My active tasks</h3>
+        <p>You don't have any tasks posted...</p>
+        <hr>
+    <% end %>
 
-
+  </div>
 
   <% if @started_tasks.any? && @started_tasks.pluck(:requested_by_id).include?(current_user.id) %>
     <h3 class="mb-3">Tasks where I have applied for</h3>
@@ -43,28 +46,26 @@
 
   <%# Requested Tasks %>
   <% if @requested_tasks.any? %>
+    <div class="requested-tasks-section">
     <h3 class="mb-3">Requested Tasks</h3>
-    <% @requested_tasks.each do |task| %>
-      <% if current_user == task.user && task.task_status == "requested" %>
-        <h4><%= task.name %></h4>
-        <% if task.requested_by %>
-          <p>Requested By: <%= link_to "#{task.requested_by.first_name} #{task.requested_by.last_name}", user_path(task.requested_by) %></p>
-          <% if current_user == task.user %>
-            <div class="button-container">
-              <%= button_to "ACCEPT", accept_request_task_path(task), method: :patch %>
-              <%= button_to "REJECT", reject_request_task_path(task), method: :patch %>
-            </div>
+      <% @requested_tasks.each do |task| %>
+        <% if current_user == task.user && task.task_status == "requested" %>
+          <h4><%= task.name %></h4>
+          <% if task.requested_by %>
+            <p>Requested By: <%= link_to "#{task.requested_by.first_name} #{task.requested_by.last_name}", user_path(task.requested_by) %></p>
+            <% if current_user == task.user %>
+              <div class="button-container">
+                <%= button_to "ACCEPT", accept_request_task_path(task), method: :patch %>
+                <%= button_to "REJECT", reject_request_task_path(task), method: :patch %>
+              </div>
+            <% end %>
+          <% else %>
+            <p>Requested By: N/A</p>
           <% end %>
-        <% else %>
-          <p>Requested By: N/A</p>
         <% end %>
       <% end %>
-    <% end %>
+    </div>
   <% end %>
-
-
-
-
 
   <% if @accepted_tasks.any? %>
     <hr>
