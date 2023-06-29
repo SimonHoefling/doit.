@@ -1,0 +1,47 @@
+// CSS rules for the Task new page for everything that bigger than a phone screen
+@media only screen and (min-width: 481px) {
+  .my-tasks-container {
+    display: none;
+  }
+}
+
+// CSS rules for the Task new page on phones
+@media only screen and (max-width: 480px) {
+  .my-tasks-container {
+    width: 95%;
+    margin: 0 auto;
+    border: 2px solid green;
+
+    h3 {
+      text-decoration: underline;
+      margin-bottom: 4px;
+    }
+
+    /* Task requests container */
+    .request-container {
+      border: 2px solid black;
+      .button-container {
+        display: flex;
+        justify-content: space-evenly;
+        .accept-btn,
+        .reject-btn {
+          width: 120px;
+          color: $white;
+          font-weight: bold;
+          font-size: 18px;
+          border-radius: 999px;
+          border: none;
+          letter-spacing: 2px;
+          margin: 6px 0;
+          padding: 4px 0;
+        }
+        .accept-btn {
+          background-color: $app-blue;
+        }
+        .reject-btn {
+          background-color: $dark-gray;
+        }
+      }
+    }
+  }
+}
