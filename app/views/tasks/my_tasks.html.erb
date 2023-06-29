@@ -14,7 +14,7 @@
 <div class="my-tasks-container">
 
   <% if @tasks.any? %>
-    <h3>My active tasks</h3>
+    <h3 class="mb-3">My active tasks</h3>
       <% @tasks.each do |task| %>
         <% if task.user == current_user && task.task_status == "available" %>
           <p><%= link_to task.name, task_path(task) %></p>
@@ -30,7 +30,7 @@
 
 
   <% if @started_tasks.any? && @started_tasks.pluck(:requested_by_id).include?(current_user.id) %>
-    <h3>Tasks where I have applied for</h3>
+    <h3 class="mb-3">Tasks where I have applied for</h3>
     <% @started_tasks.each do |task| %>
       <% if task.requested_by_id == current_user.id %>
         <h4><%= task.name %></h4>
@@ -41,8 +41,9 @@
     <hr>
   <% end %>
 
+  <%# Requested Tasks %>
   <% if @requested_tasks.any? %>
-    <h2>Requested Tasks</h2>
+    <h3 class="mb-3">Requested Tasks</h3>
     <% @requested_tasks.each do |task| %>
       <% if current_user == task.user && task.task_status == "requested" %>
         <h4><%= task.name %></h4>
@@ -50,8 +51,8 @@
           <p>Requested By: <%= link_to "#{task.requested_by.first_name} #{task.requested_by.last_name}", user_path(task.requested_by) %></p>
           <% if current_user == task.user %>
             <div class="button-container">
-              <%= button_to "Accept", accept_request_task_path(task), method: :patch %>
-              <%= button_to "Reject", reject_request_task_path(task), method: :patch %>
+              <%= button_to "ACCEPT", accept_request_task_path(task), method: :patch %>
+              <%= button_to "REJECT", reject_request_task_path(task), method: :patch %>
             </div>
           <% end %>
         <% else %>
@@ -63,9 +64,11 @@
 
 
 
+
+
   <% if @accepted_tasks.any? %>
     <hr>
-    <h3>Accepted Tasks</h3>
+    <h3 class="mb-3">Accepted Tasks</h3>
     <% @accepted_tasks.each do |accepted_task| %>
       <% if accepted_task.task_status == "in_work" %>
         <p><%= accepted_task.name %></p>

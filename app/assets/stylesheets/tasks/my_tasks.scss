@@ -16,5 +16,17 @@
       text-decoration: underline;
       margin-bottom: 4px;
     }
+    // Requested Tasks
+    .button-container {
+      display: flex;
+      justify-content: space-evenly;
+      margin: 10px 0;
+      button {
+        width: 120px;
+        font-size: 18px;
+        border-radius: 999px;
+        border: none;
+      }
+    }
   }
 }
