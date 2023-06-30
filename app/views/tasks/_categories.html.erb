@@ -6,7 +6,7 @@
         <% if category.photo.attached? %>
           <%= cl_image_tag(category.photo, class: "category-image") %>
         <% else %>
-          <%= image_tag("default-category.jpeg", alt: "category-default-image", class: "category-image") %>
+          <%= image_tag "default-category.jpeg", alt: "category-default-image", class: "category-image" %>
         <% end %>
         <h3><%= category.name %></h3>
       <% end %>
