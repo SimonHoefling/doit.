@@ -74,12 +74,11 @@ somewhere %>
       <% if @task_status == "available" %>
         <%= button_to "SEND REQUEST", start_task_task_path(@task), method: :post %>
       <% elsif @task_status == "requested" %>
-        <p>Request has been sent. You can see the task status in your profile.</p>
+        <p>Request has been sent. You can see the task status in your profile under mangage my tasks.</p>
       <% end %>
     <% end %>
   <% end %>
 </div>
-
 
 <%# Contact to open a chatroom %>
 <div class="contact-container">
@@ -94,10 +93,6 @@ somewhere %>
     <% end %>
   <% end %>
 </div>
-
-
-
-
 
 <%# Task description %>
 <div class="details">

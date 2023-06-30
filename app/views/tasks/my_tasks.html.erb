@@ -20,7 +20,7 @@
       <h3 class="mb-3">My active tasks</h3>
         <% @tasks.each do |task| %>
           <% if task.user == current_user && task.task_status == "available" %>
-            <p><%= link_to task.name, task_path(task) %></p>
+            <p class="task-name-link">- <%= link_to task.name, task_path(task) %></p>
           <% end %>
         <% end %>
         <hr>
@@ -36,9 +36,17 @@
     <h3 class="mb-3">Tasks where I have applied for</h3>
     <% @started_tasks.each do |task| %>
       <% if task.requested_by_id == current_user.id %>
-        <h4><%= task.name %></h4>
+        <%= link_to task, class: "task-name-link" do %>
+          <h4><%= task.name %></h4>
+        <% end %>
         <p>Posted by: <%= task.user.first_name %> <%= task.user.last_name %></p>
-        <p>Status: <%= task.task_status %></p>
+        <p>Task status:
+          <% if task.task_status == "requested" %>
+            requested
+          <% elsif task.task_status == "in_work" %>
+            your request has been accepted
+          <% end %>
+        </p>
       <% end %>
     <% end %>
     <hr>
@@ -67,17 +75,23 @@
     </div>
   <% end %>
 
+  <%# Accepted Tasks %>
   <% if @accepted_tasks.any? %>
-    <hr>
-    <h3 class="mb-3">Accepted Tasks</h3>
-    <% @accepted_tasks.each do |accepted_task| %>
-      <% if accepted_task.task_status == "in_work" %>
-        <p><%= accepted_task.name %></p>
-        <% if current_user == accepted_task.user %>
-          <%= button_to "Done", done_task_task_path(accepted_task), method: :patch %>
+    <div class="accepted-tasks-section">
+      <h3 class="mb-3">Accepted Tasks</h3>
+      <% @accepted_tasks.each do |accepted_task| %>
+        <% if accepted_task.task_status == "in_work" %>
+          <%= link_to accepted_task, class: "task-name-link" do %>
+            <h4><%= accepted_task.name %></h4>
+          <% end %>
+          <p>When the task has been completed and you have paid the worker mark it as done.</p>
+          <% if current_user == accepted_task.user %>
+            <%= button_to "Done", done_task_task_path(accepted_task), class: "done-btn", method: :patch %>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
+      <hr>
+    </div>
   <% end %>
 
 </div>

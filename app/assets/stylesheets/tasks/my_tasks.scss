@@ -10,8 +10,6 @@
   .my-tasks-container {
     width: 95%;
     margin: 0 auto;
-    border: 2px solid green;
-
     h3 {
       text-decoration: underline;
       margin-bottom: 4px;
@@ -20,7 +18,7 @@
     .active-tasks-section {
       a {
         text-decoration: none;
-        color: $black;
+        color: $dark-gray;
       }
     }
     // Requested Tasks
@@ -41,5 +39,16 @@
         border: none;
       }
     }
+      .done-btn {
+        width: 120px;
+        font-size: 18px;
+        border-radius: 999px;
+        border: none;
+        margin-top: 6px;
+      }
+      .task-name-link {
+        color: $dark-gray;
+        text-decoration: none;
+      }
   }
 }
