@@ -1,0 +1,44 @@
+// CSS rules for the Chatrooms index page for everything that bigger than a phone screen
+@media only screen and (min-width: 481px) {
+  .chatroom-index-container {
+    display: none;
+  }
+}
+
+// CSS rules for the Chatrooms index page on phones
+@media only screen and (max-width: 480px) {
+  .chatroom-index-container {
+    width: 95%;
+    margin: 0 auto;
+    h1 {
+      margin: 4% 0;
+      color: $black;
+    }
+    .chat-link {
+      text-decoration: none;
+      .chat-container {
+        display: flex;
+        flex-direction: row;
+        .left {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 6px;
+          .fa-envelope {
+            font-size: 2em;
+            color: $black;
+          }
+        }
+        .right {
+          padding-left: 6px;
+          h3 {
+            color: $black;
+          }
+          p {
+            color: $black;
+          }
+        }
+      }
+    }
+  }
+}
