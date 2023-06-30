@@ -19,11 +19,13 @@
                   class: 'form-control' %>
 
       <div class="file-input">
-        <%= f.label :photo, "Task photo (max. 4 Photos)" %>
+        <%#= f.label :photo, "Task photo (max. 4 Photos)" %>
+        <%= f.label :photo, "📷 Upload a photo (max. 4)", class: 'upload-photo' %>
         <%= f.file_field :photo,
-                  required: false,
-                  multiple: true,
-                  class: 'form-control-file' %>
+                required: false,
+                multiple: true,
+                class: 'd-none' %>
+
       </div>
 
       <%= f.label :start_time, "Start date (starts immediately if not selected)" %>
