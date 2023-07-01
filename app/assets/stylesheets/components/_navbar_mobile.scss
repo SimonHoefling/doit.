@@ -31,11 +31,11 @@
         align-items: center;
       }
       img {
-        width: 32px;
-        height: 32px;
+        width: 28px;
+        height: 28px;
       }
       p {
-        font-size: 14px;
+        font-size: 12px;
         font-weight: bold;
         letter-spacing: 1px;
         color: $dark-gray;
@@ -48,7 +48,7 @@
     .larger-image img {
       width: 64px;
       height: 64px;
-      margin-top: -32px;
+      margin-top: -36px;
     }
     /* Push the third image more to the top */
     .navbar-item-container.larger-image p {

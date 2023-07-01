@@ -3,7 +3,7 @@
   .top-container{
     display: none;
   }
-  .link-container {
+  .home-page-container {
     display: none;
   }
 }
@@ -15,6 +15,87 @@
     .doit {
       color: $white;
       text-shadow: 0px -1px 3px rgba(37,37,37,0.5);
+      font-size: 28px;
+    }
+  }
+  // Home container
+  .home-page-container {
+    width:95%;
+    margin: 4% auto;
+    border: 2px solid green;
+    .home-content-container {
+      width: 100%;
+      border: 2px solid white;
+      margin: 4% 0;
+      .home-post-task-btn {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 8px;
+        background-color: $app-blue;
+        border-radius: 999px;
+        border: none;
+        a {
+          color: $white;
+          text-decoration: none;
+          font-size: 20px;
+          padding-left: 10px;
+        }
+        .fa-solid {
+          font-size: 20px;
+          margin-left: 16px;
+          padding-right: 10px;
+        }
+      }
+    }
+    img {
+      width: 100%;
+      height: auto;
+      border: 2px solid red;
+      margin: 4% 0;
+      padding: 4% 0;
+    }
+    // Home category container
+    .home-category-container {
+      width: 100%;
+      border: 2px solid blue;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .left,
+      .right {
+        width: 150px;
+        height: 150px;
+        border-radius: $main-border-radius;
+        border: 2px solid gray;
+      }
+      .left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        p {
+          font-size: 18px;
+        }
+      }
+      .right {
+        background-color: $app-blue;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        .fa-solid {
+          font-size: 52px;
+        }
+        p {
+          font-weight: bold;
+          color: $white;
+          letter-spacing: 2px;
+          font-size: 18px;
+          margin-top: 4px;
+        }
+      }
     }
   }
 }

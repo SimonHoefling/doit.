@@ -3,12 +3,35 @@
   <div class="text-center">
     <h1 class="doit mt-4">doit.</h1>
   </div>
-  <h1><%= current_user.first_name %>, need something done?</h1>
-  <h5>Post a task. Receive offers. Get it done.</h5>
 
 </div>
 
-<div class="link-container">
-  <%= link_to "Post a task", new_task_path, class: "btn btn-primary" %>
-  <%= link_to "See categories", categories_path, class: "btn btn-primary" %>
+<div class="home-page-container">
+  <h1><%= current_user.first_name %>, need something done?</h1>
+  <h5>Post a task. Receive offers. Get it done.</h5>
+
+  <%# Home container %>
+  <div class="home-content-container">
+    <button class="home-post-task-btn">
+      <%= link_to "Post a task", new_task_path %>
+      <i class="fa-solid fa-arrow-right" style="color: #fbfbfb;"></i>
+    </button>
+
+    <%= image_tag 'home-placeholder.png' %>
+
+    <h2>Need something done?</h2>
+
+    <%# Home category container %>
+    <div class="home-category-container">
+      <div class="left">
+        <p>Get some inspiration and browse the categories</p>
+      </div>
+      <%= link_to categories_path, class: "right" do %>
+          <i class="fa-solid fa-layer-group" style="color: #fbfbfb;"></i>
+          <p>CATEGORIES</p>
+      <% end %>
+    </div>
+
+
+  </div>
 </div>
