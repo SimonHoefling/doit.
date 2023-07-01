@@ -90,7 +90,9 @@
         <% end %>
       </ul>
     <% else %>
-      <p><%= @user.first_name %> has no active tasks posted at the moment.</p>
+      <div class="text-center">
+        <p><%= @user.first_name %> has no active tasks posted at the moment.</p>
+      </div>
     <% end %>
   <% end %>
 </div>
