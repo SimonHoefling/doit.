@@ -1,0 +1,26 @@
+// CSS rules for the sign up for everything that bigger than a phone screen
+@media only screen and (min-width: 481px) {
+  .back-container {
+    display: none;
+  }
+}
+
+// CSS rules for the sign up on phones
+@media only screen and (max-width: 480px) {
+  .back-container {
+    width: 95%;
+    margin: 4% auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .fa-solid {
+      font-size: 22px;
+      margin-right: 10px;
+    }
+    .sign-up-back-link {
+      text-decoration: none;
+      color: $black;
+      font-size: 22px;
+    }
+  }
+}

@@ -1,59 +1,73 @@
-<div class="top-container">
+<div class="new-task-container">
+  <div class="top-container">
+    <div class="text-center">
+      <h1 class="doit mt-4 mb-4">doit.</h1>
+    </div>
+  </div>
 
-  <div class="text-center">
-    <h1 class="doit mt-4 mb-4">doit.</h1>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs" data-controller="hide-show-password">
+      <%= f.input :first_name,
+                  label: "First name",
+                  required: true,
+                  autofocus: true,
+                  class: 'form-control' %>
+      <%= f.input :last_name,
+                  required: true,
+                  label: "Last name",
+                  autofocus: true,
+                  class: 'form-control' %>
+      <%= f.input :zip_code,
+                  required: true,
+                  autofocus: true,
+                  label: "Zip code",
+                  class: 'form-control' %>
+      <%= f.input :street_name,
+                  required: true,
+                  autofocus: true,
+                  label: "Street name",
+                  class: 'form-control' %>
+      <%= f.input :house_number,
+                  required: true,
+                  autofocus: true,
+                  label: "House/Unit number",
+                  class: 'form-control' %>
+      <div class="file-input">
+          <%= f.label :avatar, "📷 Upload a photo", class: 'upload-photo' %>
+          <%= f.file_field :avatar,
+                required: false,
+                multiple: true,
+                class: 'd-none' %>
+      </div>
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" },
+                  class: 'form-control' %>
+      <%= f.input :password,
+                  required: true,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password", type: "password" },
+                  class: 'form-control' %>
+      <%= f.input :password_confirmation,
+                  required: true,
+                  input_html: { autocomplete: "new-password", type: "password" },
+                  class: 'form-control' %>
+      <label>
+        <%= check_box_tag 'password_visibility', 1, false %>
+        Show passwords
+      </label>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Sign up", class: 'form-btn' %>
+    </div>
+  <% end %>
+
+  <div class="back-container">
+    <i class="fa-solid fa-arrow-left" style="color: #0e0000;"></i>
+    <%= link_to "Log in", :back, class: "sign-up-back-link" %>
   </div>
 </div>
-
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs" data-controller="hide-show-password">
-    <%= f.input :first_name,
-                label: "First name",
-                required: true,
-                autofocus: true %>
-    <%= f.input :last_name,
-                required: true,
-                label: "Last name",
-                autofocus: true %>
-    <%= f.input :zip_code,
-                required: true,
-                autofocus: true,
-                label: "Zip code" %>
-    <%= f.input :street_name,
-                required: true,
-                autofocus: true,
-                label: "Streetname" %>
-    <%= f.input :house_number,
-                required: true,
-                autofocus: true,
-                label: "House/Unit number" %>
-    <%= f.input :avatar,
-                as: :file,
-                required: false,
-                label: "Profile picture" %>
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password", type: "password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password", type: "password" } %>
-    <label>
-      <%= check_box_tag 'password_visibility', 1, false %>
-      Show passwords
-    </label>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
