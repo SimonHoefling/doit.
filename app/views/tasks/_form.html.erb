@@ -5,17 +5,18 @@
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
     <div class="form-inputs">
-      <%= f.label :name, "Name*" %>
+      <%= f.label :name, "Add a tilte for you task*" %>
       <%= f.text_field :name,
                   required: true,
                   class: 'form-control' %>
 
-      <%= f.label :description, "Description*" %>
+      <%= f.label :description, "Write a short description for what exactly you need help with*" %>
       <%= f.text_area :description,
                   required: true,
                   class: 'form-control' %>
 
       <%= f.association :category,
+                  label: "Select a category",
                   class: 'form-control' %>
 
       <div class="file-input">
@@ -27,19 +28,19 @@
 
       </div>
 
-      <%= f.label :start_time, "Start date (starts immediately if not selected)" %>
+      <%= f.label :start_time, "Add a start date (starts immediately if not selected)" %>
       <%= f.text_field :start_time,
                   required: false,
                   data: { flatpickr_target: "startTime",
                   min_date: Date.today.strftime('%Y-%m-%d') },
                   class: 'form-control' %>
 
-      <%= f.label :location, "Location*" %>
+      <%= f.label :location, "Where do you need to get it done*" %>
       <%= f.text_field :location,
                   required: true,
                   class: 'form-control' %>
 
-      <%= f.label :price, "Price*" %>
+      <%= f.label :price, "Add a price (in IDR)*" %>
       <%= f.text_field :price,
                   required: true,
                   class: 'form-control' %>
