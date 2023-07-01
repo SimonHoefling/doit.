@@ -1,20 +1,33 @@
-.alert {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  margin: 0 auto;
-  z-index: 1000;
-}
-#alert {
-  background-color: $app-blue;
-  color: white;
-  animation: fadeOut 3s ease-in-out forwards;
-}
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
+// CSS rules for alert flashes for everything that bigger than a phone screen
+@media only screen and (min-width: 481px) {
+  .alert {
+    display: none;
   }
-  100% {
-    opacity: 0;
+  #alert {
+    display: none;
+  }
+}
+
+// CSS rules for alert flashes on phones
+@media only screen and (max-width: 480px) {
+  .alert {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin: 0 auto;
+    z-index: 1000;
+  }
+  #alert {
+    background-color: $app-blue;
+    color: white;
+    animation: fadeOut 3s ease-in-out forwards;
+  }
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
   }
 }
