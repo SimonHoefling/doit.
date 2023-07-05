@@ -13,12 +13,12 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    text-decoration: none;
     .fa-solid {
       font-size: 22px;
       margin-right: 10px;
     }
     .sign-up-back-link {
-      text-decoration: none;
       color: $black;
       font-size: 22px;
     }

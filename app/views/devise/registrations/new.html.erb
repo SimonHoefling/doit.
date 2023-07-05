@@ -65,8 +65,8 @@
     </div>
   <% end %>
 
-  <div class="back-container">
+  <%= link_to :back, class: "back-container" do %>
     <i class="fa-solid fa-arrow-left" style="color: #0e0000;"></i>
-    <%= link_to "Log in", :back, class: "sign-up-back-link" %>
-  </div>
+    <p class="sign-up-back-link">Log in</p>
+  <% end %>
 </div>
