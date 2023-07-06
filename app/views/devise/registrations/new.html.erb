@@ -17,21 +17,17 @@
       <%= f.input :last_name,
                   required: true,
                   label: "Last name",
-                  autofocus: true,
                   class: 'form-control' %>
       <%= f.input :zip_code,
                   required: true,
-                  autofocus: true,
                   label: "Zip code",
                   class: 'form-control' %>
       <%= f.input :street_name,
                   required: true,
-                  autofocus: true,
                   label: "Street name",
                   class: 'form-control' %>
       <%= f.input :house_number,
                   required: true,
-                  autofocus: true,
                   label: "House/Unit number",
                   class: 'form-control' %>
       <div class="file-input">
@@ -42,8 +38,7 @@
       </div>
       <%= f.input :email,
                   required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" },
+                  label: "Email",
                   class: 'form-control' %>
       <%= f.input :password,
                   required: true,
