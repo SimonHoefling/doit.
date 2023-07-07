@@ -1,7 +1,7 @@
 <%# Chatroom index page %>
 <div class="chatroom-index-container">
 
-  <h1>INBOX</h1>
+  <h1><i class="fa-solid fa-envelope-open-text" style="color: #0e0000;"></i>  INBOX</h1>
   <% @chatrooms.each do |chatroom| %>
     <%= link_to chatroom_path(chatroom), class: "chat-link" do %>
       <div class="chat-container">
