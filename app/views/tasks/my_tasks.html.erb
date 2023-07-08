@@ -17,7 +17,7 @@
   <div class="active-tasks-section">
 
     <% if @tasks.any? %>
-      <h3 class="mb-3">My active tasks</h3>
+      <h3 class="mb-3"><i class="fa-solid fa-list-check" style="color: #0e0000;"></i> My active tasks</h3>
         <% @tasks.each do |task| %>
           <% if task.user == current_user && task.task_status == "available" %>
             <p class="name-link">- <%= link_to task.name, task_path(task) %></p>
