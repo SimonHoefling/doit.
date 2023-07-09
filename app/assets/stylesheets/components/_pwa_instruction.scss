@@ -1,0 +1,29 @@
+// CSS rules for pwa instruction for everything that bigger than a phone screen
+@media only screen and (min-width: 481px) {
+  .pwa-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .pwa-content {
+      width: 400px;
+      height: 90%;
+      text-align: center;
+      .pwa-img-1,
+      .pwa-img-2 {
+        width: 100%;
+        scale: 0.9;
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+}
+
+// CSS rules for pwa instruction on phones
+@media only screen and (max-width: 480px) {
+  .pwa-container {
+    display: none;
+  }
+}

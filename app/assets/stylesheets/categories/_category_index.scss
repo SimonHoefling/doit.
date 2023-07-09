@@ -1,6 +1,6 @@
 // CSS rules for the Category index for everything that bigger than a phone screen
 @media only screen and (min-width: 481px) {
-  h1, a {
+  .explore, a {
     display: none;
   }
 }
