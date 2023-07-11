@@ -1,13 +1,26 @@
 <p style="color: green"><%= notice %></p>
 
-<%= link_to "Back to categories", categories_path %>
+<%# Top bar container for category show page %>
+<div class="top-bar-container">
+  <div class="left">
+    <%= link_to categories_path do %>
+      <i class="fa-solid fa-arrow-left" style="color: #0E0000;"></i>
+    <% end %>
+  </div>
+  <div class="right">
+    <h4>Category <%= @category.name %></h4>
+  </div>
+</div>
+<div class="category-description">
+  <h6><%= @category.description %></h6>
+</div>
 
-<%= render @category %>
+
+
 
 
 <%# This renders only the tasks that are available and not from the
 user that is currently logged in %>
-<h2>These are the tasks for the category education</h2>
 <div class="container">
   <% @tasks.each do |task| %>
     <% if task.task_status == "available" && task.user != current_user %>

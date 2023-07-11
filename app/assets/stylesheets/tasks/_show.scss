@@ -12,12 +12,12 @@
 
 // CSS rules for the Task show page on phones
 @media only screen and (max-width: 480px) {
-  // Top bar container for task show page
+  // Top bar container for task and category show page
   .top-bar-container {
     display: flex;
-    width: 100%;
+    width: 95%;
     height: 8%;
-    margin-bottom: 3%;
+    margin: 0 auto;
 
     .left {
       height: 100%;
@@ -33,7 +33,7 @@
       flex-grow: 1;
 
       h4 {
-        margin: 15px;
+        margin: 15px 0 15px 0;
         font-size: 26px;
       }
     }
