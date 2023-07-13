@@ -41,4 +41,24 @@
       }
     }
   }
+    /* Left-aligned message bubble */
+  .message.current-user {
+    align-self: flex-start;
+    text-align: left;
+    background-color: lightblue;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* Right-aligned message bubble */
+  .message {
+    align-self: flex-end;
+    text-align: right;
+    background-color: rgba(251,180,188,1);
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
 }
