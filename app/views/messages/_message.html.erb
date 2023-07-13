@@ -1,5 +1,5 @@
 <%# Messags partial %>
-<div id="message-<%= message.id %>" class="message <%= 'current-user' if message.user == current_user %>">
+<div id="message-<%= message.id %>">
   <small>
     <strong><%= message.user.first_name %></strong>
     <i><%= message.created_at.in_time_zone("Asia/Makassar").strftime("%a %b %e at %l:%M %p") %></i>
