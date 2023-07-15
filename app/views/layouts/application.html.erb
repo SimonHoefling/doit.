@@ -23,6 +23,9 @@
 
     <%= yield %>
 
-    <%= render "shared/navbar_mobile" %>
+    <%# This conditon excludes the mobile navbar on the chatroom show page %>
+    <% unless controller_name == 'chatrooms' && action_name == 'show' %>
+      <%= render "shared/navbar_mobile" %>
+    <% end %>
   </body>
 </html>

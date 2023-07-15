@@ -4,7 +4,8 @@
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
-  height: 90vh;
+  height: 100vh;
+  z-index: 9999;
 
   .chat-top-container {
     width: 100%;

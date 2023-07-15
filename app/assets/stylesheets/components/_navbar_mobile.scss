@@ -16,6 +16,7 @@
     -webkit-box-shadow: 0px -1px 4px 0px rgba(0,0,0,0.5);
     box-shadow: 0px -1px 4px 0px rgba(0,0,0,0.5);
     background-color: $white;
+    z-index: 999;
     .navbar-item-container {
       flex: 1;
       display: flex;
