@@ -17,7 +17,10 @@
   </head>
 
   <body>
-    <%= render "shared/flashes" %>
+    <%# This condition excludes the flashes on the chatroom show page %>
+    <% unless controller_name == 'chatrooms' && (action_name == 'show' || action_name == 'index') %>
+      <%= render "shared/flashes" %>
+    <% end %>
     <%= render "shared/navbar_desktop" %>
     <%= render "shared/pwa_instruction" %>
 
