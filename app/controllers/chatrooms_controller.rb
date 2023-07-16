@@ -1,11 +1,17 @@
 class ChatroomsController < ApplicationController
   def index
-    @chatrooms = Chatroom.joins(task: :user).where("(tasks.user_id = :current_user_id OR chatrooms.user_id = :current_user_id)", current_user_id: current_user.id)
+    @chatrooms = Chatroom.joins(task: :user)
+                         .joins("LEFT JOIN messages ON messages.chatroom_id = chatrooms.id")
+                         .where("(tasks.user_id = :current_user_id OR chatrooms.user_id = :current_user_id)", current_user_id: current_user.id)
+                         .group("chatrooms.id")
+                         .order("MAX(messages.created_at) DESC NULLS LAST")
   end
 
   def show
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new # Initialize an empty message object
+
+    mark_messages_as_read(current_user, @chatroom) # Mark messages as read
   end
 
   def new
@@ -35,5 +41,12 @@ class ChatroomsController < ApplicationController
 
   def chatroom_params
     params.require(:chatroom).permit(:name)
+  end
+
+  def mark_messages_as_read(user, chatroom)
+    messages = chatroom.messages.where(read: false).where.not(user_id: user.id)
+    messages.each do |message|
+      message.update(read: true) unless message.read
+    end
   end
 end

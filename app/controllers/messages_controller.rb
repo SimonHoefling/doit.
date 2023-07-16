@@ -4,12 +4,18 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.chatroom = @chatroom
     @message.user = current_user
+    @message.read = false
 
     if @message.save
+      NewMessageNotification.with(
+        chatroom_id: @chatroom.id,
+        sender_id: @message.user_id
+      ).deliver(current_user)
+
       ChatroomChannel.broadcast_to(
         @chatroom,
         message: render_to_string(partial: "messages/message", locals: { message: @message }),
-        sender_id: @message.user.id
+        sender_id: @message.user_id
       )
       head :ok
     else

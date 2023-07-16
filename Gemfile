@@ -79,3 +79,4 @@ end
 
 # Added after create
 gem "cloudinary"
+gem "noticed", "~> 1.6"

@@ -24,7 +24,8 @@
           align-items: center;
           justify-content: center;
           padding: 6px;
-          .fa-envelope {
+          .fa-envelope,
+          .fa-envelope-open {
             font-size: 2em;
             color: $black;
           }
