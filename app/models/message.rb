@@ -2,7 +2,7 @@ class Message < ApplicationRecord
   belongs_to :chatroom
   belongs_to :user
 
-  validates :content, presence: true
+  validates :content, presence: true # A message must have content
 
   def sender?(a_user)
     user.id == a_user.id

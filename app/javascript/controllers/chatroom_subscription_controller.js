@@ -28,11 +28,11 @@ export default class extends Controller {
     this.scrollMessagesToBottom() // Scroll to the bottom of the chatroom when a new message is received
   }
 
-
+  // Function to scroll to the bottom of the chatroom
   scrollMessagesToBottom() {
-    this.messagesTarget.scrollTop = this.messagesTarget.scrollHeight; // Function to scroll to the bottom of the chatroom
+    this.messagesTarget.scrollTop = this.messagesTarget.scrollHeight;
   }
-  // jodfa
+  // The next 3 functions below are just to build the HTML for the message
   buildMessageElement(currentUserIsSender, message) {
     return `
       <div class="message-row d-flex ${this.justifyClass(currentUserIsSender)}">
@@ -50,14 +50,16 @@ export default class extends Controller {
   userStyleClass(currentUserIsSender) {
     return currentUserIsSender ? "sender-style" : "receiver-style"
   }
-  // lfdshfd
+
+  // Reset the form once the message is sent
   resetForm(event) {
-    event.target.reset() // Reset the form once the message is sent
+    event.target.reset()
   }
 
+  // Unsubscribe from the channel when leaving the chatroom
   disconnect() {
     console.log("Unsubscribed from the chatroom")
-    this.channel.unsubscribe() // Unsubscribe from the channel when leaving the chatroom
+    this.channel.unsubscribe()
   }
 
 }

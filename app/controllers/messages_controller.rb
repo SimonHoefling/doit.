@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.chatroom = @chatroom
     @message.user = current_user
-    @message.read = false
+    @message.read = false # Set the message as unread by default for the message notification
 
     if @message.save
       NewMessageNotification.with(
@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
       )
       head :ok
     else
-      render "chatrooms/show", layout: false, status: :unprocessable_entity
+      render "chatrooms/show", layout: false, status: :unprocessable_entity # Render the chatroom show view if user tries to send an empty message
     end
   end
 

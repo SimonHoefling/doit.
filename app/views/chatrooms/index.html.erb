@@ -7,8 +7,10 @@
       <div class="chat-container">
         <div class="left">
           <% if chatroom.unread_messages?(current_user) %>
+            <%# Envelope for unread chatroom %>
             <i class="fa-regular fa-envelope" style="color: #0e0000;"></i>
           <% else %>
+            <%# Open envelope for read chatroom %>
             <i class="fa-regular fa-envelope-open" style="color: #0e0000;"></i>
           <% end %>
         </div>

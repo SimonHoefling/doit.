@@ -4,7 +4,7 @@ class ChatroomsController < ApplicationController
                          .joins("LEFT JOIN messages ON messages.chatroom_id = chatrooms.id")
                          .where("(tasks.user_id = :current_user_id OR chatrooms.user_id = :current_user_id)", current_user_id: current_user.id)
                          .group("chatrooms.id")
-                         .order("MAX(messages.created_at) DESC NULLS LAST")
+                         .order("MAX(messages.created_at) DESC NULLS LAST") # Order by the most recent message
   end
 
   def show
