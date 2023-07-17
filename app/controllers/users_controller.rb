@@ -11,6 +11,12 @@ class UsersController < ApplicationController
 
     @earned_money = @done_tasks.where(requested_by: current_user).sum(:price) # shows the earned money in the profile
     @spent_money = current_user.tasks.where(task_status: 'done').sum(:price) # shows the spent money in the profile
+    # This is needed for the blue dot in the navbar if there is a new message
+    @chatrooms = Chatroom.joins(task: :user)
+                         .joins("LEFT JOIN messages ON messages.chatroom_id = chatrooms.id")
+                         .where("(tasks.user_id = :current_user_id OR chatrooms.user_id = :current_user_id)", current_user_id: current_user.id)
+                         .group("chatrooms.id")
+                         .order("MAX(messages.created_at) DESC NULLS LAST")
   end
 
   def create
