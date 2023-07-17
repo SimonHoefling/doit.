@@ -17,6 +17,13 @@ class TasksController < ApplicationController
     else
       @tasks = Task.all
     end
+
+    # This is needed for the blue dot in the navbar if there is a new message
+    @chatrooms = Chatroom.joins(task: :user)
+                         .joins("LEFT JOIN messages ON messages.chatroom_id = chatrooms.id")
+                         .where("(tasks.user_id = :current_user_id OR chatrooms.user_id = :current_user_id)", current_user_id: current_user.id)
+                         .group("chatrooms.id")
+                         .order("MAX(messages.created_at) DESC NULLS LAST")
   end
 
   # GET /tasks/1
@@ -87,6 +94,12 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
+    # This is needed for the blue dot in the navbar if there is a new message
+    @chatrooms = Chatroom.joins(task: :user)
+                         .joins("LEFT JOIN messages ON messages.chatroom_id = chatrooms.id")
+                         .where("(tasks.user_id = :current_user_id OR chatrooms.user_id = :current_user_id)", current_user_id: current_user.id)
+                         .group("chatrooms.id")
+                         .order("MAX(messages.created_at) DESC NULLS LAST")
   end
 
   # Method to create a chatroom for a task

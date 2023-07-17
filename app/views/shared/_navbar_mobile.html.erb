@@ -22,6 +22,9 @@
     <%= link_to chatrooms_path, class: "navbar-item-container" do %>
       <div class="item">
         <%= image_tag("message-icon.png", alt: "message icon") %>
+        <% if @chatrooms&.any? { |chatroom| chatroom.unread_messages?(current_user) } %>
+          <span class="notification-dot"></span> <!-- Blue notification dot -->
+        <% end %>
         <p>Messages</p>
       </div>
     <% end %>
