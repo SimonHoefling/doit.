@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import CarouselFormController from "./carousel_form_controller"
+application.register("carousel-form", CarouselFormController)
+
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
 

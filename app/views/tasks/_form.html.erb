@@ -1,54 +1,53 @@
-<%# Log in form conatiner %>
-<div class="new-task-container">
+<%# New task form conatiner %>
+<div class="new-task-container" data-controller="carousel-form" data-action="touchstart->carousel-form#startSwipe touchend->carousel-form#endSwipe">
   <%= simple_form_for(@task, data: { controller: 'flatpickr' }) do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-    <div class="form-inputs">
-      <%= f.label :name, "Add a tilte for you task*" %>
-      <%= f.text_field :name,
-                  required: true,
-                  class: 'form-control' %>
+    <div class="form-slides">
+      <div class="form-slide active" data-carousel-form-target="slide">
+        <div class="form-inputs">
+          <%= f.label :name, "Add a title for your task*" %>
+          <%= f.text_field :name, required: true, class: 'form-control' %>
 
-      <%= f.label :description, "Write a short description for what exactly you need help with*" %>
-      <%= f.text_area :description,
-                  required: true,
-                  class: 'form-control' %>
+          <%= f.label :description, "Write a short description for what exactly you need help with*" %>
+          <%= f.text_area :description, required: true, class: 'form-control' %>
 
-      <%= f.association :category,
-                  label: "Select a category",
-                  class: 'form-control' %>
-
-      <div class="file-input">
-        <%= f.label :photos, "📷 Upload a photo (max. 4)", class: 'upload-photo' %>
-        <%= f.file_field :photos,
-                required: false,
-                multiple: true,
-                class: 'd-none' %>
-
+          <%= f.association :category, label: "Select a category", class: 'form-control' %>
+        </div>
       </div>
 
-      <%= f.label :start_time, "Add a start date (starts immediately if not selected)" %>
-      <%= f.text_field :start_time,
-                  required: false,
-                  data: { flatpickr_target: "startTime",
-                  min_date: Date.today.strftime('%Y-%m-%d') },
-                  class: 'form-control' %>
+      <div class="form-slide" data-carousel-form-target="slide">
+        <div class="form-inputs">
+          <div class="file-input">
+            <%= f.label :photos, "📷 Upload a photo (max. 4)", class: 'upload-photo' %>
+            <%= f.file_field :photos, required: false, multiple: true, class: 'd-none' %>
+          </div>
 
-      <%= f.label :location, "Where do you need to get it done*" %>
-      <%= f.text_field :location,
-                  required: true,
-                  class: 'form-control' %>
+          <%= f.label :start_time, "Add a start date (starts immediately if not selected)" %>
+          <%= f.text_field :start_time, required: false, data: { flatpickr_target: "startTime", min_date: Date.today.strftime('%Y-%m-%d') }, class: 'form-control' %>
 
-      <%= f.label :price, "Add a price (in IDR)*" %>
-      <%= f.text_field :price,
-                  required: true,
-                  class: 'form-control' %>
+          <%= f.label :location, "Where do you need to get it done*" %>
+          <%= f.text_field :location, required: true, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-slide" data-carousel-form-target="slide">
+        <div class="form-inputs">
+          <%= f.label :price, "Add a price (in IDR)*" %>
+          <%= f.text_field :price, required: true, class: 'form-control' %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, class: 'form-btn' %>
+        </div>
+      </div>
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit,
-                  class: 'form-btn' %>
+    <div class="indicators">
+      <span class="indicator active" data-action="click->carousel-form#goToSlide" data-slide="0"></span>
+      <span class="indicator" data-action="click->carousel-form#goToSlide" data-slide="1"></span>
+      <span class="indicator" data-action="click->carousel-form#goToSlide" data-slide="2"></span>
     </div>
   <% end %>
 </div>
