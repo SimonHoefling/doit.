@@ -7,6 +7,78 @@
 
 // CSS rules for the sign up on phones
 @media only screen and (max-width: 480px) {
+  // New Task form container
+  .signup-form-container {
+    width: 95%;
+    margin: 0 auto;
+    padding-bottom: 100px;
+    font-family: $body-font, Arial, sans-serif;
+    position: relative; // added this to position the indicators relative to this container
+
+    .form-slides {
+      height: 400px;
+
+      .form-slide {
+        overflow: auto;
+        display: none;
+
+        &.active {
+          display: block;
+        }
+      }
+    }
+
+    .form-inputs {
+      margin: 20px 0 20px 0;
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        margin-top: 20px;
+      }
+      .form-control,
+      .form-control-file {
+        margin-bottom: 20px;
+      }
+    }
+
+    .form-inputs input[type="text"],
+    .form-inputs textarea,
+    .form-inputs select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .form-inputs .file-input {
+      margin-top: 10px;
+    }
+
+    .indicators {
+      position: absolute; // set position to absolute
+      bottom: 10px; // distance from the bottom
+      width: 100%; // full width of the parent container
+      display: flex;
+      justify-content: center;
+
+      .indicator {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background-color: #bbb;
+        border-radius: 50%;
+        margin: 0 5px;
+        cursor: pointer;
+
+        &.active {
+          background-color: #717171;
+        }
+      }
+    }
+  }
   .back-container {
     width: 95%;
     margin: 4% auto;

@@ -1,67 +1,89 @@
-<div class="new-task-container">
-  <div class="top-container">
-    <div class="text-center">
-      <h1 class="doit mt-4 mb-4">doit.</h1>
-    </div>
+<div class="top-container">
+  <div class="text-center">
+    <h1 class="doit mt-4 mb-4">doit.</h1>
   </div>
+</div>
 
+<div class="signup-form-container"
+     data-controller="signup-form"
+     data-action="touchstart->signup-form#startSwipe touchend->signup-form#endSwipe">
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
     <%= f.error_notification %>
 
-    <div class="form-inputs" data-controller="hide-show-password">
-      <%= f.input :first_name,
-                  label: "First name",
-                  required: true,
-                  autofocus: true,
-                  class: 'form-control' %>
-      <%= f.input :last_name,
-                  required: true,
-                  label: "Last name",
-                  class: 'form-control' %>
-      <%= f.input :zip_code,
-                  required: true,
-                  label: "Zip code",
-                  class: 'form-control' %>
-      <%= f.input :street_name,
-                  required: true,
-                  label: "Street name",
-                  class: 'form-control' %>
-      <%= f.input :house_number,
-                  required: true,
-                  label: "House/Unit number",
-                  class: 'form-control' %>
-      <div class="file-input">
-          <%= f.label :avatar, "📷 Upload a photo", class: 'upload-photo' %>
-          <%= f.file_field :avatar,
-                required: false,
-                class: 'd-none' %>
+    <div class="form-slides">
+      <div class="form-slide active" data-signup-form-target="slide">
+        <div class="form-inputs">
+          <%= f.input :first_name,
+                      label: "First name",
+                      required: true,
+                      autofocus: true,
+                      class: 'form-control' %>
+          <%= f.input :last_name,
+                      required: true,
+                      label: "Last name",
+                      class: 'form-control' %>
+          <%= f.input :zip_code,
+                      required: true,
+                      label: "Zip code",
+                      class: 'form-control' %>
+        </div>
       </div>
-      <%= f.input :email,
-                  required: true,
-                  label: "Email",
-                  class: 'form-control' %>
-      <%= f.input :password,
-                  required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password", type: "password" },
-                  class: 'form-control' %>
-      <%= f.input :password_confirmation,
-                  required: true,
-                  input_html: { autocomplete: "new-password", type: "password" },
-                  class: 'form-control' %>
-      <label>
-        <%= check_box_tag 'password_visibility', 1, false %>
-        Show passwords
-      </label>
+
+      <div class="form-slide" data-signup-form-target="slide">
+        <div class="form-inputs" data-controller="hide-show-password">
+          <%= f.input :street_name,
+                      required: true,
+                      label: "Street name",
+                      class: 'form-control' %>
+          <%= f.input :house_number,
+                      required: true,
+                      label: "House/Unit number",
+                      class: 'form-control' %>
+              <%= f.label :avatar, "📷 Upload a photo", class: 'upload-photo' %>
+              <%= f.file_field :avatar,
+                    required: false,
+                    class: 'd-none' %>
+        </div>
+      </div>
+
+      <div class="form-slide" data-signup-form-target="slide">
+        <div class="form-inputs" data-controller="hide-show-password">
+          <%= f.input :email,
+                      required: true,
+                      label: "Email",
+                      class: 'form-control' %>
+          <%= f.input :password,
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password", type: "password" },
+                      class: 'form-control' %>
+          <%= f.input :password_confirmation,
+                      required: true,
+                      input_html: { autocomplete: "new-password", type: "password" },
+                      class: 'form-control' %>
+          <label>
+            <%= check_box_tag 'password_visibility', 1, false %>
+            Show passwords
+          </label>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Sign up", class: 'form-btn' %>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up", class: 'form-btn' %>
+    <div class="indicators">
+      <span class="indicator active" data-action="click->carousel-form#goToSlide" data-slide="0"></span>
+      <span class="indicator" data-action="click->carousel-form#goToSlide" data-slide="1"></span>
+      <span class="indicator" data-action="click->carousel-form#goToSlide" data-slide="2"></span>
     </div>
+
   <% end %>
 
-  <%= link_to :back, class: "back-container" do %>
-    <i class="fa-solid fa-arrow-left" style="color: #0e0000;"></i>
-    <p class="sign-up-back-link">Log in</p>
-  <% end %>
 </div>
+
+<%= link_to :back, class: "back-container" do %>
+  <i class="fa-solid fa-arrow-left" style="color: #0e0000;"></i>
+  <p class="sign-up-back-link">Log in</p>
+<% end %>

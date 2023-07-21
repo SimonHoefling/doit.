@@ -21,3 +21,6 @@ application.register("hide-show-password", HideShowPasswordController)
 
 import ImageGridModalController from "./image_grid_modal_controller"
 application.register("image-grid-modal", ImageGridModalController)
+
+import SignupFormController from "./signup_form_controller"
+application.register("signup-form", SignupFormController)
