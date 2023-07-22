@@ -6,13 +6,13 @@ class TasksController < ApplicationController
     @sort_option = params[:sort]
 
     case @sort_option
-    when "newest"
+    when 'newest'
       @tasks = Task.order(created_at: :desc)
-    when "oldest"
+    when 'oldest'
       @tasks = Task.order(created_at: :asc)
-    when "category"
+    when 'category'
       @categories = Category.all
-    when "highest_payment"
+    when 'highest_payment'
       @tasks = Task.order(price: :desc)
     else
       @tasks = Task.all

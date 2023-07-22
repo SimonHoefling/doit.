@@ -1,5 +1,6 @@
 class ChatroomsController < ApplicationController
   def index
+    # This checks if a chatroom got a message from anther user
     @chatrooms = Chatroom.joins(task: :user)
                          .joins("LEFT JOIN messages ON messages.chatroom_id = chatrooms.id")
                          .where("(tasks.user_id = :current_user_id OR chatrooms.user_id = :current_user_id)", current_user_id: current_user.id)
