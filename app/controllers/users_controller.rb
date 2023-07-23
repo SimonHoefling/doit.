@@ -19,6 +19,7 @@ class UsersController < ApplicationController
                          .order("MAX(messages.created_at) DESC NULLS LAST")
   end
 
+  # Method to create a new user
   def create
     @user = User.new(sign_up_params)
     if @user.save
