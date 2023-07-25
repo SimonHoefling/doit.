@@ -11,7 +11,7 @@
   .signup-form-container {
     width: 95%;
     margin: 0 auto;
-    padding-bottom: 100px;
+    padding-bottom: 70px;
     font-family: $body-font, Arial, sans-serif;
     position: relative; // added this to position the indicators relative to this container
 
@@ -79,20 +79,14 @@
       }
     }
   }
-  .back-container {
+  .signup-back-container {
     width: 95%;
-    margin: 4% auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    text-decoration: none;
-    .fa-solid {
-      font-size: 22px;
-      margin-right: 10px;
-    }
-    .sign-up-back-link {
-      color: $black;
-      font-size: 22px;
+    margin: 0 auto;
+    a {
+      font-weight: bold;
+      text-decoration: none;
+      color: #0E0000;
+      letter-spacing: 1px;
     }
   }
 }
