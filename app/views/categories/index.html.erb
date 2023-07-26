@@ -17,11 +17,10 @@
     <div class="grid-item">
       <%= link_to category, class: "category-link" do %>
         <% if category.photo.attached? %>
-          <%= cl_image_tag(category.photo, class: "category-image") %>
+          <%= cl_image_tag(category.photo.key, class: "category-image") %>
         <% else %>
           <%= image_tag "default-category.jpg", alt: "category-default-image", class: "category-image" %>
         <% end %>
-        <h3><%= category.name %></h3>
       <% end %>
     </div>
   <% end %>

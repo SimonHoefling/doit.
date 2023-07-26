@@ -11,7 +11,7 @@ class TasksController < ApplicationController
     when 'oldest'
       @tasks = Task.order(created_at: :asc)
     when 'category'
-      @categories = Category.all
+      @categories = Category.all.order(:name) # :name is for gets the categories alphabeticly
     when 'highest_payment'
       @tasks = Task.order(price: :desc)
     else
