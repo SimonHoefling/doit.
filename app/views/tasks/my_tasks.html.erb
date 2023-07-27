@@ -32,24 +32,53 @@
 
 	</div>
 
+	<%# Tasks where i have appplied for %>
 	<% if @started_tasks.any? && @started_tasks.pluck(:requested_by_id).include?(current_user.id) %>
-		<h3 class="mb-3">Tasks where I have applied for</h3>
-		<% @started_tasks.each do |task| %>
-			<% if task.requested_by_id == current_user.id %>
-				<%= link_to task, class: "name-link" do %>
-					<h4><%= task.name %></h4>
-				<% end %>
-				<p>Posted by: <%= task.user.first_name %> <%= task.user.last_name %></p>
-				<p>Task status:
-					<% if task.task_status == "requested" %>
-						requested
-					<% elsif task.task_status == "in_work" %>
-						your request has been accepted
-					<% end %>
-				</p>
+		<div class="text-center">
+			<h3>Applied tasks</h3>
+		</div>
+
+
+		<div class="applied-container">
+
+			<% @started_tasks.each do |task| %>
+
+				<div class="applied-card">
+
+					<div class="top-container">
+						<% if task.user.avatar.present? %>
+							<%= image_tag task.user.avatar, class: "avatar" %>
+						<% else %>
+							<%= image_tag 'default-profile.jpg', class: "avatar" %>
+						<% end %>
+						<p><%= task.user.first_name %> <%= task.user.last_name %></p>
+					</div>
+
+					<div class="bottom-container">
+						<% if task.requested_by_id == current_user.id %>
+							<%= link_to task, class: "name-link" do %>
+								<h4><%= task.name %></h4>
+								<p><%= task.description %></p>
+							<% end %>
+
+							<div class="text-center">
+								<h5 class="status-text mt-2">TASK STATUS</h5>
+								<p class="pb-2">
+									<% if task.task_status == "requested" %>
+										REQUESTED <i class="fa-regular fa-hourglass-half" style="color: #e67e22;"></i>
+									<% elsif task.task_status == "in_work" %>
+										ACCEPTED <i class="fa-solid fa-check" style="color: #6fd516;"></i>
+									<% end %>
+								</p>
+							</div>
+						<% end %>
+					</div>
+
+				</div>
+
 			<% end %>
-		<% end %>
-		<hr>
+
+		</div>
 	<% end %>
 
 	<%# Requested Tasks %>

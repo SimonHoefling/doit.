@@ -1,0 +1,44 @@
+// CSS rules for the applied task card for everything that bigger than a phone screen
+@media only screen and (min-width: 481px) {
+}
+
+// CSS rules for the applied task card on phones
+@media only screen and (max-width: 480px) {
+  .applied-container {
+    margin-bottom: 130px;
+  }
+  .applied-card {
+    margin-top: 30px;
+    background-color: $white;
+    border-radius: $main-border-radius;
+    .top-container {
+      position: relative;
+      top: -16px;
+      display: flex;
+      align-items: center;
+      img {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        margin-left: 12px;
+      }
+      p {
+        padding-left: 8px;
+      }
+    }
+    .bottom-container {
+      h4,
+      p {
+        color: $black;
+        padding: 0 10px;
+      }
+      .status-text {
+        font-weight: bold;
+      }
+      .fa-regular,
+      .fa-solid {
+        font-size: 20px;
+      }
+    }
+  }
+}
