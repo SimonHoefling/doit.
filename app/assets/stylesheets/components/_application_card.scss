@@ -1,0 +1,57 @@
+// CSS rules for the application card for everything that bigger than a phone screen
+@media only screen and (min-width: 481px) {
+
+}
+
+// CSS rules for the Task new page on phones
+@media only screen and (max-width: 480px) {
+  .applications-container {
+    margin-bottom: 120px;
+    .application-card {
+      margin-top: 30px;
+      background-color: $white;
+      border-radius: $main-border-radius;
+      .top-container {
+        position: relative;
+        top: -16px;
+        img {
+          width: 70px;
+          height: 70px;
+          border-radius: 50%;
+          margin-left: 12px;
+        }
+        a {
+          text-decoration: none;
+          padding-left: 8px;
+          color: $black;
+        }
+      }
+      a {
+        text-decoration: none;
+        color: $black;
+        h4,
+        p {
+          padding: 0 10px;
+        }
+      }
+      .button-container {
+        display: flex;
+        justify-content: end;
+        button {
+          width: 100px;
+          height: 30px;
+          margin: 8px;
+          border: none;
+          border-radius: 999px;
+          color: $white;
+        }
+        .accept-button {
+          background-color: $green;
+        }
+        .dismiss-button {
+          background-color: red;
+        }
+      }
+    }
+  }
+}

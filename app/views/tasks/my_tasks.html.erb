@@ -1,99 +1,123 @@
 <!-- my_tasks.html.erb -->
 
 <div class="top-bar-container">
-  <div class="left">
-    <%= link_to user_path(current_user) do %>
-      <i class="fa-solid fa-arrow-left" style="color: #0E0000;"></i>
-    <% end %>
-  </div>
-  <div class="right">
-    <h4>Task management</h4>
-  </div>
+	<div class="left">
+		<%= link_to user_path(current_user) do %>
+			<i class="fa-solid fa-arrow-left" style="color: #0E0000;"></i>
+		<% end %>
+	</div>
+	<div class="right">
+		<h4>Task management</h4>
+	</div>
 </div>
 
 <div class="my-tasks-container">
 
-  <%# My active tasks %>
-  <div class="active-tasks-section">
+	<%# My active tasks %>
+	<div class="active-tasks-section">
 
-    <% if @tasks.any? %>
-      <h3 class="mb-3"><i class="fa-solid fa-list-check" style="color: #0e0000;"></i> My active tasks</h3>
-        <% @tasks.each do |task| %>
-          <% if task.user == current_user && task.task_status == "available" %>
-            <p class="name-link">- <%= link_to task.name, task_path(task) %></p>
-          <% end %>
-        <% end %>
-        <hr>
-      <% else %>
-        <h3>My active tasks</h3>
-        <p>You don't have any tasks posted...</p>
-        <hr>
-    <% end %>
+		<% if @tasks.any? %>
+			<h3 class="mb-3"><i class="fa-solid fa-list-check" style="color: #0e0000;"></i> My active tasks</h3>
+				<% @tasks.each do |task| %>
+					<% if task.user == current_user && task.task_status == "available" %>
+						<p class="name-link">- <%= link_to task.name, task_path(task) %></p>
+					<% end %>
+				<% end %>
+				<hr>
+			<% else %>
+				<h3>My active tasks</h3>
+				<p>You don't have any tasks posted...</p>
+				<hr>
+		<% end %>
 
-  </div>
+	</div>
 
-  <% if @started_tasks.any? && @started_tasks.pluck(:requested_by_id).include?(current_user.id) %>
-    <h3 class="mb-3">Tasks where I have applied for</h3>
-    <% @started_tasks.each do |task| %>
-      <% if task.requested_by_id == current_user.id %>
-        <%= link_to task, class: "name-link" do %>
-          <h4><%= task.name %></h4>
-        <% end %>
-        <p>Posted by: <%= task.user.first_name %> <%= task.user.last_name %></p>
-        <p>Task status:
-          <% if task.task_status == "requested" %>
-            requested
-          <% elsif task.task_status == "in_work" %>
-            your request has been accepted
-          <% end %>
-        </p>
-      <% end %>
-    <% end %>
-    <hr>
-  <% end %>
+	<% if @started_tasks.any? && @started_tasks.pluck(:requested_by_id).include?(current_user.id) %>
+		<h3 class="mb-3">Tasks where I have applied for</h3>
+		<% @started_tasks.each do |task| %>
+			<% if task.requested_by_id == current_user.id %>
+				<%= link_to task, class: "name-link" do %>
+					<h4><%= task.name %></h4>
+				<% end %>
+				<p>Posted by: <%= task.user.first_name %> <%= task.user.last_name %></p>
+				<p>Task status:
+					<% if task.task_status == "requested" %>
+						requested
+					<% elsif task.task_status == "in_work" %>
+						your request has been accepted
+					<% end %>
+				</p>
+			<% end %>
+		<% end %>
+		<hr>
+	<% end %>
 
-  <%# Requested Tasks %>
-  <% if @requested_tasks.any? %>
-    <div class="requested-tasks-section">
-    <h3 class="mb-3">Requested Tasks</h3>
-      <% @requested_tasks.each do |task| %>
-        <% if current_user == task.user && task.task_status == "requested" %>
-          <%= link_to task do %>
-            <h4 class="name-link"><%= task.name %></h4>
-          <% end %>
-          <% if task.requested_by %>
-            <p>Requested By: <%= link_to "#{task.requested_by.first_name} #{task.requested_by.last_name}", user_path(task.requested_by) %></p>
-            <% if current_user == task.user %>
-              <div class="button-container">
-                <%= button_to "ACCEPT", accept_request_task_path(task), method: :patch %>
-                <%= button_to "REJECT", reject_request_task_path(task), method: :patch %>
-              </div>
-            <% end %>
-          <% else %>
-            <p>Requested By: N/A</p>
-          <% end %>
-        <% end %>
-      <% end %>
-    </div>
-  <% end %>
+	<%# Requested Tasks %>
+	<% if @requested_tasks.any? %>
 
-  <%# Accepted Tasks %>
-  <% if @accepted_tasks.any? %>
-    <div class="accepted-tasks-section">
-      <h3 class="mb-3">Accepted Tasks</h3>
-      <% @accepted_tasks.each do |accepted_task| %>
-        <% if accepted_task.task_status == "in_work" %>
-          <%= link_to accepted_task, class: "name-link" do %>
-            <h4><%= accepted_task.name %></h4>
-          <% end %>
-          <p>When the task has been completed and you have paid the worker mark it as done.</p>
-          <% if current_user == accepted_task.user %>
-            <%= button_to "Done", done_task_task_path(accepted_task), class: "done-btn", method: :patch %>
-          <% end %>
-        <% end %>
-      <% end %>
-      <hr>
-    </div>
-  <% end %>
+		<div class="text-center">
+			<h3>Applicatins</h3>
+		</div>
+
+		<div class="applications-container">
+
+			<% @requested_tasks.each do |task| %>
+				<div class="application-card">
+					<% if current_user == task.user && task.task_status == "requested" %>
+						<% if task.requested_by %>
+						<div class="top-container">
+							<% user_avatar = task.requested_by.avatar %>
+							<% if user_avatar.present? %>
+								<%= image_tag user_avatar, class: "avatar" %>
+							<% else %>
+								<%= image_tag 'default-profile.jpg', class: "avatar" %>
+							<% end %>
+
+							<%= link_to "#{task.requested_by.first_name} #{task.requested_by.last_name}", user_path(task.requested_by) %>
+						</div>
+							<%= link_to task do %>
+								<h4><%= task.name %></h4>
+								<p><%= task.description %></p>
+							<% end %>
+
+						<% if current_user == task.user %>
+							<div class="button-container">
+								<%= button_to "ACCEPT", accept_request_task_path(task), method: :patch, class: "accept-button" %>
+								<%= button_to "DISMISS", reject_request_task_path(task), method: :patch, class: "dismiss-button" %>
+							</div>
+						<% end %>
+
+					<% else %>
+						<p>Requested By: N/A</p>
+					<% end %>
+				</div>
+
+				<% end %>
+			<% end %>
+
+		</div>
+
+	<% end %>
+
+
+
+	<%# Accepted Tasks %>
+	<% if @accepted_tasks.any? %>
+		<div class="accepted-tasks-section">
+			<h3 class="mb-3">Accepted Tasks</h3>
+			<% @accepted_tasks.each do |accepted_task| %>
+				<% if accepted_task.task_status == "in_work" %>
+					<%= link_to accepted_task, class: "name-link" do %>
+						<h4><%= accepted_task.name %></h4>
+					<% end %>
+					<p>When the task has been completed and you have paid the worker mark it as done.</p>
+					<% if current_user == accepted_task.user %>
+						<%= button_to "Done", done_task_task_path(accepted_task), class: "done-btn", method: :patch %>
+					<% end %>
+				<% end %>
+			<% end %>
+			<hr>
+		</div>
+	<% end %>
 
 </div>

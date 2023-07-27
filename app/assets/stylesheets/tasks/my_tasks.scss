@@ -20,34 +20,16 @@
         color: $dark-gray;
       }
     }
-    // Requested Tasks
-    .requested-tasks-section {
-      a {
-        text-decoration: none;
-        color: $black;
-      }
+    .done-btn {
+      width: 120px;
+      font-size: 18px;
+      border-radius: 999px;
+      border: none;
+      margin-top: 6px;
     }
-    .button-container {
-      display: flex;
-      justify-content: space-evenly;
-      margin: 10px 0;
-      button {
-        width: 120px;
-        font-size: 18px;
-        border-radius: 999px;
-        border: none;
-      }
+    .name-link {
+      color: $dark-gray;
+      text-decoration: none;
     }
-      .done-btn {
-        width: 120px;
-        font-size: 18px;
-        border-radius: 999px;
-        border: none;
-        margin-top: 6px;
-      }
-      .name-link {
-        color: $dark-gray;
-        text-decoration: none;
-      }
   }
 }
