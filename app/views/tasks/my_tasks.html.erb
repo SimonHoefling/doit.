@@ -14,23 +14,30 @@
 <div class="my-tasks-container">
 
 	<%# My active tasks %>
-	<div class="active-tasks-section">
+  <div class="active-tasks-section my-4">
 
-		<% if @tasks.any? %>
-			<h3 class="mb-3"><i class="fa-solid fa-list-check" style="color: #0e0000;"></i> My active tasks</h3>
-				<% @tasks.each do |task| %>
-					<% if task.user == current_user && task.task_status == "available" %>
-						<p class="name-link">- <%= link_to task.name, task_path(task) %></p>
-					<% end %>
-				<% end %>
-				<hr>
-			<% else %>
-				<h3>My active tasks</h3>
-				<p>You don't have any tasks posted...</p>
-				<hr>
-		<% end %>
+    <% if @tasks.any? { |task| task.user == current_user && task.task_status == "available" } %>
+      <select data-controller="task-dropdown" class="form-control mytasks-form-control">
+        <!-- Add a default option with value="" to prompt the user to select a task -->
+        <option value="">MY ACTIVE TASKS</option>
+        <% @tasks.each do |task| %>
+          <% if task.user == current_user && task.task_status == "available" %>
+            <option value="<%= task_path(task) %>"><%= task.name %></option>
+          <% end %>
+        <% end %>
+      </select>
+    <% else %>
+      <div class="text-center">
+        <h3>My active tasks</h3>
+        <p>Currently no active tasks.</p>
+      </div>
+    <% end %>
 
-	</div>
+  </div>
+
+
+
+
 
 	<%# Tasks where i have appplied for %>
 	<% if @started_tasks.any? && @started_tasks.pluck(:requested_by_id).include?(current_user.id) %>

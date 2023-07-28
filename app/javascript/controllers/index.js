@@ -24,3 +24,6 @@ application.register("image-grid-modal", ImageGridModalController)
 
 import SignupFormController from "./signup_form_controller"
 application.register("signup-form", SignupFormController)
+
+import TaskDropdownController from "./task_dropdown_controller"
+application.register("task-dropdown", TaskDropdownController)
