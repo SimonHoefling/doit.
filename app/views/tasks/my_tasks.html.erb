@@ -35,10 +35,6 @@
 
   </div>
 
-
-
-
-
 	<%# Tasks where i have appplied for %>
 	<% if @started_tasks.any? && @started_tasks.pluck(:requested_by_id).include?(current_user.id) %>
 		<div class="text-center">
@@ -135,25 +131,47 @@
 
 	<% end %>
 
-
-
 	<%# Accepted Tasks %>
 	<% if @accepted_tasks.any? %>
-		<div class="accepted-tasks-section">
-			<h3 class="mb-3">Accepted Tasks</h3>
+
+    <div class="text-center">
+			<h3>Accepted Tasks</h3>
+    </div>
+
 			<% @accepted_tasks.each do |accepted_task| %>
-				<% if accepted_task.task_status == "in_work" %>
-					<%= link_to accepted_task, class: "name-link" do %>
-						<h4><%= accepted_task.name %></h4>
-					<% end %>
-					<p>When the task has been completed and you have paid the worker mark it as done.</p>
-					<% if current_user == accepted_task.user %>
-						<%= button_to "Done", done_task_task_path(accepted_task), class: "done-btn", method: :patch %>
-					<% end %>
-				<% end %>
+        <div class="accepted-card">
+
+          <% if accepted_task.task_status == "in_work" %>
+
+            <div class="top-container">
+              <% if accepted_task.requested_by.avatar.present? %>
+                <%= image_tag accepted_task.requested_by.avatar %>
+              <% else %>
+                <%= image_tag 'default-profile.jpg' %>
+              <% end %>
+              <p>
+                <%= accepted_task.requested_by.first_name %>
+                <%= accepted_task.requested_by.last_name %>
+              </p>
+            </div>
+
+
+            <div class="bottom-container">
+              <%= link_to accepted_task do %>
+                <h5><%= accepted_task.name %></h5>
+                <p>When the task has been completed and you have paid the worker mark it as done.</p>
+              <% end %>
+              <% if current_user == accepted_task.user %>
+                <div class="text-center">
+                  <%= button_to "DONE", done_task_task_path(accepted_task), method: :patch %>
+                </div>
+              <% end %>
+            </div>
+
+          <% end %>
+        </div>
+
 			<% end %>
-			<hr>
-		</div>
 	<% end %>
 
 </div>

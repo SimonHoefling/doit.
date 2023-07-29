@@ -1,0 +1,50 @@
+// CSS rules for the accepted card for everything that bigger than a phone screen
+@media only screen and (min-width: 481px) {
+
+}
+
+// CSS rules for the accepted task card on phones
+@media only screen and (max-width: 480px) {
+  .accepted-card {
+    margin-top: 30px;
+    background-color: $white;
+    border-radius: $main-border-radius;
+    .top-container {
+      position: relative;
+      top: -16px;
+      display: flex;
+      align-items: center;
+      img {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        margin-left: 12px;
+      }
+      p {
+        padding-left: 8px;
+      }
+    }
+    .bottom-container {
+      position: relative;
+      top: -16px;
+      padding: 0 8px;
+      a {
+        text-decoration: none;
+        color: $black;
+        padding: 0 10px;
+      }
+      button {
+        position: relative;
+        top: -16px;
+        width: 100px;
+        height: 30px;
+        margin: 8px;
+        border: none;
+        border-radius: 999px;
+        letter-spacing: 2px;
+        color: $white;
+        background-color: $green;
+      }
+    }
+  }
+}
