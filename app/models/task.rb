@@ -10,6 +10,9 @@ class Task < ApplicationRecord
 
   before_validation :set_default_task_status, on: :create
 
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
+
   # Method to start a task request (only available if you are not the task owner)
   def start_request(user)
     puts "start_request method called"

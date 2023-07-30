@@ -122,6 +122,7 @@ GEM
       rake
     font-awesome-sass (6.4.0)
       sassc (~> 2.0)
+    geocoder (1.8.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
     http (5.1.1)
@@ -297,6 +298,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   font-awesome-sass (~> 6.1)
+  geocoder
   jbuilder
   jsbundling-rails
   noticed (~> 1.6)

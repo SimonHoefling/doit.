@@ -10,7 +10,7 @@ Task.create(
       price: 400_000.0,
       category: Category.find_by(name: 'Beauty'),
       user: User.first,
-      location: 'Denpasar'
+      location: 'Canggu, Frii Hotel'
     },
     {
       name: 'Fixing a Leaky Faucet',
@@ -18,7 +18,7 @@ Task.create(
       price: 220_000.0,
       category: Category.find_by(name: 'Handyman'),
       user: User.second,
-      location: 'Ubud'
+      location: 'Kuta, Motel Mexicola'
     },
     {
       name: 'Personal Fitness Trainer',
@@ -26,7 +26,7 @@ Task.create(
       price: 430_000.0,
       category: Category.find_by(name: 'Sports'),
       user: User.third,
-      location: 'Berawa'
+      location: 'Kuta, Sky Garden'
     },
     {
       name: 'Furniture Assembly and Disassembly',
@@ -34,7 +34,7 @@ Task.create(
       price: 120_000.0,
       category: Category.find_by(name: 'Moving'),
       user: User.fourth,
-      location: 'Kuta'
+      location: 'Kuta, Beachwalk Mall'
     },
     {
       name: 'Math Tutor for High School Student',
