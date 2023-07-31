@@ -32,6 +32,7 @@ class TasksController < ApplicationController
     @user_can_create_chatroom = @task.user_can_create_chatroom(current_user)
     @task_status = @task.task_status || "default"
     @is_own_task = current_user == @task.user
+    # Below is for the map
     if @task.latitude.present? && @task.longitude.present?
       @markers = [{
         lat: @task.latitude,
@@ -41,7 +42,6 @@ class TasksController < ApplicationController
       @markers = []
     end
   end
-
 
   # GET /tasks/my_tasks
   def my_tasks

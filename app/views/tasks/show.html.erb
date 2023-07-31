@@ -108,15 +108,15 @@ somewhere %>
 </div>
 
 <%# Task photos %>
-<div class="task-photo-grid-container" data-controller="image-grid-modal">
-  <% if @task.photos.attached? %>
+<% if @task.photos.attached? %>
+  <div class="task-photo-grid-container" data-controller="image-grid-modal">
     <% @task.photos.each do |photo| %>
       <div class="grid-item" data-action="click->image-grid-modal#openModal">
         <%= cl_image_tag photo.key, data: { src: photo.url }, "data-src": photo.url %>
       </div>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>
 
 <div style="width: 95%; height: 200px; margin: 0 auto 120px auto; border-radius: 16px;"
   data-controller="map"

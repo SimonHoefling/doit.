@@ -42,7 +42,7 @@ Task.create(
       price: 100_000.0,
       category: Category.find_by(name: 'Education'),
       user: User.fifth,
-      location: 'Uluwatu'
+      location: 'Ubud, Black Sheep'
     },
     {
       name: 'Makeup Artist for Photoshoot',
@@ -50,7 +50,7 @@ Task.create(
       price: 230_000.0,
       category: Category.find_by(name: 'Beauty'),
       user: User.first,
-      location: 'Denpasar'
+      location: 'Ubud, Mudra Cafe'
     },
     {
       name: 'Painting a Room',
@@ -58,7 +58,7 @@ Task.create(
       price: 85_000.00,
       category: Category.find_by(name: 'Handyman'),
       user: User.second,
-      location: 'Ubud'
+      location: 'Ubud, Clear Cafe'
     },
     {
       name: 'Running Coach',
@@ -66,7 +66,7 @@ Task.create(
       price: 120_000.0,
       category: Category.find_by(name: 'Sports'),
       user: User.third,
-      location: 'Berawa'
+      location: 'Uluwatu, Three Steps coffee'
     },
     {
       name: 'Help with Heavy Lifting',
@@ -74,7 +74,7 @@ Task.create(
       price: 95_000.0,
       category: Category.find_by(name: 'Moving'),
       user: User.fourth,
-      location: 'Kuta'
+      location: 'Ulu Cliffhouse'
     },
     {
       name: 'English Language Tutor',
@@ -82,7 +82,7 @@ Task.create(
       price: 120_000.00,
       category: Category.find_by(name: 'Education'),
       user: User.fifth,
-      location: 'Uluwatu'
+      location: 'Melasti Beach Ungasan'
     },
     {
       name: 'Manicure and Pedicure Services',
@@ -90,7 +90,7 @@ Task.create(
       price: 50_000.0,
       category: Category.find_by(name: 'Beauty'),
       user: User.first,
-      location: 'Denpasar'
+      location: 'Bali, Semarapura'
     },
     {
       name: 'Fixing a Broken Shelf',
@@ -98,7 +98,7 @@ Task.create(
       price: 90_000.0,
       category: Category.find_by(name: 'Handyman'),
       user: User.second,
-      location: 'Ubud'
+      location: 'Bali, Selemadeg'
     },
     {
       name: 'Yoga Instructor for Private Sessions',
@@ -106,7 +106,7 @@ Task.create(
       price: 170_000.0,
       category: Category.find_by(name: 'Sports'),
       user: User.third,
-      location: 'Berawa'
+      location: 'Bali, Seminyak'
     },
     {
       name: 'Packing and Unpacking Assistance',
@@ -114,7 +114,7 @@ Task.create(
       price: 45_000.00,
       category: Category.find_by(name: 'Moving'),
       user: User.fourth,
-      location: 'Kuta'
+      location: 'Bali, Pulukan'
     },
     {
       name: 'Science Tutor for Middle School Student',
@@ -146,7 +146,7 @@ Task.create(
       price: 85_000.0,
       category: Category.find_by(name: 'Sports'),
       user: User.third,
-      location: 'Berawa'
+      location: 'Bali, Seminyak'
     },
     {
       name: 'Furniture Disposal and Recycling',
@@ -162,7 +162,7 @@ Task.create(
       price: 30_000.00,
       category: Category.find_by(name: 'Education'),
       user: User.fifth,
-      location: 'Uluwatu'
+      location: 'Bali, Pulukan'
     },
     {
       name: 'SAT Exam Prep Tutor',
@@ -186,7 +186,7 @@ Task.create(
       price: 45_000.0,
       category: Category.find_by(name: 'Handyman'),
       user: User.third,
-      location: 'Berawa'
+      location: 'Bali, Seminyak'
     },
     {
       name: 'Tennis Coach for Beginners',
@@ -210,7 +210,7 @@ Task.create(
       price: 50_000.00,
       category: Category.find_by(name: 'Education'),
       user: User.first,
-      location: 'Denpasar'
+      location: 'Bali, Pulukan'
     },
     {
       name: 'Bridal Hair and Makeup Services',
@@ -226,7 +226,7 @@ Task.create(
       price: 170_000.0,
       category: Category.find_by(name: 'Handyman'),
       user: User.third,
-      location: 'Berawa'
+      location: 'Bali, Seminyak'
     },
     {
       name: 'Personal Basketball Trainer',
@@ -271,7 +271,7 @@ Task.create(
       price: 80_000.00,
       category: Category.find_by(name: 'Babysitting'),
       user: User.third,
-      location: 'Umalas'
+      location: 'Bali, Abiansemal'
     },
     {
       name: 'Date Night Babysitter',
@@ -279,7 +279,7 @@ Task.create(
       price: 45_000.00,
       category: Category.find_by(name: 'Babysitting'),
       user: User.fourth,
-      location: 'Umalas'
+      location: 'Bali, Pulukan'
     },
     {
       name: 'Toddler Playgroup Organizer',
@@ -335,7 +335,7 @@ Task.create(
       price: 650_000.00,
       category: Category.find_by(name: 'Cooking'),
       user: User.first,
-      location: 'Umalas'
+      location: 'Bali, Abiansemal'
     },
     {
       name: 'Meal Prep for the Week',
@@ -383,7 +383,7 @@ Task.create(
       price: 85_000.00,
       category: Category.find_by(name: 'Events'),
       user: User.second,
-      location: 'Kuta'
+      location: 'Bali, Pulukan'
     },
     {
       name: 'Wedding Planner Assistant',
@@ -399,7 +399,7 @@ Task.create(
       price: 150_000.00,
       category: Category.find_by(name: 'Events'),
       user: User.fourth,
-      location: 'Umalas'
+      location: 'Bali, Abiansemal'
     },
     {
       name: 'Event Emcee/MC',
@@ -471,7 +471,7 @@ Task.create(
       price: 50_000.00,
       category: Category.find_by(name: 'Organizing'),
       user: User.third,
-      location: 'Umalas'
+      location: 'Bali, Abiansemal'
     },
     {
       name: 'Garage Storage Solutions',
@@ -487,7 +487,7 @@ Task.create(
       price: 35_000.00,
       category: Category.find_by(name: 'Organizing'),
       user: User.fifth,
-      location: 'Denpasar'
+      location: 'Bali, Pulukan'
     }
   ]
 )
