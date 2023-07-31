@@ -311,7 +311,7 @@ Task.create(
       price: 100_000.00,
       category: Category.find_by(name: 'Cleaning'),
       user: User.third,
-      location: 'Sanur'
+      location: 'Bali, Sanur'
     },
     {
       name: 'Post-Party Cleanup Crew',
@@ -327,7 +327,7 @@ Task.create(
       price: 200_000.00,
       category: Category.find_by(name: 'Cleaning'),
       user: User.fifth,
-      location: 'Sanur'
+      location: 'Bali, Sanur'
     },
     {
       name: 'Personal Chef for Family Dinner',
@@ -343,7 +343,7 @@ Task.create(
       price: 75_000.00,
       category: Category.find_by(name: 'Cooking'),
       user: User.second,
-      location: 'Sanur'
+      location: 'Bali, Sanur'
     },
     {
       name: 'Cooking Class Instructor',
@@ -351,7 +351,7 @@ Task.create(
       price: 100_000.00,
       category: Category.find_by(name: 'Cooking'),
       user: User.third,
-      location: 'Sanur'
+      location: 'Bali, Sanur'
     },
     {
       name: 'Healthy Meal Planner',
@@ -359,7 +359,7 @@ Task.create(
       price: 50_000.00,
       category: Category.find_by(name: 'Cooking'),
       user: User.fourth,
-      location: 'Sanur'
+      location: 'Bali, Sanur'
     },
     {
       name: 'Catering for Birthday Party',
@@ -367,7 +367,7 @@ Task.create(
       price: 165_000.00,
       category: Category.find_by(name: 'Cooking'),
       user: User.fifth,
-      location: 'Sanur'
+      location: 'Bali, Sanur'
     },
     {
       name: 'Event Photographer Needed',
@@ -375,7 +375,7 @@ Task.create(
       price: 300_000.00,
       category: Category.find_by(name: 'Events'),
       user: User.first,
-      location: 'Sanur'
+      location: 'Bali, Sanur'
     },
     {
       name: 'Party Decorator',
@@ -407,7 +407,7 @@ Task.create(
       price: 100_000.00,
       category: Category.find_by(name: 'Events'),
       user: User.fifth,
-      location: 'Sanur'
+      location: 'Bali, Sanur'
     },
     {
       name: 'Dog Walking Services',
@@ -415,7 +415,7 @@ Task.create(
       price: 50_000.00,
       category: Category.find_by(name: 'PetCare'),
       user: User.first,
-      location: 'Sanur'
+      location: 'Bali, Sanur'
     },
     {
       name: 'Cat Sitting during Vacation',
@@ -431,7 +431,7 @@ Task.create(
       price: 45_000.00,
       category: Category.find_by(name: 'PetCare'),
       user: User.third,
-      location: 'Sanur'
+      location: 'Bali, Sanur'
     },
     {
       name: 'Dog Training Sessions',
@@ -439,7 +439,7 @@ Task.create(
       price: 50_000.00,
       category: Category.find_by(name: 'PetCare'),
       user: User.fourth,
-      location: 'Sanur'
+      location: 'Bali, Sanur'
     },
     {
       name: 'Pet Boarding for a Weekend',
@@ -447,7 +447,7 @@ Task.create(
       price: 250_000.00,
       category: Category.find_by(name: 'PetCare'),
       user: User.fifth,
-      location: 'Sanur'
+      location: 'Bali, Sanur'
     },
     {
       name: 'Closet Organization Expert',
