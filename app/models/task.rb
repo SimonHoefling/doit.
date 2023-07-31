@@ -9,6 +9,9 @@ class Task < ApplicationRecord
   validate :validate_photo_count
 
   before_validation :set_default_task_status, on: :create
+  # The next 2 lines are for the geocoder gem
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
 
   # Method to start a task request (only available if you are not the task owner)
   def start_request(user)
