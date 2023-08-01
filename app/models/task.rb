@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class Task < ApplicationRecord
   belongs_to :category
   belongs_to :user
@@ -11,7 +13,20 @@ class Task < ApplicationRecord
   before_validation :set_default_task_status, on: :create
   # The next 2 lines are for the geocoder gem
   geocoded_by :location
-  after_validation :geocode, if: :will_save_change_to_location?
+  after_validation :geocode, :check_geocode, if: :will_save_change_to_location?
+
+  # The next method makes a double check on the geocoding (sometimes the first geocoding is not accurate)
+  def check_geocode
+    unless self.longitude && self.latitude
+      url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{self.location.gsub(" ", "%20")}.json?&access_token=#{ENV["MAPBOX_API_KEY"]}"
+      location_serialized = URI.open(url).read
+      location = JSON.parse(location_serialized)
+      coordinates = location["features"][0]["center"]
+      self.longitude = coordinates[0]
+      self.latitude = coordinates[1]
+      self.save
+    end
+  end
 
   # Method to start a task request (only available if you are not the task owner)
   def start_request(user)

@@ -19,7 +19,7 @@
       height: 300px;
 
       .form-slide {
-        overflow: auto;
+        // overflow: auto;
         display: none;
 
         &.active {
@@ -50,7 +50,10 @@
       border: 1px solid #ccc;
       border-radius: 4px;
       font-size: 16px;
-      margin-bottom: 30px;
+      background-color: $white;
+    }
+    .upload-photo {
+      background-color: $white;
     }
 
     .form-inputs .file-input {
@@ -78,5 +81,14 @@
         }
       }
     }
+    .mapboxgl-ctrl-geocoder {
+      max-width: none;
+      width: 100%;
+      box-shadow: none;
+      background-color: $white;
+    }
+  }
+  .mapboxgl-ctrl-geocoder--input {
+    padding-left: 40px !important;
   }
 }

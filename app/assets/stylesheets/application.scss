@@ -45,11 +45,3 @@ body {
   height: 100%;
   font-family: $headers-font;
 }
-
-.mapboxgl-ctrl-geocoder {
-  max-width: none;
-  width: 100%;
-  border: 1px solid rgb(150, 61, 61);
-  box-shadow: none;
-  background-color: white;
-}

@@ -66,7 +66,7 @@ Task.create(
       price: 120_000.0,
       category: Category.find_by(name: 'Sports'),
       user: User.third,
-      location: 'Uluwatu, Three Steps coffee'
+      location: 'Kerobokan Kelod, 80363, Kuta,, Three Steps coffee'
     },
     {
       name: 'Help with Heavy Lifting',
@@ -122,7 +122,7 @@ Task.create(
       price: 85_000.00,
       category: Category.find_by(name: 'Education'),
       user: User.fifth,
-      location: 'Uluwatu'
+      location: 'Kerobokan Kelod, 80363, Kuta,'
     },
     {
       name: 'Haircut and Styling for Men',
@@ -202,7 +202,7 @@ Task.create(
       price: 25_000.00,
       category: Category.find_by(name: 'Moving'),
       user: User.fifth,
-      location: 'Uluwatu'
+      location: 'Kerobokan Kelod, 80363, Kuta,'
     },
     {
       name: 'Online Math Tutoring for Elementary Student',
@@ -242,7 +242,7 @@ Task.create(
       price: 75_000.00,
       category: Category.find_by(name: 'Moving'),
       user: User.fifth,
-      location: 'Uluwatu'
+      location: 'Kerobokan Kelod, 80363, Kuta,'
     },
 
 
@@ -255,7 +255,7 @@ Task.create(
       price: 100_000.00,
       category: Category.find_by(name: 'Babysitting'),
       user: User.first,
-      location: 'Uluwatu'
+      location: 'Kerobokan Kelod, 80363, Kuta,'
     },
     {
       name: 'Weekend Childcare Assistant',
@@ -287,7 +287,7 @@ Task.create(
       price: 60_000.00,
       category: Category.find_by(name: 'Babysitting'),
       user: User.fifth,
-      location: 'Uluwatu'
+      location: 'Kerobokan Kelod, 80363, Kuta,'
     },
     {
       name: 'Deep Cleaning for New Home',
@@ -319,7 +319,7 @@ Task.create(
       price: 75_000.00,
       category: Category.find_by(name: 'Cleaning'),
       user: User.fourth,
-      location: 'Uluwatu'
+      location: 'Kerobokan Kelod, 80363, Kuta,'
     },
     {
       name: 'Office Cleaning Services',
@@ -391,7 +391,7 @@ Task.create(
       price: 120_000.00,
       category: Category.find_by(name: 'Events'),
       user: User.third,
-      location: 'Uluwatu'
+      location: 'Kerobokan Kelod, 80363, Kuta,'
     },
     {
       name: 'Musician for Anniversary Celebration',
