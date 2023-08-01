@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AddressAutocompleteController from "./address_autocomplete_controller"
+application.register("address-autocomplete", AddressAutocompleteController)
+
 import CarouselFormController from "./carousel_form_controller"
 application.register("carousel-form", CarouselFormController)
 
