@@ -32,16 +32,17 @@
   <% if user_signed_in? && current_user == @user %>
     <p>ACCOUNT OVERVIEW</p>
 
-    <div class="money-container">
-      <div class="money-left">
-        <p class="money-text">EARNED MONEY</p>
-        <p class="money-plus"><%= @earned_money.round(0) %> IDR</p>
-      </div>
-      <div class="money-right">
-        <p class="money-text">SPENT MONEY</p>
-        <p class="money-minus"><%= @spent_money.round(0) %> IDR</p>
-      </div>
-    </div>
+<div class="money-container">
+  <div class="money-left">
+    <p class="money-text">EARNED MONEY</p>
+    <p class="money-plus" data-controller="animated-number" data-animated-number-start-value="0" data-animated-number-end-value="<%= @earned_money.round(0) %>" data-animated-number-duration-value="3000"> IDR</p>
+  </div>
+  <div class="money-right">
+    <p class="money-text">SPENT MONEY</p>
+    <p class="money-minus" data-controller="animated-number" data-animated-number-start-value="0" data-animated-number-end-value="<%= @spent_money.round(0) %>" data-animated-number-duration-value="3000"></p>
+  </div>
+</div>
+
 
     <ul>
       <%= link_to my_tasks_tasks_path do %>

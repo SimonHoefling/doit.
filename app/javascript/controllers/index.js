@@ -4,6 +4,7 @@
 
 import { application } from "./application"
 
+// Register custom controllers
 import AddressAutocompleteController from "./address_autocomplete_controller"
 application.register("address-autocomplete", AddressAutocompleteController)
 
@@ -33,3 +34,7 @@ application.register("signup-form", SignupFormController)
 
 import TaskDropdownController from "./task_dropdown_controller"
 application.register("task-dropdown", TaskDropdownController)
+
+// Register the animated-number controller
+import AnimatedNumberController from "stimulus-animated-number";
+application.register("animated-number", AnimatedNumberController);
