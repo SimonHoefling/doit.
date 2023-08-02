@@ -32,16 +32,36 @@
   <% if user_signed_in? && current_user == @user %>
     <p>ACCOUNT OVERVIEW</p>
 
-<div class="money-container">
-  <div class="money-left">
-    <p class="money-text">EARNED MONEY</p>
-    <p class="money-plus" data-controller="animated-number" data-animated-number-start-value="0" data-animated-number-end-value="<%= @earned_money.round(0) %>" data-animated-number-duration-value="3000"> IDR</p>
-  </div>
-  <div class="money-right">
-    <p class="money-text">SPENT MONEY</p>
-    <p class="money-minus" data-controller="animated-number" data-animated-number-start-value="0" data-animated-number-end-value="<%= @spent_money.round(0) %>" data-animated-number-duration-value="3000"></p>
-  </div>
-</div>
+    <%# In the money container I implemented animated numbers but only if the value is not 0.
+    If the value is 0, I display the static value without the animated-number controller.
+    This is because the animated-number controller does not work with 0 values.  %>
+    <div class="money-container">
+      <div class="money-left">
+        <p class="money-text">EARNED MONEY</p>
+        <% if @earned_money.round(0) == 0 %>
+          <!-- If @earned_money.round(0) is 0, display the static value without the animated-number controller -->
+          <p class="money-plus"><%= @earned_money.round(0) %></p>
+        <% else %>
+          <!-- If @earned_money.round(0) is not 0, include the animated-number controller -->
+          <p class="money-plus" data-controller="animated-number" data-animated-number-start-value="0" data-animated-number-end-value="<%= @earned_money.round(0) %>" data-animated-number-duration-value="3000">
+            <%= @earned_money.round(0) %>
+          </p>
+        <% end %>
+      </div>
+      <div class="money-right">
+        <p class="money-text">SPENT MONEY</p>
+        <% if @spent_money.round(0) == 0 %>
+          <!-- If @spent_money.round(0) is 0, display the static value without the animated-number controller -->
+          <p class="money-minus"><%= @spent_money.round(0) %></p>
+        <% else %>
+          <!-- If @spent_money.round(0) is not 0, include the animated-number controller -->
+          <p class="money-minus" data-controller="animated-number" data-animated-number-start-value="0" data-animated-number-end-value="<%= @spent_money.round(0) %>" data-animated-number-duration-value="3000">
+            <%= @spent_money.round(0) %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+
 
 
     <ul>
