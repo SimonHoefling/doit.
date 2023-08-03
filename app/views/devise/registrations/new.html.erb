@@ -47,24 +47,27 @@
       </div>
 
       <div class="form-slide" data-signup-form-target="slide">
-        <div class="form-inputs" data-controller="hide-show-password">
+        <div class="form-inputs">
           <%= f.input :email,
                       required: true,
                       label: "Email",
                       class: 'form-control' %>
-          <%= f.input :password,
-                      required: true,
-                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                      input_html: { autocomplete: "new-password", type: "password" },
-                      class: 'form-control' %>
-          <%= f.input :password_confirmation,
-                      required: true,
-                      input_html: { autocomplete: "new-password", type: "password" },
-                      class: 'form-control' %>
-          <label>
-            <%= check_box_tag 'password_visibility', 1, false %>
-            Show passwords
-          </label>
+          <%# Below are inputs with password toggle functionality %>
+          <div class="input-container" data-controller="password-toggle">
+            <%= f.input :password,
+                        required: true,
+                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password", type: "password", data: { password_toggle_target: 'password' } },
+                        class: 'form-control' %>
+            <i class="fa-solid fa-eye-slash eye-icon" style="color: #0e0000" data-action="click->password-toggle#togglePassword" data-password-toggle-target="toggle"></i>
+          </div>
+          <div class="input-container" data-controller="password-toggle">
+            <%= f.input :password_confirmation,
+                        required: true,
+                        input_html: { autocomplete: "new-password", type: "password", data: { password_toggle_target: 'password' } },
+                        class: 'form-control' %>
+            <i class="fa-solid fa-eye-slash eye-icon" style="color: #0e0000" data-action="click->password-toggle#togglePassword" data-password-toggle-target="toggle"></i>
+          </div>
 
           <div class="form-actions">
             <%= f.button :submit, "Sign up", class: 'form-btn' %>
@@ -83,6 +86,6 @@
 
 </div>
 
-<div class="signup-back-container">
+<div class="signup-back-container m-3">
   <p>Already have an account? <%= link_to 'Sign in', :back %></p>
 </div>

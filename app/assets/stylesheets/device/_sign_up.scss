@@ -40,9 +40,10 @@
       .form-control-file {
         margin-bottom: 20px;
         background-color: $white;
+        padding: 10px;
+        height: 40px;
       }
     }
-
     .form-inputs input[type="text"],
     .form-inputs textarea,
     .form-inputs select {
@@ -51,10 +52,23 @@
       border: 1px solid #ccc;
       border-radius: 4px;
       font-size: 16px;
-      margin-bottom: 30px;
       background-color: $white;
     }
-
+    .signup-form-container .form-inputs input[type="password"] {
+      padding: 10px;
+    }
+    // Below is for the eye icon position to toggle password visibility
+    .input-container {
+      position: relative;
+      height: 140px;
+      border: 1px solid transparent;
+      .eye-icon {
+        position: absolute;
+        right: 16px;
+        transform: translateY(-50%);
+        top: 50%;
+      }
+    }
     .upload-photo {
       background-color: $white;
     }
@@ -65,7 +79,7 @@
 
     .indicators {
       position: absolute; // set position to absolute
-      bottom: 10px; // distance from the bottom
+      bottom: 0px; // distance from the bottom
       width: 100%; // full width of the parent container
       display: flex;
       justify-content: center;
