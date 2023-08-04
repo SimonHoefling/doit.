@@ -1,6 +1,15 @@
 // CSS rules for the sign up for everything that bigger than a phone screen
 @media only screen and (min-width: 481px) {
-  .back-container {
+  .signup-form-container {
+    display: none;
+  }
+  .signup-back-container {
+    display: none;
+  }
+  .edit-user-bottom-container {
+    display: none;
+  }
+  .edit {
     display: none;
   }
 }
@@ -107,6 +116,13 @@
       text-decoration: none;
       color: #0E0000;
       letter-spacing: 1px;
+    }
+  }
+  .edit-user-bottom-container {
+    a {
+      text-decoration: none;
+      color: $black;
+      padding-top: 16px;
     }
   }
 }
