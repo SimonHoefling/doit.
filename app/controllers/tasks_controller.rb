@@ -19,11 +19,16 @@ class TasksController < ApplicationController
     end
 
     # This is needed for the blue dot in the navbar if there is a new message
-    @chatrooms = Chatroom.joins(task: :user)
-                         .joins("LEFT JOIN messages ON messages.chatroom_id = chatrooms.id")
-                         .where("(tasks.user_id = :current_user_id OR chatrooms.user_id = :current_user_id)", current_user_id: current_user.id)
-                         .group("chatrooms.id")
-                         .order("MAX(messages.created_at) DESC NULLS LAST")
+    if user_signed_in?
+      @chatrooms = Chatroom.joins(task: :user)
+                           .joins("LEFT JOIN messages ON messages.chatroom_id = chatrooms.id")
+                           .where("(tasks.user_id = :current_user_id OR chatrooms.user_id = :current_user_id)", current_user_id: current_user.id)
+                           .group("chatrooms.id")
+                           .order("MAX(messages.created_at) DESC NULLS LAST")
+    else
+      @chatrooms = [] # or whatever default behavior you want for users who are not signed in
+    end
+
   end
 
   # GET /tasks/1
@@ -102,13 +107,17 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
+    if user_signed_in?
     @task = Task.new
-    # This is needed for the blue dot in the navbar if there is a new message
-    @chatrooms = Chatroom.joins(task: :user)
-                         .joins("LEFT JOIN messages ON messages.chatroom_id = chatrooms.id")
-                         .where("(tasks.user_id = :current_user_id OR chatrooms.user_id = :current_user_id)", current_user_id: current_user.id)
-                         .group("chatrooms.id")
-                         .order("MAX(messages.created_at) DESC NULLS LAST")
+      # This is needed for the blue dot in the navbar if there is a new message
+      @chatrooms = Chatroom.joins(task: :user)
+                          .joins("LEFT JOIN messages ON messages.chatroom_id = chatrooms.id")
+                          .where("(tasks.user_id = :current_user_id OR chatrooms.user_id = :current_user_id)", current_user_id: current_user.id)
+                          .group("chatrooms.id")
+                          .order("MAX(messages.created_at) DESC NULLS LAST")
+    else
+      redirect_to new_user_session_path, alert: "You need to sign in to view messages."
+    end
   end
 
   # Method to create a chatroom for a task

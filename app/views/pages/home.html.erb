@@ -7,7 +7,11 @@
 </div>
 
 <div class="home-page-container">
-  <h1><%= current_user.first_name %>, need something done?</h1>
+  <% if user_signed_in? %>
+    <h1><%= current_user.first_name %>, need something done?</h1>
+  <% else %>
+    <h1>Need something done?</h1>
+  <% end %>
   <h5>Post a task. Receive offers. Get it done.</h5>
 
   <%# Home container %>

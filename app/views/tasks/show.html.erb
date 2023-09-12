@@ -61,6 +61,7 @@ somewhere %>
 
 <%# Task price card %>
 <%# The request task button gets only rendered if user is not the task owner %>
+<%# Task price card %>
 <div class="price-card">
   <% if @task_status == "done" %>
     <p>TASK PRICE</p>
@@ -72,7 +73,11 @@ somewhere %>
     <%# Only show the "Start Task" button to the appropriate users %>
     <% unless @is_own_task %>
       <% if @task_status == "available" %>
-        <%= button_to "SEND REQUEST", start_task_task_path(@task), method: :post %>
+        <% if user_signed_in? %>
+          <%= button_to "SEND REQUEST", start_task_task_path(@task), method: :post, class:"price-card-btn" %>
+        <% else %>
+          <%= button_to "SEND REQUEST", new_user_session_path, class: 'price-card-btn' %>
+        <% end %>
       <% elsif @task_status == "requested" %>
         <p>Request has been sent. You can see the task status in your profile under mangage my tasks.</p>
       <% end %>
@@ -80,19 +85,28 @@ somewhere %>
   <% end %>
 </div>
 
+
 <%# Contact to open a chatroom %>
 <div class="contact-container">
   <% unless @is_own_task %>
     <% if @task_status == "available" || (@task_status == "requested" && @user_can_create_chatroom) %>
       <% if @task.user_can_create_chatroom(current_user) %>
-        <%= button_to create_chatroom_task_path(@task), method: :post, class: "contact-btn" do %>
-          <i class="fa-regular fa-comment-dots fa-flip-horizontal" style="color: #2196f3;"></i>
-          CONTACT <%= @task.user.first_name %>
+        <% if user_signed_in? %>
+          <%= button_to create_chatroom_task_path(@task), method: :post, class: "contact-btn" do %>
+            <i class="fa-regular fa-comment-dots fa-flip-horizontal" style="color: #2196f3;"></i>
+            CONTACT <%= @task.user.first_name %>
+          <% end %>
+        <% else %>
+          <%= button_to new_user_session_path, class: 'contact-btn' do %>
+            <i class="fa-regular fa-comment-dots fa-flip-horizontal" style="color: #2196f3;"></i>
+            CONTACT <%= @task.user.first_name %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
   <% end %>
 </div>
+
 
 <%# Task description %>
 <div class="details">

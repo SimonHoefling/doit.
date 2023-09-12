@@ -1,12 +1,17 @@
 class ChatroomsController < ApplicationController
   def index
-    # This checks if a chatroom got a message from anther user
-    @chatrooms = Chatroom.joins(task: :user)
-                         .joins("LEFT JOIN messages ON messages.chatroom_id = chatrooms.id")
-                         .where("(tasks.user_id = :current_user_id OR chatrooms.user_id = :current_user_id)", current_user_id: current_user.id)
-                         .group("chatrooms.id")
-                         .order("MAX(messages.created_at) DESC NULLS LAST") # Order by the most recent message
+    if user_signed_in?
+      @chatrooms = Chatroom.joins(task: :user)
+                           .joins("LEFT JOIN messages ON messages.chatroom_id = chatrooms.id")
+                           .where("(tasks.user_id = :current_user_id OR chatrooms.user_id = :current_user_id)", current_user_id: current_user.id)
+                           .group("chatrooms.id")
+                           .order("MAX(messages.created_at) DESC NULLS LAST") # Order by the most recent message
+    else
+      # Redirect to login page or set a flash message to inform the user
+      redirect_to new_user_session_path, alert: "You need to sign in to view messages."
+    end
   end
+
 
   def show
     @chatroom = Chatroom.find(params[:id])

@@ -1,38 +1,36 @@
 <%# Mobile Navbar %>
-<% if user_signed_in? %>
-  <div class="mobile-nav-container">
-    <%= link_to root_path, class: "navbar-item-container" do %>
-      <div class="item">
-        <%= image_tag("home-icon.png", alt: "home icon") %>
-        <p>Home</p>
-      </div>
-    <% end %>
-    <%= link_to tasks_path, class: "navbar-item-container" do %>
-      <div class="item">
-        <%= image_tag("search-icon.png", alt: "search icon") %>
-        <p>Search</p>
-      </div>
-    <% end %>
-    <%= link_to new_task_path, class: "navbar-item-container larger-image" do %>
-      <div class="item">
-        <%= image_tag("plus-icon.png", alt: "plus icon") %>
-        <p>Create</p>
-      </div>
-    <% end %>
-    <%= link_to chatrooms_path, class: "navbar-item-container" do %>
-      <div class="item">
-        <%= image_tag("message-icon.png", alt: "message icon") %>
-        <% if @chatrooms&.any? { |chatroom| chatroom.unread_messages?(current_user) } %>
-          <span class="notification-dot"></span> <!-- Blue notification dot -->
-        <% end %>
-        <p>Messages</p>
-      </div>
-    <% end %>
-    <%= link_to user_path(current_user), class: "navbar-item-container" do %>
-      <div class="item">
-        <%= image_tag("profile-icon.png", alt: "profile icon") %>
-        <p>Profile</p>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+<div class="mobile-nav-container">
+  <%= link_to root_path, class: "navbar-item-container" do %>
+    <div class="item">
+      <%= image_tag("home-icon.png", alt: "home icon") %>
+      <p>Home</p>
+    </div>
+  <% end %>
+  <%= link_to tasks_path, class: "navbar-item-container" do %>
+    <div class="item">
+      <%= image_tag("search-icon.png", alt: "search icon") %>
+      <p>Search</p>
+    </div>
+  <% end %>
+  <%= link_to new_task_path, class: "navbar-item-container larger-image" do %>
+    <div class="item">
+      <%= image_tag("plus-icon.png", alt: "plus icon") %>
+      <p>Create</p>
+    </div>
+  <% end %>
+  <%= link_to chatrooms_path, class: "navbar-item-container" do %>
+    <div class="item">
+      <%= image_tag("message-icon.png", alt: "message icon") %>
+      <% if @chatrooms&.any? { |chatroom| chatroom.unread_messages?(current_user) } %>
+        <span class="notification-dot"></span> <!-- Blue notification dot -->
+      <% end %>
+      <p>Messages</p>
+    </div>
+  <% end %>
+  <%= link_to (user_signed_in? ? user_path(current_user) : new_user_session_path), class: "navbar-item-container" do %>
+    <div class="item">
+      <%= image_tag("profile-icon.png", alt: "profile icon") %>
+      <p>Profile</p>
+    </div>
+  <% end %>
+</div>
