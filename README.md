@@ -1,9 +1,10 @@
-# Doit - The Social Jobs App
+# doit. - The Social Jobs App
 
 Doit is a mobile application designed to connect you with local freelancers and professionals, instantly solving your service needs. Built with Ruby, this app is exclusively for mobile devices.
 
 [Visit doit.](https://d-o-i-t-cc627f0cd8df.herokuapp.com/)
 
+https://github.com/SimonHoefling/doit./assets/100227595/2f7ffdee-bca1-41c1-9311-140b9b21abef
 
 ## Why Doit?
 
