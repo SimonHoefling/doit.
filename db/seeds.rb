@@ -2,6 +2,17 @@
 # It is also used to destroy all the records in the database. This is useful when
 # you want to reset the database to its initial state.
 
+puts "
+ _______  _______  _______  ______   _______
+|       ||       ||       ||      | |       |
+|  _____||    ___||    ___||  _    ||  _____|
+| |_____ |   |___ |   |___ | | |   || |_____
+|_____  ||    ___||    ___|| |_|   ||_____  |
+ _____| ||   |___ |   |___ |       | _____| |
+|_______||_______||_______||______| |_______|
+
+"
+
 # Destroying all the records in the database
 puts "Cleaning database for categories..."
 Category.destroy_all
