@@ -119,5 +119,7 @@
 
 <%# This checks that only the users with the email simon@gmail.com can add a new category %>
 <% if user_signed_in? && current_user.email == "simon@gmail.com" && current_user == @user %>
-  <%= link_to "Add new category", new_category_path, class: "btn btn-primary pl-4" %>
+  <div class="text-center">
+    <%= link_to "Add new category", new_category_path, class: "btn btn-primary" %>
+  </div>
 <% end %>
