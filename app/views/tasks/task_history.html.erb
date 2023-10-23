@@ -39,9 +39,9 @@
         <p>Status: <%= task.task_status %> (Completed on <%= task.updated_at.to_date.strftime("%d.%m.%Y") %>)</p>
 
         <% if task.user == current_user %>
-          <p>You spent: <%= task.price %> IDR</p>
+          <p>You spent: <span class="text-danger"><%= task.price %> IDR</p>
         <% elsif task.requested_by == current_user %>
-          <p>You earned: <%= task.price %> IDR</p>
+          <p>You earned: <span class="text-success"><%= task.price %></span> IDR</p>
         <% end %>
         <hr>
 
