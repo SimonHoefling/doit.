@@ -58,6 +58,13 @@
     width: 95%;
     margin: 4% auto;
 
+    .text-overline {
+      border-top: 1px solid black;
+    }
+    .text-underline {
+      border-bottom: 1px solid black;
+    }
+
     .money-container {
       display: flex;
       justify-content: space-between;

@@ -30,7 +30,7 @@
 <%# User accout overview %>
 <div class="profile-account-overview">
   <% if user_signed_in? && current_user == @user %>
-    <p>ACCOUNT OVERVIEW</p>
+    <p><span class="text-overline">ACCOUNT</span> <span class="text-underline">OVERVIEW</span></p>
 
     <%# In the money container I implemented animated numbers but only if the value is not 0.
     If the value is 0, I display the static value without the animated-number controller.
